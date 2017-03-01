@@ -1,6 +1,5 @@
 class SchoolController < ApplicationController
   def index
-    schools=School.all
-    puts schools
+    @schools=School.all
   end
 end

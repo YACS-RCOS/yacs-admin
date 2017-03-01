@@ -1,2 +1,41 @@
-<h1>Section#index</h1>
-<p>Find me in app/views/section/index.html.erb</p>
+<h1>Listing all sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>CRN</th>
+      <th>Seats</th>
+      <th>Seats Taken</th>
+      <th>Instructors</th>
+      <th># of Periods</th>
+      <th>Course ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.id %></td>
+        <td><%= section.name %></td>
+        <td><%= section.crn %></td>
+        <td><%= section.seats %></td>
+        <td><%= section.seats_taken %></td>
+        <td><%= section.instructors %></td>
+        <td><%= section.num_periods %></td>
+        <td><%= section.course_id %></td>
+        <td><%= link_to 'Show', course_index_path %></td>
+        <td><%= link_to 'Edit', course_index_path %></td>
+        <td><%= link_to 'Destroy',course_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', course_index_path %>

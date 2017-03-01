@@ -1,2 +1,35 @@
-<h1>Department#index</h1>
-<p>Find me in app/views/department/index.html.erb</p>
+<h1>Listing all departments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+
+      <th>Name</th>
+      <th>School ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |dept| %>
+      <tr>
+        <td><%= dept.id %></td>
+        <td><%= dept.code %></td>
+
+        <td><%= dept.name %></td>
+        <td><%= dept.school_id %></td>
+        <td><%= link_to 'Show', course_index_path %></td>
+        <td><%= link_to 'Edit', course_index_path %></td>
+        <td><%= link_to 'Destroy',course_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Department', course_index_path %>

@@ -1,2 +1,30 @@
-<h1>School#index</h1>
-<p>Find me in app/views/school/index.html.erb</p>
+<h1>Listing all schools</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= school.id %></td>
+
+        <td><%= school.name %></td>
+        <td><%= link_to 'Show', course_index_path %></td>
+        <td><%= link_to 'Edit', course_index_path %></td>
+        <td><%= link_to 'Destroy',course_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New School', course_index_path %>

@@ -1,5 +1,5 @@
 class SectionController < ApplicationController
   def index
-    sections=Section.all
+    @sections=Section.all
   end
 end
