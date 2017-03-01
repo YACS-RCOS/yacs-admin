@@ -1,2 +1,33 @@
-<h1>Course#index</h1>
-<p>Find me in app/views/course/index.html.erb</p>
+<h1>Listing all courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Department ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.id %></td>
+        <td><%= course.name %></td>
+        <td><%= course.number %></td>
+        <td><%= course.department_id %></td>
+        <td><%= link_to 'Show', course_index_path %></td>
+        <td><%= link_to 'Edit', course_index_path %></td>
+        <td><%= link_to 'Destroy',course_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', course_index_path %>
