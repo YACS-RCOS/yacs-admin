@@ -25,3 +25,8 @@ h1{
 td{
   padding: 2px 5px;
 }
+
+#navtable a:focus, a:hover{
+  color:#fff !important;
+  text-decoration: none !important;
+}
