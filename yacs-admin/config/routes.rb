@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'section/index'
 
   get 'course/index'
+  get 'course/:id' => 'course#show', as: :course
 
   get 'department/index'
 

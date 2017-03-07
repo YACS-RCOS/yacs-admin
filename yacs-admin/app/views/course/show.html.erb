@@ -1,0 +1,44 @@
+<h1><%=@department.code%> <%=@course.number%>: <%=@course.name%></h1>
+<p><strong>Description:</strong><%=@course.description%></p>
+
+<h2>Sections:</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>CRN</th>
+      <th>Seats</th>
+      <th>Seats Taken</th>
+      <th>Instructors</th>
+      <th># of Periods</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.id %></td>
+        <td><%= section.name %></td>
+        <td><%= section.crn %></td>
+        <td><%= section.seats %></td>
+        <td><%= section.seats_taken %></td>
+        <td><%= section.instructors %></td>
+        <td><%= section.num_periods %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
+ Show').html_safe, course_index_path %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
+ Edit').html_safe, course_index_path %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
+ Destroy').html_safe, course_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a> Back to <%=@department.name%> department </a>
+
+Link back to all courses
