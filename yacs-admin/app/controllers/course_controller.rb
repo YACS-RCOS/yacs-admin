@@ -7,7 +7,7 @@ class CourseController < ApplicationController
   def show
     course_id=params[:id]
     search_params={:id => course_id}
-    puts course_id
+    #puts course_id
     #use .elements[0], since .find returns a collection
     @course=Course.find(:all, :params=>search_params).elements[0]
     #puts @course == nil
