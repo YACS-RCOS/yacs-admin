@@ -16,4 +16,12 @@ class SectionController < ApplicationController
     course_params={:id=>@section.course_id}
     @course=Course.find(:all,:params=>course_params).elements[0]
   end
+
+  def search
+
+  end
+
+  def search_results
+
+  end
 end

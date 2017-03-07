@@ -19,4 +19,12 @@ class DepartmentController < ApplicationController
     school_params={:id=>@department.school_id}
     @school=School.find(:all,:params=>school_params).elements[0]
   end
+
+  def search
+
+  end
+
+  def search_results
+
+  end
 end

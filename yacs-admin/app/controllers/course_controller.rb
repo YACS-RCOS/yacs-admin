@@ -20,6 +20,14 @@ class CourseController < ApplicationController
     @department=Department.find(:all,:params=>department_params).elements[0]
   end
 
+  def search
+
+  end
+
+  def search_results
+
+  end
+
   #private
 
   #def course_params
