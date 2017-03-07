@@ -4,7 +4,7 @@
  New Course').html_safe, course_index_path %> &nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
  Search Courses').html_safe, course_index_path %></h4>
 
- <%=render partial: "layouts/tables/course_table", locals: {courses: @courses}%>
+ <%=render partial: "layouts/tables/course_table", locals: {courses: @courses, show_dept_id: true}%>
 
 <br>
 

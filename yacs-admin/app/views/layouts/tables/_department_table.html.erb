@@ -5,7 +5,7 @@
       <th>Code</th>
 
       <th>Name</th>
-      <th>School ID</th>
+      <%if show_school_id%><th>School ID</th><%end%>
       <th></th>
       <th></th>
       <th></th>
@@ -19,7 +19,7 @@
         <td><department-code><%= dept.code %></department-code></td>
 
         <td><%= dept.name %></td>
-        <td><%= dept.school_id %></td>
+        <%if show_school_id%><td><%= dept.school_id %></td><%end%>
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, dept %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>

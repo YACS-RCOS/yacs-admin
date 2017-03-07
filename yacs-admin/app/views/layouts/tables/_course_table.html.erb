@@ -4,6 +4,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Number</th>
+      <% if show_dept_id %><th>Department ID</th><%end%>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
         <td><%= course.id %></td>
         <td><%= course.name %></td>
         <td><%= course.number %></td>
+        <% if show_dept_id %><td><%=course.department_id%></td><%end%>
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, course %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>

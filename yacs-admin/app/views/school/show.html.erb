@@ -4,4 +4,4 @@
 <h2>Departments</h2>
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  Add department').html_safe, @school %></h4>
- <%=render partial: "layouts/tables/department_table", locals: {departments: @departments}%>
+ <%=render partial: "layouts/tables/department_table", locals: {departments: @departments, show_school_id: false}%>

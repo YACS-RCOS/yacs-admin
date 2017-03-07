@@ -11,5 +11,5 @@
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  Add section').html_safe, @course %></h4>
 
- <%=render partial: "layouts/tables/section_table", locals: {sections: @course.sections}%>
+ <%=render partial: "layouts/tables/section_table", locals: {sections: @course.sections, show_course_id: false}%>
 

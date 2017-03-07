@@ -3,6 +3,6 @@
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  New Department').html_safe, department_index_path %>&nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
  Search Departments').html_safe, department_index_path %></h4>
- <%=render partial: "layouts/tables/department_table", locals: {departments: @departments}%>
+ <%=render partial: "layouts/tables/department_table", locals: {departments: @departments, show_school_id: true}%>
 <br>
 

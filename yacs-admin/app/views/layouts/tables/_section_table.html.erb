@@ -8,7 +8,7 @@
       <th>Seats Taken</th>
       <th>Instructors</th>
       <th># of Periods</th>
-      <th>Course ID</th>
+      <%if show_course_id%><th>Course ID</th><%end%>
       <th></th>
       <th></th>
       <th></th>
@@ -25,7 +25,7 @@
         <td><%= section.seats_taken %></td>
         <td><%=render partial: "layouts/instructors", locals: {instructors: section.instructors}%></td>
         <td><%= section.num_periods %></td>
-        <td><%= section.course_id %></td>
+        <%if show_course_id%><td><%= section.course_id %></td><%end%>
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, section %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
