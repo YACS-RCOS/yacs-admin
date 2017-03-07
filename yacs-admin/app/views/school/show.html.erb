@@ -2,7 +2,8 @@
 <p><%= link_to ('<span class="glyphicon glyphicon-chevron-left table-icon" aria-hidden="true"></span>
  Back to all schools').html_safe, school_index_path %></p>
 <h2>Departments</h2>
-
+<h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
+ Add department').html_safe, @school %></h4>
 <table class="table">
   <thead>
     <tr>
@@ -26,9 +27,9 @@
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, dept %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, course_index_path %></td>
+ Edit').html_safe, @school %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, course_index_path %></td>
+ Destroy').html_safe, @school %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,8 @@
 <h1>Listing all departments</h1>
 
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
- New Department').html_safe, course_index_path %></h4>
+ New Department').html_safe, department_index_path %>&nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
+ Search Departments').html_safe, department_index_path %></h4>
 <table class="table">
   <thead>
     <tr>
@@ -27,9 +28,9 @@
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, dept %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, course_index_path %></td>
+ Edit').html_safe, department_index_path %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, course_index_path %></td>
+ Destroy').html_safe, department_index_path %></td>
       </tr>
     <% end %>
   </tbody>

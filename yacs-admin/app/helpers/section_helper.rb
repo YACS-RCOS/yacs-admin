@@ -21,8 +21,16 @@ module SectionHelper
 
   def format_time(time)
     time_string=time.to_s
-    hour=time_string[0,2]
-    minute=time_string[2,2]
+    hour=''
+    minute=''
+    if time_string.length == 3 then
+      hour=time_string[0,1]
+      minute=time_string[1,2]
+    else
+      hour=time_string[0,2]
+      minute=time_string[2,2]
+    end
+    
     suffix="AM"
     if hour.to_i > 12
       hour=((hour.to_i)-12).to_s

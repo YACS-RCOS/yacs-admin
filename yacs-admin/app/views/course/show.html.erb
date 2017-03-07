@@ -8,6 +8,8 @@
  Back to all courses').html_safe, course_index_path %></p>
 
 <h2>Sections:</h2>
+<h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
+ Add section').html_safe, @course %></h4>
 <table class="table">
   <thead>
     <tr>
@@ -32,14 +34,24 @@
         <td><%= section.crn %></td>
         <td><%= section.seats %></td>
         <td><%= section.seats_taken %></td>
-        <td><%= section.instructors %></td>
+        <td><% if section.instructors.length==0%>
+    None
+  <%elsif section.instructors.length==1%>
+    <%=section.instructors[0]%>
+  <%else%>
+    <%section.instructors.slice(0,section.instructors.length-1).each do |instructor|%>
+      <%=instructor%>,
+    <%end%>
+    <%=section.instructors[section.instructors.length-1]%>
+
+  <%end%></td>
         <td><%= section.num_periods %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
  Show').html_safe, section %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, course_index_path %></td>
+ Edit').html_safe, @course %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, course_index_path %></td>
+ Destroy').html_safe, @course %></td>
       </tr>
     <% end %>
   </tbody>

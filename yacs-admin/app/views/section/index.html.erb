@@ -26,7 +26,17 @@
         <td><%= section.crn %></td>
         <td><%= section.seats %></td>
         <td><%= section.seats_taken %></td>
-        <td><%= section.instructors %></td>
+        <td><% if section.instructors.length==0%>
+    None
+  <%elsif section.instructors.length==1%>
+    <%=section.instructors[0]%>
+  <%else%>
+    <%section.instructors.slice(0,section.instructors.length-1).each do |instructor|%>
+      <%=instructor%>,
+    <%end%>
+    <%=section.instructors[section.instructors.length-1]%>
+
+  <%end%></td>
         <td><%= section.num_periods %></td>
         <td><%= section.course_id %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
