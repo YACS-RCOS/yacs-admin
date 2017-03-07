@@ -4,33 +4,4 @@
 <h2>Departments</h2>
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  Add department').html_safe, @school %></h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Code</th>
-
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @departments.each do |dept| %>
-      <tr>
-        <td><%= dept.id %></td>
-        <td><department-code><%= dept.code %></department-code></td>
-
-        <td><%= dept.name %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
- Show').html_safe, dept %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, @school %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, @school %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <%=render partial: "layouts/tables/department_table", locals: {departments: @departments}%>

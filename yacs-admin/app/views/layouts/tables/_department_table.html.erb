@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+
+      <th>Name</th>
+      <th>School ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% departments.each do |dept| %>
+      <tr>
+        <td><%= dept.id %></td>
+        <td><department-code><%= dept.code %></department-code></td>
+
+        <td><%= dept.name %></td>
+        <td><%= dept.school_id %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
+ Show').html_safe, dept %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
+ Edit').html_safe, department_index_path %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
+ Destroy').html_safe, department_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

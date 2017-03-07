@@ -3,36 +3,8 @@
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  New Course').html_safe, course_index_path %> &nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
  Search Courses').html_safe, course_index_path %></h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Department ID</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.id %></td>
-        <td><%= course.name %></td>
-        <td><%= course.number %></td>
-        <td><%= course.department_id %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
- Show').html_safe, course %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, course_index_path %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, course_index_path %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <%=render partial: "layouts/tables/course_table", locals: {courses: @courses}%>
 
 <br>
 

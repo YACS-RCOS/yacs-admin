@@ -22,24 +22,4 @@
 <h2> Periods</h2>
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  Add period').html_safe, @section %></h4>
-<table class="table">
-  <tr>
-    <th>Day</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th></th>
-    <th></th>
-  </tr>
-<%@section.periods.each do |period|%>
-  <tr>
-    <td><%=day_to_string(period.day)%></td>
-    <td><%=format_time(period.start)%></td>
-    <td><%=format_time(period.end)%></td>
-    <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, @section %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, @section %></td>
-  </tr>
-<%end%>
-
-</table>
+ <%=render partial: "layouts/tables/period_table", locals: {periods: @section.periods}%>

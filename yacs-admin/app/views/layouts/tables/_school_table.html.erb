@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% schools.each do |school| %>
+      <tr>
+        <td><%= school.id %></td>
+
+        <td><%= school.name %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
+ Show').html_safe, school %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
+ Edit').html_safe, school_index_path %></td>
+        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
+ Destroy').html_safe, school_index_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -2,54 +2,9 @@
 
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  New Section').html_safe, section_index_path %>&nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
- Search Sections').html_safe, section_index_path %></h4><table class="table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>CRN</th>
-      <th>Seats</th>
-      <th>Seats Taken</th>
-      <th>Instructors</th>
-      <th># of Periods</th>
-      <th>Course ID</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+ Search Sections').html_safe, section_index_path %></h4>
 
-  <tbody>
-    <% @sections.each do |section| %>
-      <tr>
-        <td><%= section.id %></td>
-        <td><%= section.name %></td>
-        <td><%= section.crn %></td>
-        <td><%= section.seats %></td>
-        <td><%= section.seats_taken %></td>
-        <td><% if section.instructors.length==0%>
-    None
-  <%elsif section.instructors.length==1%>
-    <%=section.instructors[0]%>
-  <%else%>
-    <%section.instructors.slice(0,section.instructors.length-1).each do |instructor|%>
-      <%=instructor%>,
-    <%end%>
-    <%=section.instructors[section.instructors.length-1]%>
-
-  <%end%></td>
-        <td><%= section.num_periods %></td>
-        <td><%= section.course_id %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-share table-icon" aria-hidden="true"></span>
- Show').html_safe, section %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
- Edit').html_safe, section_index_path %></td>
-        <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, section_index_path %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ <%=render partial: "layouts/tables/section_table", locals: {sections: @sections}%>
 
 <br>
 
