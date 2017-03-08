@@ -2,7 +2,7 @@
 
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
  New Course').html_safe, course_index_path %> &nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
- Search Courses').html_safe, search_path %></h4>
+ Search Courses').html_safe, course_search_path(:query => "") %></h4>
 
  <%=render partial: "layouts/tables/course_table", locals: {courses: @courses, show_dept_id: true}%>
 

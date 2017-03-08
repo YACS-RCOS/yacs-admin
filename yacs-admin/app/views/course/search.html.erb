@@ -1,16 +1,17 @@
 <h1>Search all courses</h1>
 
  <%=render partial: "layouts/forms/search"%>
-
-<h2>Help</h2>
-<p>Courses are searched by:</p>
-<ul>
-  <li>Course Name</li>
-  <li>Course Number</li>
-  <li>Department Code</li>
-  <li>Department Name</li>
-  <li>Section Instructors</li>
-</ul>
-
+<p></p>
 <p><%= link_to ('<span class="glyphicon glyphicon-chevron-left table-icon" aria-hidden="true"></span>
  Back to all courses').html_safe, course_index_path %></p>
+
+<%if @courses %>
+  <h2><%=@courses.length%> result(s) found for <%=@query%></h2>
+  <% if @courses.length !=0 %>
+    <%=render partial: "layouts/tables/course_table", locals: {courses: @courses, show_dept_id: true}%>
+  <%else%>
+    <%=render partial: "layouts/search_help"%>
+  <%end%>
+<%else%>
+  <%=render partial: "layouts/search_help"%>
+<%end%>
