@@ -1,7 +1,6 @@
 <h1>Listing all schools</h1>
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
- New School').html_safe, school_index_path %>&nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
- Search Schools').html_safe, school_index_path %></h4>
+ New School').html_safe, school_index_path %></h4>
 
  <%=render partial: "layouts/tables/school_table", locals: {schools: @schools}%>
 

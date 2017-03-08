@@ -1,8 +1,7 @@
 <h1>Listing all sections</h1>
 
 <h4> <%=link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
- New Section').html_safe, section_index_path %>&nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
- Search Sections').html_safe, section_index_path %></h4>
+ New Section').html_safe, section_index_path %></h4>
 
  <%=render partial: "layouts/tables/section_table", locals: {sections: @sections, show_course_id: true}%>
 
