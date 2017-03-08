@@ -1,0 +1,27 @@
+<nav id="headerbar">
+  <table id="navtable">
+    <tbody>
+      <tr>
+        <td class="sidelink" id="page-title">
+          <%=link_to "YACS Admin", root_path%>
+        </td>
+
+        <td class="sidelink" id="schools">
+          <span class="sub"><%=link_to "Schools", school_index_path%></span>
+        </td>
+        <td class="sidelink" id="departments">
+          <span class="sub"><%=link_to "Departments", department_index_path%></span>
+        </td>
+
+        <td class="sidelink" id="courses">
+          <span class="sub"><%=link_to "Courses", course_index_path%></span>
+        </td>
+
+        <td class="sidelink" id="sections">
+          <span class="sub"><%=link_to "Sections", section_index_path%></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</nav>
