@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
 
   get 'course/:id' => 'course#show', as: :course
+  get 'search' => 'course#search'
   get 'department/:id' => 'department#show', as: :department
   get 'school/:id' => 'school#show', as: :school
   get 'section/:id' => 'section#show', as: :section
