@@ -6,4 +6,4 @@ Shows all courses, departments, schools, and sections in each model's respective
 
 ## Future Functionality
 Will implement full CRUD support once it is in YACS API.
-All add/update/delete operations will require authentication.
+All add/update/delete operations will require authentication via login (possible CAS authentication integration).
