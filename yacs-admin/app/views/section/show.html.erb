@@ -1,3 +1,5 @@
+ <%=render partial: "layouts/navbar/section_active"%>
+
 <h1> <%=@course.name%>: Section <%=@section.name%></h1>
 <p><strong>Instructors: </strong>
    <%=render partial: "layouts/instructors", locals: {instructors: @section.instructors}%>
