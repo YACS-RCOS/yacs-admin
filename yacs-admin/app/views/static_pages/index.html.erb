@@ -21,28 +21,46 @@
 <h2 id="navigation">Navigation</h2>
 <p>Above are four tabs: Schools, Departments, Courses, and Sections. Click a tab to view all objects in that category.</p>
 <h3 id="index">Index View</h3>
-<p>When viewing any object's index page, you will see a header like the one below. For all objects, you will see a link to add a new course. When viewing all courses, you will see a link to search courses.</p>
+<p>When viewing any object's index page, you will see a header like the one below. For all objects, you will see a link to add a new course. When viewing all courses, you will see a link to <a href="#search">search courses</a>.</p>
 <%=image_tag "index_header.png", :class => "img-fluid img-thumbnail"%>
 <p></p>
-<p>Below the header, you will see a table similar to the one below. On the right are three links. Ckick the first link to enter show view, the second link to enter edit view, and the third link to delete the object.</p>
+<p>Below the header, you will see a table similar to the one below. On the right are three links. Click the first link to enter <a href="#show">show view</a>, the second link to enter <a href="#edit">edit view</a>, and the third link to <a href="#delete">delete the object</a>.</p>
 <%=image_tag "table.png", :class => "img-fluid img-thumbnail"%>
 <br>
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="show">Show Object View</h3>
 
+<p>When viewing an object, you can see a link to its parent (department a course is in, etc.) and a table containing all its children. The show view also shows a link to <a href="#search">search courses</a> in a department (when viewing a department), a course description (when viewing a course) or section instructors (when viewing a section).</p>
+
+<%=image_tag "show_view.png", :class => "img-fluid img-thumbnail"%>
+
 
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="search">Search View</h3>
+<br>
+<p>The YACS API allows you to search courses by course name, course, number, department code, department name, and section instructors. Simply type your query into the search bar and results will show up below the search bar as shown.</p>
+
+<%=image_tag "search_example.png", :class => "img-fluid img-thumbnail"%>
+
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="new">New Object View</h3>
+
+<p>New objects cannot be created yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="edit">Edit Object View</h3>
+
+<p>Objects cannot be edited yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
+
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="delete">Deleting an Object</h3>
+
+<p>Objects cannot be deleted yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
+
+
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
