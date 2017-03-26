@@ -4,7 +4,7 @@ Feature: Manage Courses
   I want to create and manage courses
 
   Scenario: Courses List
-    Given I have courses titled Calculus, Physics
+    Given I have courses named Calculus, Physics
     When I go to the list of courses
     Then I should see "Calculus"
     And I should see "Physics"
