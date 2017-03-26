@@ -1,0 +1,638 @@
+Script started on Tue 21 Mar 2017 10:01:30 PM EDT
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ rails sgit pushcommit -m "fix issue 
+ #37"[A[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Prails s[Kr[KRI[KAILS_e[KENV=test script[K[K[K[K[K[Kcucumber  
+features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features -n[A[C[C[Crails s[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit pushcommit -m "fix issue 
+ #37"[A[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd yacs-admin/[7Prails scd yacs-admin-testing/
+[C[C[C[C[C[C[C[C[C[C[C[C[C[Crails s[Kcd yacs-admin/[5Pgit add .commit -m "fix issue 
+ #37"[A[C[C[C[C[C[C[C[C[C[C[C[C[Cpush[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Prails sRAILS_ENV=test cucumber f
+features -n[A[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[CRAILS_ENV=test cucumber f
+features -n[K[K[K[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[Kbundle in 
+stall
+Fetching gem metadata from https://rubygems.org/...........
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake 12.0.0
+Using i18n 0.8.1
+Using json 1.8.6
+Using minitest 5.10.1
+Using thread_safe 0.3.6
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.1.0
+Using rack 1.6.5
+Using mime-types-data 3.2016.0521
+Using arel 6.0.4
+Using public_suffix 2.0.5
+Using debug_inspector 0.0.2
+Using bundler 1.11.2
+Using byebug 9.0.6
+Using coffee-script-source 1.12.2
+Using execjs 2.7.0
+Using thor 0.19.4
+Using concurrent-ruby 1.0.5
+Using gherkin 4.1.1
+Using cucumber-wire 0.0.1
+Using diff-lcs 1.3
+Using multi_json 1.12.1
+Using multi_test 0.1.2
+Using database_cleaner 1.5.3
+Using rdoc 4.3.0
+Using rspec-support 3.5.0
+Using sass 3.4.23
+Using tilt 2.0.6
+Using sqlite3 1.3.13
+Using turbolinks-source 5.0.0
+Using tzinfo 1.2.2
+Using nokogiri 1.7.0.1
+Using rack-test 0.6.3
+Using mime-types 3.1
+Using addressable 2.5.0
+Using binding_of_caller 0.7.2
+Using coffee-script 2.4.1
+Using uglifier 3.1.2
+Using sprockets 3.7.1
+Using cucumber-core 1.5.0
+Using sdoc 0.4.2
+Using rspec-core 3.5.4
+Using rspec-expectations 3.5.0
+Using rspec-mocks 3.5.0
+Using turbolinks 5.0.1
+Using activesupport 4.2.6
+Using loofah 2.0.3
+Using xpath 2.0.0
+Using mail 2.6.4
+Using launchy 2.4.3
+Using cucumber 2.4.0
+Using rails-deprecated_sanitizer 1.0.3
+Using globalid 0.3.7
+Using activemodel 4.2.6
+Using jbuilder 2.6.3
+Using spring 2.0.1
+Using rails-html-sanitizer 1.0.3
+
+
+Your user account isn't allowed to install to the system Rubygems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to Rubygems using sudo.
+
+  Password: 
+[32mInstalling capybara 2.13.0[0m
+Using rails-dom-testing 1.0.8
+Using activejob 4.2.6
+Using activerecord 4.2.6
+Using rails-observers 0.1.2
+Using actionview 4.2.6
+Using activeresource 4.1.0
+Using actionpack 4.2.6
+Using actionmailer 4.2.6
+Using railties 4.2.6
+Using sprockets-rails 3.2.0
+Using coffee-rails 4.1.1
+Using cucumber-rails 1.4.5
+Using jquery-rails 4.2.2
+Using rspec-rails 3.5.2
+Using rails 4.2.6
+Using sass-rails 5.0.6
+Using web-console 2.3.0
+[32mBundle complete! 18 Gemfile dependencies, 76 gems now installed.[0m
+[32mUse `bundle show [gemname]` to see where a bundled gem is installed.[0m
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test bundle ins
+stall[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccucumber features -n[A[C[C[Crails s[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CRAILS_ENV=test cucumber f
+features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features -n
+[K[A[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n[K[K[K
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+/home/katie/yacs-admin/yacs-admin/db/schema.rb doesn't exist yet. Run `rake db:migrate` to create it, then try again. If you do not intend to use a database, you should instead alter /home/katie/yacs-admin/yacs-admin/config/application.rb to limit the frameworks that will be loaded.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[Ktest rake db:m 
+igrate
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test rake db:mi
+igrate[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccucumber features
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ scrit 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp 
+t/generate rspec_[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kscre[Kp[Kip 
+t/generate rspec_model course
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ script
+t/generate rspec_model course[1P[1P[1P[1P[1P[1P[1P[1P[1P
+Script started, file is rspec_model
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ 
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:GENER[K[K[K[K[Kgenerate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kr
+script:generate: command not found
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:generate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/generate cucumber [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Could not find generator 'cucumber'. Maybe you meant 'helper', 'jbuilder' or 'mailer'
+Run `rails generate --help` for more options.
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+dependency metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake 12.0.0
+Using i18n 0.8.1
+Using json 1.8.6
+Using minitest 5.10.1
+Using thread_safe 0.3.6
+Using builder 3.2.3
+Using erubis 2.7.0
+Using mini_portile2 2.1.0
+Using rack 1.6.5
+Using mime-types-data 3.2016.0521
+Using arel 6.0.4
+Using public_suffix 2.0.5
+Using debug_inspector 0.0.2
+Using bundler 1.11.2
+Using byebug 9.0.6
+Using coffee-script-source 1.12.2
+Using execjs 2.7.0
+Using thor 0.19.4
+Using concurrent-ruby 1.0.5
+Using gherkin 4.1.1
+Using cucumber-wire 0.0.1
+Using diff-lcs 1.3
+Using multi_json 1.12.1
+Using multi_test 0.1.2
+Using database_cleaner 1.5.3
+Using rdoc 4.3.0
+Using rspec-support 3.5.0
+Using sass 3.4.23
+Using tilt 2.0.6
+Using sqlite3 1.3.13
+Using turbolinks-source 5.0.0
+Using tzinfo 1.2.2
+Using nokogiri 1.7.0.1
+Using rack-test 0.6.3
+Using mime-types 3.1
+Using addressable 2.5.0
+Using binding_of_caller 0.7.2
+Using coffee-script 2.4.1
+Using uglifier 3.1.2
+Using sprockets 3.7.1
+Using cucumber-core 1.5.0
+Using sdoc 0.4.2
+Using rspec-core 3.5.4
+Using rspec-expectations 3.5.0
+Using rspec-mocks 3.5.0
+Using turbolinks 5.0.1
+Using activesupport 4.2.6
+Using loofah 2.0.3
+Using xpath 2.0.0
+Using mail 2.6.4
+Using launchy 2.4.3
+Using cucumber 2.4.0
+Using rails-deprecated_sanitizer 1.0.3
+Using globalid 0.3.7
+Using activemodel 4.2.6
+Using jbuilder 2.6.3
+Using spring 2.0.1
+Using rails-html-sanitizer 1.0.3
+
+
+Your user account isn't allowed to install to the system Rubygems.
+  You can cancel this installation and run:
+
+      bundle install --path vendor/bundle
+
+  to install the gems into ./vendor/bundle/, or you can enter your password
+  and install the bundled gems to Rubygems using sudo.
+
+  Password: 
+[32mInstalling capybara 2.13.0[0m
+Using rails-dom-testing 1.0.8
+Using activejob 4.2.6
+Using activerecord 4.2.6
+Using rails-observers 0.1.2
+Using actionview 4.2.6
+Using activeresource 4.1.0
+Using actionpack 4.2.6
+Using actionmailer 4.2.6
+Using railties 4.2.6
+Using sprockets-rails 3.2.0
+Using coffee-rails 4.1.1
+Using cucumber-rails 1.4.5
+Using jquery-rails 4.2.2
+Using rspec-rails 3.5.2
+Using rails 4.2.6
+Using sass-rails 5.0.6
+Using web-console 2.3.0
+[32mBundle complete! 18 Gemfile dependencies, 76 gems now installed.[0m
+[32mUse `bundle show [gemname]` to see where a bundled gem is installed.[0m
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test bundle ins
+stall[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccucumber features -n[A[C[C[Crails s[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CRAILS_ENV=test cucumber f
+features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features -n
+[K[A[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n[K[K[K
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+/home/katie/yacs-admin/yacs-admin/db/schema.rb doesn't exist yet. Run `rake db:migrate` to create it, then try again. If you do not intend to use a database, you should instead alter /home/katie/yacs-admin/yacs-admin/config/application.rb to limit the frameworks that will be loaded.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[Ktest rake db:m 
+igrate
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test rake db:mi
+igrate[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccucumber features
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ scrit 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp 
+t/generate rspec_[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kscre[Kp[Kip 
+t/generate rspec_model course
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ script
+t/generate rspec_model course[1P[1P[1P[1P[1P[1P[1P[1P[1P
+Script started, file is rspec_model
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ 
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:GENER[K[K[K[K[Kgenerate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kr
+script:generate: command not found
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:generate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/generate cucumber [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Could not find generator 'cucumber'. Maybe you meant 'helper', 'jbuilder' or 'mailer'
+Run `rails generate --help` for more options.
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Could not find generator 'cucumber'. Maybe you meant 'helper', 'jbuilder' or 'mailer'
+Run `rails generate --help` for more options.
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumber
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumberrmberamberimberlmbersmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[C[C[C[C[K[K[K[K[K[K[K --help
+Usage: rails generate GENERATOR [args] [options]
+
+General options:
+  -h, [--help]     # Print generator's options and usage
+  -p, [--pretend]  # Run but do not make any changes
+  -f, [--force]    # Overwrite files that already exist
+  -s, [--skip]     # Skip files that already exist
+  -q, [--quiet]    # Suppress status output
+
+Please choose a generator below.
+
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Rails:
+  assets
+  controller
+  generator
+  helper
+  integration_test
+  jbuilder
+  job
+  mailer
+  migration
+  model
+  observer
+  resource
+  scaffold
+  scaffold_controller
+  task
+
+ActiveRecord:
+  active_record:observer
+
+Coffee:
+  coffee:assets
+
+Cucumber:
+  cucumber:install
+
+Js:
+  js:assets
+
+Rspec:
+  rspec:controller
+  rspec:feature
+  rspec:helper
+  rspec:install
+  rspec:integration
+  rspec:job
+  rspec:mailer
+  rspec:model
+  rspec:observer
+  rspec:request
+  rspec:scaffold
+  rspec:view
+
+TestUnit:
+  test_unit:controller
+  test_unit:generator
+  test_unit:helper
+  test_unit:integration
+  test_unit:job
+  test_unit:mailer
+  test_unit:model
+  test_unit:observer
+  test_unit:plugin
+  test_unit:scaffold
+
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails gbe[K[Kenerate cucumber:install
+[1m[34m   identical[0m  config/cucumber.yml
+[1m[34m   identical[0m  script/cucumber
+[1m[32m       chmod[0m  script/cucumber
+[1m[34m       exist[0m  features/step_definitions
+[1m[34m   identical[0m  features/stMissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features -n
+[K[A[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n
+missing argument: -n (OptionParser::MissingArgument)
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/options.rb:271:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/configuration.rb:26:in `parse!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:65:in `block in configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `tap'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:64:in `configuration'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/lib/cucumber/cli/main.rb:29:in `execute!'
+/var/lib/gems/2.3.0/gems/cucumber-2.4.0/bin/cucumber:8:in `<top (required)>'
+/usr/local/bin/cucumber:23:in `load'
+/usr/local/bin/cucumber:23:in `<main>'
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features -n[K[K[K
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+/home/katie/yacs-admin/yacs-admin/db/schema.rb doesn't exist yet. Run `rake db:migrate` to create it, then try again. If you do not intend to use a database, you should instead alter /home/katie/yacs-admin/yacs-admin/config/application.rb to limit the frameworks that will be loaded.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ RAILS_ENV=test cucumber features
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test cucumber f
+features[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[Ktest rake db:m 
+igrate
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ RAILS_ENV=test rake db:mi
+igrate[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccucumber features
+WARN: Unresolved specs during Gem::Specification.reset:
+      builder (>= 2.1.2, ~> 3.1)
+      nokogiri (>= 1.3.3, >= 1.5.9, ~> 1.3, ~> 1.5, ~> 1.6)
+      minitest (~> 5.1)
+      rake (>= 0.8.7)
+      thor (< 2.0, >= 0.18.1)
+WARN: Clearing out unresolved specs.
+Please report a bug if this causes problems.
+Using the default profile...
+0 scenarios
+0 steps
+0m0.000s
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ scrit 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp 
+t/generate rspec_[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kscre[Kp[Kip 
+t/generate rspec_model course
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ script
+t/generate rspec_model course[1P[1P[1P[1P[1P[1P[1P[1P[1P
+Script started, file is rspec_model
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ 
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:GENER[K[K[K[K[Kgenerate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kr
+script:generate: command not found
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ script:generate cucumber 
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C/generate cucumber [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+bash: script/generate: No such file or directory
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Could not find generator 'cucumber'. Maybe you meant 'helper', 'jbuilder' or 'mailer'
+Run `rails generate --help` for more options.
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin
+n/yacs-admin$ 
+[K[A]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumber
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+Could not find generator 'cucumber'. Maybe you meant 'helper', 'jbuilder' or 'mailer'
+Run `rails generate --help` for more options.
+]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumber
+[K]0;katie@katie-ThinkPad-T450s: ~/yacs-admin/yacs-adminkatie@katie-ThinkPad-T450s:~/yacs-admin/yacs-admin$ rails generate cucumberrmberamberimberlmbersmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[1Pmber[C[C[C[C[K[K[K[K[K[K[K --help
+Usage: rails generate GENERATOR [args] [options]
+
+General options:
+  -h, [--help]     # Print generator's options and usage
+  -p, [--pretend]  # Run but do not make any changes
+  -f, [--force]    # Overwrite files that already exist
+  -s, [--skip]     # Skip files that already exist
+  -q, [--quiet]    # Suppress status output
+
+Please choose a generator below.
+
+Expected string default value for '--rc'; got false (boolean)
+Expected string default value for '--rc'; go
