@@ -5,16 +5,19 @@ class CourseController < ApplicationController
   end
 
   def show
+    puts params
     course_id=params[:id]
     search_params={:id => course_id}
+    puts search_params
     #puts course_id
     #use .elements[0], since .find returns a collection
-    @course=Course.find(:all, :params=>search_params).elements[0]
-    #puts @course == nil
-
+    @course=Course.find(course_id)
+    puts @course
     section_params={:course_id => course_id}
-    @sections=Section.find(:all,:params=>section_params).elements
+    puts section_params
 
+    @sections=Section.find(:all,:params=>section_params).elements
+    puts @sections
     #Find department
     department_params={:id=>@course.department_id}
     @department=Department.find(:all,:params=>department_params).elements[0]
