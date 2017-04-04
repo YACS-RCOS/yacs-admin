@@ -11,11 +11,15 @@ class CourseController < ApplicationController
     puts search_params
     #puts course_id
     #use .elements[0], since .find returns a collection
+    #This line - html
+    #@course=Course.find(:all, :params=>search_params).elements[0]
+    #This line -testing
     @course=Course.find(course_id)
+
     puts @course
     section_params={:course_id => course_id}
     puts section_params
-
+    puts Section.find(:all,:params=>section_params).elements
     @sections=Section.find(:all,:params=>section_params).elements
     puts @sections
     #Find department

@@ -76,8 +76,19 @@ Given /^Course (.*) with name (.*) in department (.*) has a section with ID (.*)
   section={:id=>section_id,:name=>"00",:crn=>42069,:seats=>0,:seats_taken=>0,:instructors=>[],:num_periods=>0,:course_id=>i,:conflicts=>[]}.to_json
   department={:department=>{:id=>i,:code=>"TEST",:name=>"test",:school_id=>0}}  
   @courses=Array.new
+  @sections=Array.new
+  @departments=Array.new
+
   @courses.push(JSON.parse(course))
+  puts JSON.parse(section)
+  @sections.push(JSON.parse(section))
+  puts department
+  @departments.push(department.to_json)
+
   var={:courses=>@courses}
+  section_obj={:sections=>@sections}
+  dept_obj={:departments=>@departments}
+
   ActiveResource::HttpMock.respond_to do |mock|
       mock.post "/api/v5/courses.json",{}, course, 201
       mock.post "/api/v5/sections.json",{}, section, 201
@@ -85,6 +96,9 @@ Given /^Course (.*) with name (.*) in department (.*) has a section with ID (.*)
 
       mock.get "/api/v5/courses.json?id=#{i}",{}, course
       mock.get"/api/v5/courses.json",{},var.to_json
+      mock.get"/api/v5/sections.json",{},section_obj.to_json
+      mock.get"/api/v5/departments.json",{},dept_obj.to_json
+
       mock.get "/api/v5/courses.json?name=#{name}",{}, course
       mock.get "/api/v5/courses/#{i}.json",{}, course
       mock.get "/api/v5/sections.json?course_id=#{i}",{}, section
@@ -95,4 +109,8 @@ Given /^Course (.*) with name (.*) in department (.*) has a section with ID (.*)
     end
 end
 
-
+Given /^the following courses exist$/ do |table|
+  #table.hashes.each do |row|
+    #puts row
+  #end
+end
