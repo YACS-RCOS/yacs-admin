@@ -8,11 +8,15 @@ def path_to(page_name)
       course_index_path
 
     when /^the course page for (.*)$/
-      #params_hash={:id=>($1)}
-      #puts params_hash
+      puts $1
+      params_hash={:id=>($1)}
+      puts params_hash
       #puts Course.find(:all).elements[0]
       #puts course_path(JSON.parse(Course.find(:all, :params=>{:id=>($1)})))
-      course_path(Course.find(:all).elements[0])
+      puts course_path(Course.find($1))
+
+      
+      course_path(Course.find($1))
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path."

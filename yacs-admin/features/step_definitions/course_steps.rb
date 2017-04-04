@@ -110,7 +110,25 @@ Given /^Course (.*) with name (.*) in department (.*) has a section with ID (.*)
 end
 
 Given /^the following courses exist$/ do |table|
-  #table.hashes.each do |row|
-    #puts row
-  #end
+  @courses=Array.new
+  table.hashes.each do |row|
+    hash={:courses=>@courses}
+    @courses.push(row)
+    #puts row[:id].to_s
+    #puts row.to_json
+    ActiveResource::HttpMock.respond_to do |mock|
+
+      mock.post "/api/v5/courses.json",{}, row.to_json, 201
+      mock.get"/api/v5/courses.json",{},hash.to_json
+      mock.get "/api/v5/courses.json?id=#{row[:id].to_s}",{}, row.to_json
+      mock.get "/api/v5/courses/#{row[:id].to_s}.json",{}, row.to_json
+
+    end
+  end
+  #puts @courses
+  hash={:courses=>@courses}
+  @courses.each do |course|
+    #mock.post "/api/v5/courses.json",{}, course, 201
+
+  end
 end

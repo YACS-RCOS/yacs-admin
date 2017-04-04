@@ -17,14 +17,14 @@ class CourseController < ApplicationController
     @course=Course.find(course_id)
 
     puts @course
-    section_params={:course_id => course_id}
-    puts section_params
-    puts Section.find(:all,:params=>section_params).elements
-    @sections=Section.find(:all,:params=>section_params).elements
-    puts @sections
+    #section_params={:course_id => course_id}
+    #puts section_params
+    #puts Section.find(:all,:params=>section_params).elements
+    #@sections=Section.find(:all,:params=>section_params).elements
+    #puts @sections
     #Find department
-    department_params={:id=>@course.department_id}
-    @department=Department.find(:all,:params=>department_params).elements[0]
+    #department_params={:id=>@course.department_id}
+    #@department=Department.find(:all,:params=>department_params).elements[0]
   end
 
   def search
