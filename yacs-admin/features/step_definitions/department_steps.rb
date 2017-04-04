@@ -12,6 +12,7 @@ Given /^the following departments exist$/ do |table|
       mock.get"/api/v5/departments.json",{},hash.to_json
       mock.get "/api/v5/departments.json?id=#{row[:id].to_s}",{}, row.to_json
       mock.get "/api/v5/departments/#{row[:id].to_s}.json",{}, row.to_json
+      mock.get "/api/v5/departments.json?school_id=#{row[:school_id].to_s}",{}, row.to_json
 
     end
   end

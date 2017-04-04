@@ -7,6 +7,8 @@ def path_to(page_name)
     when /the list of courses/
       course_index_path
 
+    when /the course search page/
+      course_search_path
     when /^the course page for (.*)$/
       puts $1
       params_hash={:id=>($1)}

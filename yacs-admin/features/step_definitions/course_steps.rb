@@ -122,6 +122,9 @@ Given /^the following courses exist$/ do |table|
       mock.get"/api/v5/courses.json",{},hash.to_json
       mock.get "/api/v5/courses.json?id=#{row[:id].to_s}",{}, row.to_json
       mock.get "/api/v5/courses/#{row[:id].to_s}.json",{}, row.to_json
+      mock.get "/api/v5/courses.json?search=#{row[:id].to_s}",{'Accept'=> 'application/json'}, row.to_json
+      mock.get "/api/v5/courses.json?search=#{row[:name].to_s}",{'Accept'=> 'application/json'}, row.to_json
+      mock.get "/api/v5/courses.json?search=",JSON.parse({'Accept'=> 'application/json'}.to_json), nil
 
     end
   end

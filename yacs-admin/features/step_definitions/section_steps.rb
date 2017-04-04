@@ -11,6 +11,7 @@ Given /^the following sections exist$/ do |table|
       mock.get"/api/v5/sections.json",{},hash.to_json
       mock.get "/api/v5/sections.json?id=#{row[:id].to_s}",{}, row.to_json
       mock.get "/api/v5/sections/#{row[:id].to_s}.json",{}, row.to_json
+      mock.get "/api/v5/sections.json?course_id=#{row[:course_id].to_s}",{}, row.to_json
 
     end
   end

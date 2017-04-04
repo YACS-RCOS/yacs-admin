@@ -34,3 +34,12 @@ Feature: Manage Courses
         | 2  | Chemistry | 1000   | 4           | 4           | Basic chem      | 1             |
     When I go to the course page for 2
     Then I should see "Chemistry"
+
+  Scenario: Search Courses
+    Given the following courses exist
+        | id | name      | number | min_credits | max_credits | description     | department_id |
+        | 0  | Calculus  | 1000   | 4           | 4           | Differentiation | 0             |
+        | 1  | Physics   | 1000   | 4           | 4           | Mechanics       | 1             |
+        | 2  | Chemistry | 1000   | 4           | 4           | Basic chem      | 1             |
+      When I go to the course search page
+      Then I should see "Search Courses"
