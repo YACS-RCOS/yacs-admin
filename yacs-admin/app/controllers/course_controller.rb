@@ -31,13 +31,13 @@ class CourseController < ApplicationController
     @query=params[:query] # This global is for the view
     #puts @query
     if params[:query] != "" and params[:query] !=nil then
-      #puts @query
+      puts @query
       #puts @query==''
       #puts @query==nil
       search_params={:search => @query}
-      #puts search_params
+      puts search_params[:search]
       #Search courses
-      puts Course.find(:all, :params=>search_params).elements
+      puts Course.find(:all, :params=>search_params)
       @courses=Course.find(:all, :params=>search_params).elements
     else
       @courses=''
