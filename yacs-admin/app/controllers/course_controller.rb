@@ -44,6 +44,10 @@ class CourseController < ApplicationController
     end
   end
 
+  def new
+    @course=Course.new
+  end
+
   #private
 
   #def course_params

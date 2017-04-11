@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'static_pages/index'
+  get 'course/new' => 'course#new', as: :new_course
 
   get 'course/:id' => 'course#show', as: :course
   get 'search' => 'course#search', as: :course_search
