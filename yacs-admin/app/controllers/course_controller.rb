@@ -23,8 +23,8 @@ class CourseController < ApplicationController
     @sections=Section.find(:all,:params=>section_params).elements
     #puts @sections
     #Find department
-    #department_params={:id=>@course.department_id}
-    #@department=Department.find(:all,:params=>department_params).elements[0]
+    department_params={:id=>@course.department_id}
+    @department=Department.find(:all,:params=>department_params).elements[0]
   end
 
   def search

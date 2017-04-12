@@ -33,7 +33,11 @@ class DepartmentController < ApplicationController
   end
 
   def edit
-
+    dept_id=params[:id]
+    search_params={:id => dept_id}
+    #puts course_id
+    #use .elements[0], since .find returns a collection
+    @department=Department.find(:all, :params=>search_params).elements[0]
   end
 
 end

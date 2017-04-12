@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'search' => 'course#search', as: :course_search
   get 'department/:id' => 'department#show', as: :department
   get 'school/:id' => 'school#show', as: :school
-  get 'section/:id' => 'section#show', as: :section
+  #get 'section/:id' => 'section#show', as: :section
 
   get 'department'=> 'department#index', as: :department_index
 
