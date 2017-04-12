@@ -23,4 +23,20 @@ class SchoolController < ApplicationController
   def search_results
 
   end
+
+  def new
+    @school=School.new
+  end
+  def edit
+    school_id=params[:id]
+    search_params={:id => school_id}
+    #puts course_id
+    #use .elements[0], since .find returns a collection
+    @school=School.find(:all, :params=>search_params).elements[0]
+
+    dept_params={:school_id => school_id}
+    @departments=Department.find(:all,:params=>dept_params).elements
+ 
+  end
+
 end

@@ -1,12 +1,10 @@
  <%=render partial: "layouts/navbar/course_active"%>
 
-<h1> <%=@course.number%>: <%=@course.name%></h1>
+<h1><%=@course.number%>: <%=@course.name%></h1>
 
 
 <p><strong>Description:</strong> <%=@course.description%></p>
-<!--
 
--->
 <p><%= link_to ('<span class="glyphicon glyphicon-chevron-left table-icon" aria-hidden="true"></span>
  Back to all courses').html_safe, course_index_path %></p>
 
@@ -16,6 +14,3 @@
 
  
 
-<!--
-
--->

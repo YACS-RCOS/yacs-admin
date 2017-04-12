@@ -24,4 +24,12 @@ class SectionController < ApplicationController
   def search_results
 
   end
+
+  def new
+    @section=Section.new
+  end
+  def edit
+
+  end
+
 end

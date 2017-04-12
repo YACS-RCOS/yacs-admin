@@ -12,15 +12,15 @@ class CourseController < ApplicationController
     #puts course_id
     #use .elements[0], since .find returns a collection
     #This line - html
-    #@course=Course.find(:all, :params=>search_params).elements[0]
+    @course=Course.find(:all, :params=>search_params).elements[0]
     #This line -testing
-    @course=Course.find(course_id)
+    #@course=Course.find(course_id)
 
     puts @course
-    #section_params={:course_id => course_id}
+    section_params={:course_id => course_id}
     #puts section_params
     #puts Section.find(:all,:params=>section_params).elements
-    #@sections=Section.find(:all,:params=>section_params).elements
+    @sections=Section.find(:all,:params=>section_params).elements
     #puts @sections
     #Find department
     #department_params={:id=>@course.department_id}
@@ -46,6 +46,15 @@ class CourseController < ApplicationController
 
   def new
     @course=Course.new
+  end
+
+  def edit
+    course_id=params[:id]
+    search_params={:id => course_id}
+    @course=Course.find(:all, :params=>search_params).elements[0]
+  
+    department_params={:id=>@course.department_id}
+    @department=Department.find(:all,:params=>department_params).elements[0]
   end
 
   #private

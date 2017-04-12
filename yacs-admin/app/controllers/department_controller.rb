@@ -27,4 +27,13 @@ class DepartmentController < ApplicationController
   def search_results
 
   end
+
+  def new
+    @department=Department.new
+  end
+
+  def edit
+
+  end
+
 end

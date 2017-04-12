@@ -1,0 +1,10 @@
+<%=form_for @school do |c|%>
+
+  <div class="form-group">
+  <%= c.label :name %>
+  <%= c.text_field :name, :class => "form-control"%>
+</div>
+
+  <%= submit_tag "Submit", :class => "btn btn-search" %>
+
+<%end%>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'static_pages/index'
   get 'course/new' => 'course#new', as: :new_course
+  get 'department/new' => 'department#new', as: :new_department
+  get 'school/new' => 'school#new', as: :new_school
 
   get 'course/:id' => 'course#show', as: :course
   get 'search' => 'course#search', as: :course_search
@@ -10,11 +12,16 @@ Rails.application.routes.draw do
 
   get 'department'=> 'department#index', as: :department_index
 
-  get 'school'=> 'school#index', as: :school_index
+  get 'school'=> 'school#index', as: :schools
   get 'section'=> 'section#index', as: :section_index
   get 'course'=> 'course#index', as: :course_index
 
   root 'static_pages#index'
+
+  resources :school
+  resources :department
+  resources :course
+  resources :section
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
