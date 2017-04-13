@@ -3,12 +3,12 @@ class Course < ActiveResource::Base
   belongs_to :department
   has_many :sections
 
-  attr_accessor :name
-  attr_accessor :number
-  attr_accessor :min_credits
-  attr_accessor :max_credits
-  attr_accessor :description
-  attr_accessor :department_id
+  #attr_accessor :name
+  #attr_accessor :number
+  #attr_accessor :min_credits
+  #attr_accessor :max_credits
+  #attr_accessor :description
+  #attr_accessor :department_id
 
 
 end

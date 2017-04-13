@@ -27,6 +27,7 @@ class SectionController < ApplicationController
 
   def new
     @section=Section.new
+    @section.course_id=params[:course_id]
   end
   def edit
     section_id=params[:id]

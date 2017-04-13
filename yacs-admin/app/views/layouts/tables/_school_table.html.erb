@@ -20,7 +20,7 @@
         <td><%= link_to ('<span class="glyphicon glyphicon-pencil table-icon" aria-hidden="true"></span>
  Edit').html_safe, edit_school_path(school) %></td>
         <td><%= link_to ('<span class="glyphicon glyphicon-trash table-icon" aria-hidden="true"></span>
- Destroy').html_safe, delete_school_path(school) %></td>
+ Destroy').html_safe, school_path(school), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       </tr>
     <% end %>
   </tbody>

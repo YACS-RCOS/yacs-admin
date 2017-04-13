@@ -30,6 +30,8 @@ class DepartmentController < ApplicationController
 
   def new
     @department=Department.new
+    @department.school_id=params[:school_id]
+
   end
 
   def edit

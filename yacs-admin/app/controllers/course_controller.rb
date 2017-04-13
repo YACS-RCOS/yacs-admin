@@ -46,6 +46,10 @@ class CourseController < ApplicationController
 
   def new
     @course=Course.new
+    @course.department_id=params[:department_id]
+    #department_params={:id=>params[:department_id]}
+    #@department=Department.find(:all,:params=>department_params).elements[0]
+
   end
 
   def edit
@@ -55,6 +59,7 @@ class CourseController < ApplicationController
   
     department_params={:id=>@course.department_id}
     @department=Department.find(:all,:params=>department_params).elements[0]
+
   end
 
   #private

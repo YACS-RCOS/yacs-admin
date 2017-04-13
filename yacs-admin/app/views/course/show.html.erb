@@ -10,7 +10,7 @@
 
 <h2>Sections:</h2>
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
- Add section').html_safe, @course %></h4>
+ Add section').html_safe, new_section_path(:course_id=>@course.id) %></h4>
 
  <%=render partial: "layouts/tables/section_table", locals: {sections: @sections, show_course_id: false}%>
  

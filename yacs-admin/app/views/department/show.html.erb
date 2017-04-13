@@ -8,7 +8,7 @@
 
 <h2>Courses</h2>
 <h4><%= link_to ('<span class="glyphicon glyphicon-plus h4-icon" aria-hidden="true"></span>
- Add course').html_safe, @department %>  &nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
+ Add course').html_safe, new_course_path(:department_id =>@department.id) %>  &nbsp; <%=link_to ('<span class="glyphicon glyphicon-search h4-icon" aria-hidden="true"></span>
  Search Courses in Department: '+@department.name).html_safe, course_search_path(:query => @department.code) %></h4>
 
  <%=render partial: "layouts/tables/course_table", locals: {courses: @courses, show_dept_id: false}%>
