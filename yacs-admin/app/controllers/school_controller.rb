@@ -38,5 +38,38 @@ class SchoolController < ApplicationController
     @departments=Department.find(:all,:params=>dept_params).elements
  
   end
+    def create
+    @school=School.create(school_params)
 
+    respond_to do |format|
+      if @school.save
+        format.html { redirect_to @school, notice: 'School was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @school }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @school.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @school.update(school_params)
+        format.html { redirect_to @school, notice: 'School was successfully updated.' }
+        format.json { render action: 'show', status: :created, location: @school }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @school.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @school.destroy
+
+    respond_to do |format|
+      format.html { redirect_to school_index_path }
+      format.json { head :no_content }
+    end
+  end
 end

@@ -40,4 +40,39 @@ class SectionController < ApplicationController
     @course=Course.find(:all,:params=>course_params).elements[0]
   end
 
+    def create
+    @section=Section.create(section_params)
+
+    respond_to do |format|
+      if @section.save
+        format.html { redirect_to @section, notice: 'Section was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @section }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @section.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @section.update(section_params)
+        format.html { redirect_to @section, notice: 'Section was successfully updated.' }
+        format.json { render action: 'show', status: :created, location: @section }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @section.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @section.destroy
+
+    respond_to do |format|
+      format.html { redirect_to section_index_path }
+      format.json { head :no_content }
+    end
+  end
+
 end
