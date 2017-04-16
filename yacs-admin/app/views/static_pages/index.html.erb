@@ -21,7 +21,7 @@
 <h2 id="navigation">Navigation</h2>
 <p>Above are four tabs: Schools, Departments, Courses, and Sections. Click a tab to view all objects in that category.</p>
 <h3 id="index">Index View</h3>
-<p>When viewing any object's index page, you will see a header like the one below. For all objects, you will see a link to add a new course. When viewing all courses, you will see a link to <a href="#search">search courses</a>.</p>
+<p>When viewing any object's index page, you will see a header like the one below. For all objects, you will see a link to <a href="#new">add a new object</a>. When viewing all courses, you will see a link to <a href="#search">search courses</a>.</p>
 <%=image_tag "index_header.png", :class => "img-fluid img-thumbnail"%>
 <p></p>
 <p>Below the header, you will see a table similar to the one below. On the right are three links. Click the first link to enter <a href="#show">show view</a>, the second link to enter <a href="#edit">edit view</a>, and the third link to <a href="#delete">delete the object</a>.</p>
@@ -47,18 +47,23 @@
 
 <h3 id="new">New Object View</h3>
 
-<p>New objects cannot be created yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
+<p>To access this view, go to the index page for an object and click the "New [Object]" link. You will then see a form like the one below.</p>
+<%=image_tag "new_example.png", :class => "img-fluid img-thumbnail"%>
+<p>Fill out all fields with the desired data, then press "Submit".</p>
+
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="edit">Edit Object View</h3>
 
-<p>Objects cannot be edited yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
+<p>To edit an object, click the "edit" link in the table of objects for that specific object. You will then see a form like the one below.</p>
+<%=image_tag "edit_example.png", :class => "img-fluid img-thumbnail"%>
+<p>Fill out all fields with the desired data, then press "Submit".</p>
 
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
 
 <h3 id="delete">Deleting an Object</h3>
 
-<p>Objects cannot be deleted yet, as the <a href="https://github.com/YACS-RCOS/yacs">YACS API</a> does not yet support this operation.</p>
+<p>In the object table, press the "Delete" link. You should get a dialog asking you if you are sure you want to delete the object. If you are sure you want to delete the object, press "yes" or "ok". If you change your mind, press "no" or "cancel".</p>
 
 
 <a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
