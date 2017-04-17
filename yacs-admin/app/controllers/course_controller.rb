@@ -97,9 +97,9 @@ class CourseController < ApplicationController
 
   end
 
-  #private
+  private
 
-  #def course_params
-  #  params.require(:id).permit(:name, :number,:min_credits,:max_credits,:description,:department_id)
-  #end
+  def course_params
+    params.require(:course).permit(:name, :number,:min_credits,:max_credits,:description,:department_id)
+  end
 end

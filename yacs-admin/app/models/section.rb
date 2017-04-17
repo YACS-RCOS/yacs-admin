@@ -1,6 +1,6 @@
 class Section < ActiveResource::Base
   
-  self.site="https://yacs.cs.rpi.edu/api/v5/"
+  self.site="https://127.0.0.1/api/v5/"
   belongs_to :course
   attr_accessor :name
   attr_accessor :crn

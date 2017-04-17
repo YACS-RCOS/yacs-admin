@@ -78,4 +78,9 @@ class DepartmentController < ApplicationController
     end
   end
 
+  private
+
+    def department_params
+      params.require(:department).permit(:name, :code, :school_id)
+    end
 end

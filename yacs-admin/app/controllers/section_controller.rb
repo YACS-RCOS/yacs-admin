@@ -75,4 +75,10 @@ class SectionController < ApplicationController
     end
   end
 
+  private
+
+  def section_params
+    
+  end
+
 end
