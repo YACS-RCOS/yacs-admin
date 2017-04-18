@@ -45,8 +45,8 @@ class CourseController < ApplicationController
   end
 
   def new
-    @course=Course.new
-    @course.department_id=params[:department_id]
+    dept_id=params[:department_id]
+    @course=Course.new(:name=>"",:number=>"",:min_credits=>0,:max_credits=>0, :description=>'',:department_id=>dept_id)
     #department_params={:id=>params[:department_id]}
     #@department=Department.find(:all,:params=>department_params).elements[0]
 

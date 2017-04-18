@@ -25,7 +25,7 @@ class SchoolController < ApplicationController
   end
 
   def new
-    @school=School.new
+    @school=School.new(:name => "")
   end
   def edit
     school_id=params[:id]
@@ -39,8 +39,9 @@ class SchoolController < ApplicationController
  
   end
     def create
-    @school=School.create(school_params)
-
+    @school=School.new(school_params)
+    #puts @school.new?
+    #puts @school.save
     respond_to do |format|
       if @school.save
         format.html { redirect_to @school, notice: 'School was successfully created.' }
