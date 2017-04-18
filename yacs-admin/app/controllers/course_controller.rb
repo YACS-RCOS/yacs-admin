@@ -1,4 +1,7 @@
 class CourseController < ApplicationController
+
+  http_basic_authenticate_with :name => ADMIN_USERNAME, :password => ADMIN_PASS, :except => [:index, :search, :show]
+
   def index
     @courses=Course.all
     #puts courses
