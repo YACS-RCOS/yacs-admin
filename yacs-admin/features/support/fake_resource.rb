@@ -1,4 +1,4 @@
-require 'FakeWeb'
+#require 'FakeWeb'
 
 module ActiveResource
 

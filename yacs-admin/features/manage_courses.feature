@@ -44,13 +44,24 @@ Feature: Manage Courses
       When I go to the course search page
       Then I should see "Search all courses"
 
-  Scenario: Search for a Course
-    Given the following courses exist
-        | id | name      | number | min_credits | max_credits | description     | department_id |
-        | 0  | Calculus  | 1000   | 4           | 4           | Differentiation | 0             |
-        | 1  | Physics   | 1000   | 4           | 4           | Mechanics       | 1             |
-        | 2  | Chemistry | 1000   | 4           | 4           | Basic chem      | 1             |
-    When I go to the course search page
-      And I fill in "query" with "Chemistry"
-      And I press "search-btn"
-    Then I should see "Chemistry"
+  #Scenario: Search for a Course
+   # Given the following courses exist
+    #    | id | name      | number | min_credits | max_credits | description     | department_id |
+     #   | 0  | Calculus  | 1000   | 4           | 4           | Differentiation | 0             |
+      #  | 1  | Physics   | 1000   | 4           | 4           | Mechanics       | 1             |
+       # | 2  | Chemistry | 1000   | 4           | 4           | Basic chem      | 1             |
+    #When I go to the course search page
+     # And I fill in "query" with "Chemistry"
+     # And I press "search-btn"
+    #Then I should see "Chemistry"
+
+    #TODO: redefine tests from top down - start writing tests for schools
+  Scenario: Create Course
+    Given I have no courses
+      And I am on the list of courses
+    When I follow "New Course"
+    And I fill in "Name" with "Introduction to Wizardry"
+    And I fill in "Number" with "1000"
+    And I fill in "Description" with "XXXXX"
+    And I press "Submit"
+    Then I should see "Introduction to Wizardry"

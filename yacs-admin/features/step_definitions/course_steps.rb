@@ -135,3 +135,7 @@ Given /^the following courses exist$/ do |table|
 
   end
 end
+
+Given /^I have no courses$/ do
+  Course.delete
+end
