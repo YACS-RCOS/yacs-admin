@@ -20,8 +20,8 @@ Scenario: Show Schools
     |0|School of Science|
     |1|School of Engineering|
     |2|School of Humanities, Arts, and Social Sciences|
-  When I go to the school page for 2
-  Then I should see "School of Humanities, Arts, and Social Sciences"
+  When I go to the school page for 0
+  Then I should see "School of Science"
 
 
 Scenario: Create School
@@ -34,4 +34,5 @@ Scenario: Create School
   When I follow "New School"
   And I fill in "Name" with "School of Business"
   And I press "Submit"
-  Then I should see "School of Business" #This step still fails wtf
+  And I follow "Back to all schools"
+  Then I should see "School of Business" 

@@ -43,6 +43,7 @@ class SchoolController < ApplicationController
     @school=School.new(school_params)
     #puts @school.new?
     #puts @school.save
+    puts @school.id
     respond_to do |format|
       if @school.save
         format.html { redirect_to @school, notice: 'School was successfully created.' }
@@ -77,6 +78,6 @@ class SchoolController < ApplicationController
 
   private
     def school_params
-      params.require(:school).permit(:name)
+      params.require(:school).permit(:name, :id)
     end
 end
