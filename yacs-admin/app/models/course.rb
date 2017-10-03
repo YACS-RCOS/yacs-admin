@@ -1,5 +1,5 @@
-class Course < ApplicationRecord 
-  self.site="https://yacs.cs.rpi.edu/api/v5"
+class Course < ActiveResource::Base
+  self.site="https://127.0.0.1/api/v5/"
   belongs_to :department
   has_many :sections
 
