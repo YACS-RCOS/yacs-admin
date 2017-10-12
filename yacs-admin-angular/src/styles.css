@@ -5,7 +5,11 @@
 
 h1{
   font-weight: bold;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
+}
+
+#headerbar{
+  position: relative !important;
 }
 
 #content a{
@@ -16,11 +20,17 @@ td{
   padding: 2px 5px;
 }
 
+
+
 #navtable a:focus, #navtable a:hover{
   color:#fff !important;
   text-decoration: none !important;
 }
 
+.sidelink a {
+  color: #fff !important;
+  
+}
 .table-icon{
   font-size:12px;
 }
@@ -47,7 +57,10 @@ td{
 
 .sidelink-hoverable:hover, .sidelink-hoverable:focus{
   background: #d27979 !important;
+}
 
+#navtable td{
+  padding: 0 !important;
 }
 
 #content{
@@ -62,5 +75,9 @@ td{
   font-size: 16px ;
   list-style:none;
   padding:3px;
+
+}
+body{
+  padding-top: 0px !important;
 
 }
