@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+
+h1{
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+#content a{
+  color: #d57f7f;
+}
+
+td{
+  padding: 2px 5px;
+}
+
+#navtable a:focus, #navtable a:hover{
+  color:#fff !important;
+  text-decoration: none !important;
+}
+
+.table-icon{
+  font-size:12px;
+}
+
+.h4-icon{
+  font-size:13px;
+}
+
+.search-bar{
+  width: 100% !important;
+}
+
+.btn-search{
+  background: #d57f7f !important;
+  border-color: #c65353 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+.sidelink-active{
+  background: #d27979 !important;
+
+}
+
+.sidelink-hoverable:hover, .sidelink-hoverable:focus{
+  background: #d27979 !important;
+
+}
+
+#content{
+  width:100%;
+}
+
+.img-thumbnail{
+  margin-bottom: 15px;
+}
+
+.table-of-contents li{
+  font-size: 16px ;
+  list-style:none;
+  padding:3px;
+
+}
