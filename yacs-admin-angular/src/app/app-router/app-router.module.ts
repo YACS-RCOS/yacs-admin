@@ -9,9 +9,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    SchoolListComponent
-  ],
   imports: [
     RouterModule.forRoot(routes)
   ],
