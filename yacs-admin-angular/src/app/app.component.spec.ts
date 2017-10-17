@@ -4,14 +4,15 @@ import {AppNavComponent} from './app-nav/app-nav.component';
 import {AppRouterModule} from './app-router/app-router.module';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {APP_BASE_HREF} from '@angular/common';
-
+import { SchoolListComponent } from './school/school-list/school-list.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         AppNavComponent,
-        WelcomePageComponent
+        WelcomePageComponent,
+        SchoolListComponent
       ],
       imports: [
         AppRouterModule
