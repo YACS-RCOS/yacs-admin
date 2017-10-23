@@ -1,3 +1,69 @@
-<p>
-  welcome-page works!
-</p>
+<h1>Welcome to the YACS admin panel!</h1>
+<p>This panel is currently under development. The source code can be found <a href="https://github.com/kburk1997/yacs-admin">here</a>.</p>
+
+<h2>Table of Contents</h2>
+<ul class="table-of-contents">
+  <li>
+    <a href="/">Navigation</a>
+    <ul>
+      <li><a href="#index">Index View</a></li>
+      <li><a href="#show">Show Object View</a></li>
+      <li><a href="/">Search View</a></li>
+      <li><a href="/">New Object View</a></li>
+      <li><a href="/">Edit Object View</a></li>
+      <li><a href="/">Deleting an Object</a></li>
+
+    </ul>
+
+  </li>
+</ul>
+
+<h2 id="navigation">Navigation</h2>
+<p>Above are four tabs: Schools, Departments, Courses, and Sections. Click a tab to view all objects in that category.</p>
+<h3 id="index">Index View</h3>
+<p>When viewing any object's index page, you will see a header like the one below. For all objects, you will see a link to <a href="#new">add a new object</a>. When viewing all courses, you will see a link to <a href="#search">search courses</a>.</p>
+<img ng-src="{{indexHeader}}">
+<p></p>
+<p>Below the header, you will see a table similar to the one below. On the right are three links. Click the first link to enter <a href="#show">show view</a>, the second link to enter <a href="#edit">edit view</a>, and the third link to <a href="#delete">delete the object</a>.</p>
+<img src="../../assets/images/table.png">
+<p><a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a></p>
+
+<h3 id="show">Show Object View</h3>
+
+<p>When viewing an object, you can see a link to its parent (department a course is in, etc.) and a table containing all its children. The show view also shows a link to <a href="#search">search courses</a> in a department (when viewing a department), a course description (when viewing a course) or section instructors (when viewing a section).</p>
+
+<img src="../../assets/images/show_view.png" />
+
+
+<p><a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a></p>
+
+<h3 id="search">Search View</h3>
+<br>
+<p>The YACS API allows you to search courses by course name, course, number, department code, department name, and section instructors. Simply type your query into the search bar and results will show up below the search bar as shown.</p>
+
+<img src="../../images/assets/search_example.png" />
+
+<p><a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a></p>
+
+<h3 id="new">New Object View</h3>
+
+<p>To access this view, go to the index page for an object and click the "New [Object]" link. You will then see a form like the one below.</p>
+<%=image_tag "new_example.png", :class => "img-fluid img-thumbnail"%>
+<p>Fill out all fields with the desired data, then press "Submit".</p>
+
+<a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
+
+<h3 id="edit">Edit Object View</h3>
+
+<p>To edit an object, click the "edit" link in the table of objects for that specific object. You will then see a form like the one below.</p>
+<%=image_tag "edit_example.png", :class => "img-fluid img-thumbnail"%>
+<p>Fill out all fields with the desired data, then press "Submit".</p>
+
+<a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
+
+<h3 id="delete">Deleting an Object</h3>
+
+<p>In the object table, press the "Delete" link. You should get a dialog asking you if you are sure you want to delete the object. If you are sure you want to delete the object, press "yes" or "ok". If you change your mind, press "no" or "cancel".</p>
+
+
+<a href="#"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>&nbsp;Back to Top</a>
