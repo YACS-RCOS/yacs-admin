@@ -81,7 +81,7 @@ bower.json
 yacs-admin-angular/e2e/*.map
 
 # System Files
- yacs-admin-angular/.DS_Store
+.DS_Store
 yacs-admin-angular/Thumbs.db
 
 yacs-admin-angular/.gitignore
