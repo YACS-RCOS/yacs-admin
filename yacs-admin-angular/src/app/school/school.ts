@@ -7,5 +7,12 @@ export class School {
   name: string;
   departments: string[]; //Let this be a string array for now,
                          // we can change this to a department array later
+
+  constructor(id, name, departments){
+    this.id=id;
+    this.name=name;
+    this.departments=departments;
+  }
+
 }
 

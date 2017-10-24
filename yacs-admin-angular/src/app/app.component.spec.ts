@@ -5,6 +5,8 @@ import {AppRouterModule} from './app-router/app-router.module';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {APP_BASE_HREF} from '@angular/common';
 import { SchoolListComponent } from './school/school-list/school-list.component';
+import { DepartmentListComponent } from './department/department-list/department-list.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -12,7 +14,8 @@ describe('AppComponent', () => {
         AppComponent,
         AppNavComponent,
         WelcomePageComponent,
-        SchoolListComponent
+        SchoolListComponent,
+        DepartmentListComponent
       ],
       imports: [
         AppRouterModule
