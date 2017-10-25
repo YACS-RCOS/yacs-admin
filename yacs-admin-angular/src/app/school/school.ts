@@ -5,13 +5,12 @@
 export class School {
   id: number;
   name: string;
-  departments: string[]; //Let this be a string array for now,
+  //departments: string[]; //Let this be a string array for now,
                          // we can change this to a department array later
 
-  constructor(id, name, departments){
+  constructor(id, name){
     this.id=id;
     this.name=name;
-    this.departments=departments;
   }
 
 }
