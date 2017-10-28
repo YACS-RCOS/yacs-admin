@@ -9,7 +9,7 @@ describe('yacs-admin-angular App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to YACS Admin!');
+    expect(page.getParagraphText()).toEqual('Welcome to the YACS admin panel!');
   });
 
   it('should display title in navbar', () => {
