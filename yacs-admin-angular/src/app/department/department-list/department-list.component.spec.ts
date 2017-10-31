@@ -22,4 +22,14 @@ describe('SchoolListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('renders header', () => {
+    var header = document.getElementsByClassName("table");
+    var ths = header[0].getElementsByTagName("th");
+    expect(ths[0].textContent).toContain('ID');
+    expect(ths[1].textContent).toContain('Code');
+    expect(ths[2].textContent).toContain('Name');
+  });
+
+
 });
