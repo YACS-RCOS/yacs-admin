@@ -15,7 +15,7 @@ const SCHOOLS: School[] =[
   styleUrls: ['./school-list.component.css']
 })
 export class SchoolListComponent implements OnInit {
-
+  schools=SCHOOLS;
   constructor() { }
 
   ngOnInit() {

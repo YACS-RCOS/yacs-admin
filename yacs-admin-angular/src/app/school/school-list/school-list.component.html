@@ -10,21 +10,10 @@
   </thead>
 
   <tbody>
-      <tr>
-        <td>1</td>
-        <td>School of Humanities, Arts and Social Sciences</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>School of Engineering</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>School of Science</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>School of Architecture</td>
-      </tr>
+    <tr *ngFor="let school of schools">
+      <td>{{school.id}}</td>
+      <td>{{school.name}}</td>  
+    </tr>
+
   </tbody>
 </table>
