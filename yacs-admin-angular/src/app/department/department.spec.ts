@@ -19,9 +19,9 @@ describe('Department', () => {
 
   it('belongs to a school', () => {
     const dept = new Department(1,'CPYP','Copying and Pasting',1);
-    const school = new School(1, 'School of StackOverflow');
-
-    expect(dept.school_id).toEqual(school.id);
+    const school = new School(1, 'School of StackOverflow',[dept]);
+    expect(school.departments).toContain(dept);
+    //expect(dept.school_id).toEqual(school.id);
 
   });
 });
