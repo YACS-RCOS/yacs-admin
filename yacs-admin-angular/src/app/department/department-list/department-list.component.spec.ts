@@ -45,7 +45,7 @@ describe('DepartmentListComponent', () => {
       console.log(component.departments[i]);
       console.log("ROW");
       console.log(rows[i]);
-      
+
       // Get table data.
       var data = rows[i].getElementsByTagName('td');
 
@@ -53,10 +53,7 @@ describe('DepartmentListComponent', () => {
       expect(component.departments[i].id).toMatch(data[0].innerHTML);
       expect(component.departments[i].code).toMatch(data[1].innerHTML);
       expect(component.departments[i].name).toMatch(data[2].innerHTML);
-
     }
-    expect(1).toEqual(1);
-
   });
 
 });
