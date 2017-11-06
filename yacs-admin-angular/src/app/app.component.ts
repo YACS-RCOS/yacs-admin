@@ -15,5 +15,5 @@ export class AppComponent {
   constructor(private router: Router, private titleService: Title) {}
   ngOnInit() {
     this.titleService.setTitle(this.title);
-}
+  }
 }
