@@ -45,8 +45,14 @@ describe('DepartmentListComponent', () => {
       console.log(component.departments[i]);
       console.log("ROW");
       console.log(rows[i]);
-      //What we want to do is check each department properties
-      //Make sure they correspond with rows of same index
+      
+      // Get table data.
+      var data = rows[i].getElementsByTagName('td');
+
+      // Make sure department properties correspond with rows of the same index.
+      expect(component.departments[i].id).toMatch(data[0].innerHTML);
+      expect(component.departments[i].code).toMatch(data[1].innerHTML);
+      expect(component.departments[i].name).toMatch(data[2].innerHTML);
 
     }
     expect(1).toEqual(1);
