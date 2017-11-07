@@ -1,8 +1,0 @@
-<%= form_tag :course_search, :method => "get", :class => "form-inline" do %>
-  <div class="row">
-    <div class="col-xs-8 col-sm-9 col-md-10">
-      <%=text_field_tag :query, params[:query], :placeholder => "Type a search query...", :class => "form-control input-lg search-bar"%>
-    </div>
-    <%=submit_tag "Search", :class => "btn btn-lg btn-default btn-search", :id =>"search-btn"%>
-  </div>
-<%end%>
