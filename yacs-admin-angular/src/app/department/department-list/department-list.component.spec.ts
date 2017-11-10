@@ -1,14 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
-
+import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DepartmentListComponent ]
+      imports: [FormsModule],
+      declarations: [ DepartmentListComponent, DepartmentDetailComponent ]
     })
     .compileComponents();
   }));
@@ -33,18 +34,18 @@ describe('DepartmentListComponent', () => {
 
   it('renders deparment', () => {
     //making sure we can access component departments
-    console.log(component.departments);
+    //console.log(component.departments);
 
     //write the actual tests here
     var tbody = document.getElementsByTagName("tbody");
     var rows = tbody[0].getElementsByTagName('tr');
-    console.log(tbody[0].getElementsByTagName('tr'));
+    //console.log(tbody[0].getElementsByTagName('tr'));
 
     for (var i = 0; i<component.departments.length; i++){
-      console.log("DEPARTMENT COMPONENT");
-      console.log(component.departments[i]);
-      console.log("ROW");
-      console.log(rows[i]);
+      //console.log("DEPARTMENT COMPONENT");
+      //console.log(component.departments[i]);
+      //console.log("ROW");
+      //console.log(rows[i]);
 
       // Get table data.
       var data = rows[i].getElementsByTagName('td');
@@ -55,5 +56,16 @@ describe('DepartmentListComponent', () => {
       expect(component.departments[i].name).toMatch(data[2].innerHTML);
     }
   });
-
+  it('should not display any departments before clicking', () => {
+    expect(component.selectedDept).toBeUndefined();
+  });
+  it('selects department on click', () => {
+    var expectedDept = component.departments[1];
+    var tbody = document.getElementsByTagName("tbody");
+    var rows = tbody[0].getElementsByTagName('tr');
+    var tr = rows[1];
+    //Click the component
+    tr.click();
+    expect(component.selectedDept).toEqual(expectedDept);
+  }); 
 });
