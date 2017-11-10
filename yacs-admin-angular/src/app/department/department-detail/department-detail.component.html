@@ -1,0 +1,11 @@
+<div id="deptDetail" *ngIf="dept">
+  <h2 id ="detailHeading">{{dept.name}} Department Details</h2>
+  <div id = "codeField">
+    <label>Code: </label>
+    <input id ="codeInput" [(ngModel)]="dept.code" placeholder="code"/>
+  </div>
+<div id = "nameField">
+    <label>Name: </label>
+    <input [(ngModel)]="dept.name" placeholder="name"/>
+  </div>
+</div>

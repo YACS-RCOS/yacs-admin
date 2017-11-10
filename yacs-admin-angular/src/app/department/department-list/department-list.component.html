@@ -1,3 +1,6 @@
+
+<h2>All Departments</h2>
+
 <table class="table">
   <thead>
     <tr>
@@ -6,14 +9,13 @@
 
       <th>Name</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <th></th>
-      <th></th>
-      <th></th>
+      <!--<th></th>
+      <th></th>-->
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let dept of departments">
+    <tr *ngFor="let dept of departments" [class.selected]="dept === selectedDept" (click)="onSelect(dept)">
       <td>{{dept.id}}</td>
       <td>{{dept.code}}</td>
       <td>{{dept.name}}</td>
@@ -21,3 +23,6 @@
 
   </tbody>
 </table>
+
+
+<department-detail [dept]="selectedDept"></department-detail>

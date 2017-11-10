@@ -2,11 +2,12 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {AppNavComponent} from './app-nav/app-nav.component';
 import {AppRouterModule} from './app-router/app-router.module';
+import { FormsModule } from '@angular/forms';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {APP_BASE_HREF} from '@angular/common';
 import { SchoolListComponent } from './school/school-list/school-list.component';
 import { DepartmentListComponent } from './department/department-list/department-list.component';
-
+import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,10 +16,11 @@ describe('AppComponent', () => {
         AppNavComponent,
         WelcomePageComponent,
         SchoolListComponent,
-        DepartmentListComponent
+        DepartmentListComponent,
+        DepartmentDetailComponent,
       ],
       imports: [
-        AppRouterModule
+        AppRouterModule, FormsModule
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}
