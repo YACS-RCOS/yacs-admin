@@ -49,17 +49,20 @@ describe('DepartmentDetailComponent', () => {
     });
 
     it('should render department name', () =>{
-      expect(1).toEqual(1);
-
+      const nameElem=document.getElementById('nameInput');
+      expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.dept.name);
     });
 
-    it('should update department code when triggered', () => {
+    /* Ideally, we want to change the code
+     * to only update the values when a form
+     * is submitted, so these tests can be updated later
+     * it('should update department code when triggered', () => {
       expect(1).toEqual(1);
     });
 
     it('should update department name when triggered', () => {
       expect(1).toEqual(1);
-    });
+    });*/
   });
   
 });

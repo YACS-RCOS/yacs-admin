@@ -33,7 +33,7 @@ describe('SchoolListComponent', () => {
   it('renders deparment', () => {
     var tbody = document.getElementsByTagName("tbody");
     var rows = tbody[0].getElementsByTagName('tr');
-    console.log(tbody[0].getElementsByTagName('tr'));
+    //console.log(tbody[0].getElementsByTagName('tr'));
 
     for (var i = 0; i<component.schools.length; i++){
       // Get table data.
