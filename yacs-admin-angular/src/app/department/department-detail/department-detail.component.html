@@ -1,11 +1,19 @@
 <div id="deptDetail" *ngIf="dept">
   <h2 id ="detailHeading">{{dept.name}} Department Details</h2>
-  <div id = "codeField">
-    <label>Code: </label>
-    <input id ="codeInput" [(ngModel)]="dept.code" placeholder="code"/>
+  <div id = "codeField" class="form-group form-inline">
+    <label for = "codeInput">Code: &nbsp;</label>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" [(ngModel)]="dept.code" placeholder="code"/>
   </div>
-<div id = "nameField">
-    <label>Name: </label>
-    <input [(ngModel)]="dept.name" placeholder="name"/>
+<div id = "nameField" class="form-group form-inline">
+    <label for="nameInput">Name: </label>
+    <input id ="nameInput" class="form-control" [(ngModel)]="dept.name" placeholder="name"/>
   </div>
+
+  <div id="schoolField" class="form-group form-inline">
+    <label>School: </label>
+    <select class="form-control" [(ngModel)]="dept.school_id" >
+      <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+    </select>
+  </div>
+
 </div>

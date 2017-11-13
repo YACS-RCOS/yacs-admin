@@ -56,16 +56,58 @@ describe('DepartmentListComponent', () => {
       expect(component.departments[i].name).toMatch(data[2].innerHTML);
     }
   });
-  it('should not display any departments before clicking', () => {
-    expect(component.selectedDept).toBeUndefined();
+  
+  describe('before selecting a department', () => {
+    it('should not display any departments', () => {
+      expect(component.selectedDept).toBeUndefined();
+    });
+    it('should not display the collapse button',() => {
+      expect(document.getElementById('collapse').hidden).toBe(true);
+    });
   });
-  it('selects department on click', () => {
-    var expectedDept = component.departments[1];
-    var tbody = document.getElementsByTagName("tbody");
-    var rows = tbody[0].getElementsByTagName('tr');
-    var tr = rows[1];
-    //Click the component
-    tr.click();
-    expect(component.selectedDept).toEqual(expectedDept);
+
+  describe('after selecting a department', () => {
+    var expectedDept;
+    beforeEach(()=>{
+      expectedDept = component.departments[1]; 
+      const tbody = document.getElementsByTagName("tbody");
+      const rows = tbody[0].getElementsByTagName('tr');
+      const tr = rows[1];
+      tr.click();
+      fixture.detectChanges();
+    });
+
+    it('should render the department details', () => {
+      expect(component.selectedDept).toEqual(expectedDept);
+    });
+
+    it('should render the collapse button', () => {
+      console.log(document.getElementById('collapse'));
+      expect(document.getElementById('collapse').hidden).toBeFalsy();
+
+    });
+
+    describe('after pressing collapse button',() => {
+      beforeEach(()=>{
+        const collapseButton=document.getElementById('collapse');
+        collapseButton.click();
+        fixture.detectChanges();
+      });
+    
+      it('should not display any departments', () => {
+        /*Note that the department detail is now null
+         * rather than undefined since it was declared
+         * previously.*/
+        expect(component.selectedDept).toBeNull();
+      });
+      
+      it('should not display the collapse button',() => {
+        expect(document.getElementById('collapse').hidden).toBe(true);
+      });
+
+    });
+
   }); 
+
+   
 });
