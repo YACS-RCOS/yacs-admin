@@ -52,7 +52,11 @@ describe('DepartmentDetailComponent', () => {
       const nameElem=document.getElementById('nameInput');
       expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.dept.name);
     });
-
+    
+    it('should render school dropdown', ()=> {
+      const dropdown = document.getElementsByTagName('select');
+      expect(dropdown[0]).toBeTruthy();
+    });
     /* Ideally, we want to change the code
      * to only update the values when a form
      * is submitted, so these tests can be updated later

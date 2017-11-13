@@ -87,6 +87,25 @@ describe('DepartmentListComponent', () => {
 
     });
 
+    describe('after pressing collapse button',() => {
+      beforeEach(()=>{
+        const collapseButton=document.getElementById('collapse');
+        collapseButton.click();
+        fixture.detectChanges();
+      });
+    
+      it('should not display any departments', () => {
+        /*Note that the department detail is now null
+         * rather than undefined since it was declared
+         * previously.*/
+        expect(component.selectedDept).toBeNull();
+      });
+      
+      it('should not display the collapse button',() => {
+        expect(document.getElementById('collapse').hidden).toBe(true);
+      });
+
+    });
 
   }); 
 
