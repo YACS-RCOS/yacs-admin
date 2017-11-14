@@ -8,6 +8,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { SchoolListComponent } from './school/school-list/school-list.component';
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
+import { CourseListComponent } from './course/course-list/course-list.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,6 +19,7 @@ describe('AppComponent', () => {
         SchoolListComponent,
         DepartmentListComponent,
         DepartmentDetailComponent,
+        CourseListComponent,
       ],
       imports: [
         AppRouterModule, FormsModule
