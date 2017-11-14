@@ -8,6 +8,7 @@ import { AppRouterModule } from './app-router/app-router.module';
 import { SchoolListComponent } from './school/school-list/school-list.component';
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
+import { CourseListComponent } from './course/course-list/course-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +16,8 @@ import { DepartmentDetailComponent } from './department/department-detail/depart
     WelcomePageComponent,
     SchoolListComponent,
     DepartmentListComponent,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
+    CourseListComponent,
   ],
   imports: [
     BrowserModule, AppRouterModule, FormsModule

@@ -1,13 +1,22 @@
-import { Component, Input } from '@angular/core';
-//import { Course } from '../course-list/course/course';
-//import { Section } from '../course-list/section/section';
+import { Component, OnInit } from '@angular/core';
+import { Course } from '../course';
+import {SCHOOLS, DEPTS, COURSES} from '../../mock-data';
 
 @Component({
     selector: 'course-list',
-    templateUrl: './component.html',
-    styleUrls: ['./component.scss']
+    templateUrl: './course-list.component.html',
+    styleUrls: ['./course-list.component.scss']
 })
-export class CourseListComponent {
+export class CourseListComponent implements OnInit {
+  courses = COURSES;
+  departments = DEPTS;
+  schools = SCHOOLS;
+  constructor() { }
+  selectedCourse: Course;
+  onSelect(course: Course): void{
+    this.selectedCourse=course;
+  }
 
-//  @Input() courses : Course[];
+  ngOnInit() {
+  }
 }

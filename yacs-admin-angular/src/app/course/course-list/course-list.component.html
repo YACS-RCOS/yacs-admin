@@ -1,0 +1,22 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Number</th>
+      <!--<%if show_school_id%><th>School ID</th><%end%>-->
+      <!--<th></th>
+      <th></th>-->
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
+      <td>{{course.id}}</td>
+      <td>{{course.name}}</td>
+      <td>{{course.num}}</td>
+    </tr>
+
+  </tbody>
+</table>

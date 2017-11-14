@@ -1,5 +1,5 @@
 /* Department class
- * Based off of: https://github.com/YACS-RCOS/yacs-web/blob/master/src/app/school-list/department/department.ts
+ * Based off of: https://github.com/YACS-RCOS/yacs-web/blob/master/src/app/department-list/department/department.ts
  */
 
 export class Department {
