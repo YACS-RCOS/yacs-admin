@@ -7,7 +7,7 @@ h1{
   font-weight: bold;
   padding-bottom: 0px;
 }
-
+[hidden] {display: none !important;}
 #headerbar{
   height: 50px;
   position: fixed !important;
