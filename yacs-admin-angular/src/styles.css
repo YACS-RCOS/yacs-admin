@@ -32,7 +32,9 @@ td{
 
 .sidelink a {
   color: #fff !important;
-  
+  display: inline-block;
+  height: 50px;
+  width: 100%;
 }
 .table-icon{
   font-size:12px;
@@ -58,14 +60,27 @@ td{
 
 }
 
+
 .sidelink-hoverable:hover, .sidelink-hoverable:focus{
   background: #d27979 !important;
+height: 40px;
+  vertical-aligh: middle;
+  overflow: hidden;
 }
 .sidelink-hoverable {
   width: 120px !important;
   font-size: 18px !important;
+  height: 40px;
+  vertical-aligh: middle;
+  overflow: hidden;
+}
+
+.sidelink-hoverable a{
+  margin-top: 10px;
+  margin-bottom: -10px;
 }
 #navtable td{
+
   padding: 0 !important;
 }
 
