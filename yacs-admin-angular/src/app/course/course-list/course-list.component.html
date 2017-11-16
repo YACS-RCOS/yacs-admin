@@ -2,21 +2,21 @@
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
+      <th class="id">ID</th>
       <th>Name</th>
-      <th>Number</th>
+      <th class="code">Number</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <th>Credits</th>
+      <th class="code">Credits</th>
       <!--<th></th>-->
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
-      <td>{{course.id}}</td>
+      <td class="id">{{course.id}}</td>
       <td>{{course.name}}</td>
-      <td>{{course.num}}</td>
-      <td>{{creditRange(course)}}</td>
+      <td class="code">{{course.num}}</td>
+      <td class="code">{{creditRange(course)}}</td>
     </tr>
 
   </tbody>

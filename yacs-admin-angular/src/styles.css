@@ -29,7 +29,12 @@ td{
   color:#fff !important;
   text-decoration: none !important;
 }
-
+.id{
+  width: 10%;
+}
+.code{
+  width: 15%;
+}
 .sidelink a {
   color: #fff !important;
   display: inline-block;
@@ -84,6 +89,27 @@ height: 40px;
   padding: 0 !important;
 }
 
+
+.table thead, tbody{
+  float: left;
+  width: 100%;
+}
+.table tr{
+  text-align: left;
+  width: 100%;
+  display: table;
+}
+
+.table tbody{
+  overflow: auto;
+  height: 200px;
+}
+.table table{
+
+}
+.table td, th{
+  display: table-cell;
+}
 #content{
   width:100%;
 }
