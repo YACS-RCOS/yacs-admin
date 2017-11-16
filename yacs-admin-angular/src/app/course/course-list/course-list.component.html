@@ -6,8 +6,8 @@
       <th>Name</th>
       <th>Number</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <!--<th></th>
-      <th></th>-->
+      <th>Credits</th>
+      <!--<th></th>-->
     </tr>
   </thead>
 
@@ -16,6 +16,7 @@
       <td>{{course.id}}</td>
       <td>{{course.name}}</td>
       <td>{{course.num}}</td>
+      <td>{{creditRange(course)}}</td>
     </tr>
 
   </tbody>
