@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing' ;
 import { CourseListComponent } from './course-list.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
-
+import {FakeYacsService} from '../../fake-yacs.service';
 describe('CourseListComponent, no query parameters', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
@@ -13,6 +13,7 @@ describe('CourseListComponent, no query parameters', () => {
       imports: [RouterTestingModule],
       declarations: [ CourseListComponent ],
       providers: [
+        FakeYacsService,
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -57,6 +58,7 @@ describe('CourseListComponent, no query parameters', () => {
       imports: [RouterTestingModule],
       declarations: [ CourseListComponent ],
       providers: [
+        FakeYacsService,
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -90,6 +92,7 @@ describe('CourseListComponent, no query parameters', () => {
       imports: [RouterTestingModule],
       declarations: [ CourseListComponent ],
       providers: [
+        FakeYacsService,
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -133,6 +136,7 @@ describe('CourseListComponent, valid department id, no courses in department', (
       imports: [RouterTestingModule],
       declarations: [ CourseListComponent ],
       providers: [
+        FakeYacsService,
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }

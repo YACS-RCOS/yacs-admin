@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../course';
 import {Department} from '../../department/department';
-import {SCHOOLS, DEPTS, COURSES} from '../../mock-data';
+import {School} from '../../school/school';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import {FakeYacsService} from '../../fake-yacs.service';
 
 @Component({
     selector: 'course-list',
@@ -15,10 +16,10 @@ export class CourseListComponent implements OnInit {
   error: boolean;
   courses: Course[];
   selectedDept: Department;
-  departments = DEPTS;
-  schools = SCHOOLS;
+  departments: Department[];
+  schools: School[];
   //ActivatedRoute is used to access parameters
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private yacsService: FakeYacsService) {}
   
   /*Modified from yacs-web, "credit(s)" will 
    * not display because credits is column title*/
@@ -34,6 +35,8 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.departments=this.yacsService.getDepts();
+    this.schools=this.yacsService.getSchools();
     console.log(this.route.queryParams);
     this.route.queryParams
       .filter(params => params.dept_id)
@@ -46,8 +49,8 @@ export class CourseListComponent implements OnInit {
     //Filter the courses if department id is not null
     
     if(this.department_id){
-      this.courses=COURSES.filter(course => course.department_id === this.department_id);
-      this.selectedDept=DEPTS.filter(dept => dept.id === this.department_id)[0];
+      this.courses=this.yacsService.getCoursesByDeptID(this.department_id);
+      this.selectedDept=this.yacsService.getDeptByID(this.department_id);
 
       //Check if this is undefined
       if(!this.selectedDept){
@@ -64,7 +67,7 @@ export class CourseListComponent implements OnInit {
 
     //If null, select all courses
     else{
-      this.courses=COURSES;
+      this.courses=this.yacsService.getCourses();
     }
   }
 }

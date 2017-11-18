@@ -20,4 +20,20 @@ export class FakeYacsService {
     return COURSES;
   }
 
+  getDeptByID(id: number): Department{
+    return DEPTS.filter(dept => dept.id === id)[0];
+  }
+  
+  getCourseByID(id: number): Course{
+    return COURSES.filter(course => course.id === id)[0];
+  }
+  
+  getSchoolByID(id: number): School{
+    return SCHOOLS.filter(school => school.id === id)[0];
+  }
+  
+  getCoursesByDeptID(dept_id: number): Course[]{
+    return COURSES.filter(course => course.department_id === dept_id);
+
+  }
 }
