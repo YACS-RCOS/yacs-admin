@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Title} from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { WelcomePageComponent } from '../welcome-page/welcome-page.component';
 import { SchoolListComponent } from '../school/school-list/school-list.component';
 import { DepartmentListComponent } from '../department/department-list/department-list.component';
 import { CourseListComponent } from '../course/course-list/course-list.component'
-
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +20,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRouterModule { }

@@ -1,9 +1,14 @@
+<div *ngIf="!error">
 
-<table class="table">
+<!-- Get department id param-->
+<h2 *ngIf="!selectedDept">All Courses</h2>
+<h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2>
+<table class="table" *ngIf ="courses.length>0">
   <thead>
     <tr>
       <th class="id">ID</th>
-      <th>Name</th>
+      <th>Name</th> 
+      <th class="code" *ngIf="!selectedDept">Dept.</th>
       <th class="code">Number</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
       <th class="code">Credits</th>
@@ -15,9 +20,22 @@
     <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
       <td class="id">{{course.id}}</td>
       <td>{{course.name}}</td>
+      <td class="code" *ngIf="!selectedDept">{{course.department_code}}</td>
       <td class="code">{{course.num}}</td>
       <td class="code">{{creditRange(course)}}</td>
     </tr>
 
   </tbody>
 </table>
+<div id="no-courses" *ngIf="courses.length==0">
+  <p>There are currently no courses under this department.</p>
+  <a href="/departments">Back to departments</a>
+  <a href="/courses">Go to all courses</a>
+</div>
+
+</div>
+
+<div id="errorMsg" *ngIf="error">
+  <h1>An error occured!</h1>
+  <h4>The department you queried for does not exist.</h4>
+</div>

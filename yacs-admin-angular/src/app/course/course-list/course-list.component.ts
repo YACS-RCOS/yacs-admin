@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../course';
+import {Department} from '../../department/department';
 import {SCHOOLS, DEPTS, COURSES} from '../../mock-data';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 @Component({
     selector: 'course-list',
@@ -8,10 +11,14 @@ import {SCHOOLS, DEPTS, COURSES} from '../../mock-data';
     styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-  courses = COURSES;
+  department_id: number;
+  error: boolean;
+  courses: Course[];
+  selectedDept: Department;
   departments = DEPTS;
   schools = SCHOOLS;
-  constructor() {}
+  //ActivatedRoute is used to access parameters
+  constructor(private route: ActivatedRoute) {}
   
   /*Modified from yacs-web, "credit(s)" will 
    * not display because credits is column title*/
@@ -27,5 +34,37 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.route.queryParams);
+    this.route.queryParams
+      .filter(params => params.dept_id)
+      .subscribe(params =>{
+        this.department_id=Number(params.dept_id);
+      });
+
+    console.log(this.department_id==null);
+
+    //Filter the courses if department id is not null
+    
+    if(this.department_id){
+      this.courses=COURSES.filter(course => course.department_id === this.department_id);
+      this.selectedDept=DEPTS.filter(dept => dept.id === this.department_id)[0];
+
+      //Check if this is undefined
+      if(!this.selectedDept){
+        this.error=true;
+      }
+
+      //Else, proceed
+      else{
+        //All good
+        this.error=false;
+      }
+    
+    }
+
+    //If null, select all courses
+    else{
+      this.courses=COURSES;
+    }
   }
 }

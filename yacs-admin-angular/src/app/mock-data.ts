@@ -15,6 +15,14 @@ export const COURSES: Course[] = [
      {id: 3, name: 'Particle Astrophysics', num: '2961', department_code: 'ASTR',
        department_id: 1, min_credits: 4, max_credits: 4,
        description: 'Description not available...'},
+    {id: 4, name: 'Chemistry I', num: '1100', department_code: 'CHEM',
+      department_id: 4, min_credits:4, max_credits:4,
+      description: `Principles of chemistry, with particular focus on atomic and molecular structure \
+      and bonding, periodicity, basic thermodynamic principles, introduction to acid-base \
+      chemistry and elementary chemical equilibrium, and introduction to organic chemistry. \
+      Students cannot get credit for both this course and CHEM 1110. \
+      When Offered: Fall term annually.Credit Hours: 4
+      `}
 ];
 
 export const DEPTS: Department[] = [
