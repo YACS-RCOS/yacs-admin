@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
+import {FakeYacsService} from '../../fake-yacs.service';
+
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
@@ -9,7 +11,8 @@ describe('DepartmentListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [ DepartmentListComponent, DepartmentDetailComponent ]
+      declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
+      providers: [FakeYacsService]
     })
     .compileComponents();
   }));

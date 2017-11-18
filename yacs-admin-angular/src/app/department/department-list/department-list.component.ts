@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from '../department';
-import {SCHOOLS, DEPTS} from '../../mock-data';
+import {FakeYacsService} from '../../fake-yacs.service';
+import {School} from '../../school/school';
 
 @Component({
   selector: 'department-list',
@@ -11,15 +12,25 @@ import {SCHOOLS, DEPTS} from '../../mock-data';
 
 
 export class DepartmentListComponent implements OnInit {
-  departments = DEPTS;
-  schools=SCHOOLS;
-  constructor() { }
+  departments: Department[];
+  schools: School[];
+  constructor(private yacsService: FakeYacsService) { }
   selectedDept: Department;
   onSelect(dept: Department): void{
     this.selectedDept=dept;
   }
 
+  getDepts(): void{
+    this.departments=this.yacsService.getDepts();
+  }
+  
+  getSchools(): void{
+    this.schools=this.yacsService.getSchools();
+  }
+
   ngOnInit() {
+    this.getSchools();
+    this.getDepts();
   }
 
 }
