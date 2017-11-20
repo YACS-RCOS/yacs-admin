@@ -35,17 +35,17 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.yacsService.getDepts()
-      .subscribe(departments => this.departments = departments, error=>console.log(error));
-    this.yacsService.getSchools()
-      .subscribe(schools => this.schools = schools);
-    console.log(this.route.queryParams);
+   console.log(this.route.queryParams);
     this.route.queryParams
       .filter(params => params.dept_id)
       .subscribe(params =>{
         this.department_id=Number(params.dept_id);
       });
-
+    this.yacsService.getDepts()
+      .subscribe(departments => this.departments = departments, error=>console.log(error));
+    this.yacsService.getSchools()
+      .subscribe(schools => this.schools = schools);
+ 
     console.log(this.department_id==null);
 
     //Filter the courses if department id is not null
