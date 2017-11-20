@@ -36,7 +36,7 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
     this.yacsService.getDepts()
-      .subscribe(departments => this.departments = departments);
+      .subscribe(departments => this.departments = departments, error=>console.log(error));
     this.yacsService.getSchools()
       .subscribe(schools => this.schools = schools);
     console.log(this.route.queryParams);
@@ -52,21 +52,26 @@ export class CourseListComponent implements OnInit {
     
     if(this.department_id){
       this.yacsService.getCoursesByDeptID(this.department_id)
-        .subscribe(courses => this.courses = courses);
+        .subscribe(courses => this.courses = courses, error=>(console.error(error)));
       this.yacsService.getDeptByID(this.department_id)
-        .subscribe(selectedDept => this.selectedDept = selectedDept);
+        .subscribe(selectedDept => { 
+          
+          if(!selectedDept){
+            this.error=true;
+          }
+          else{
+            this.error=false;
+            this.selectedDept=selectedDept;
+          }
+          
+        }, error=>{
+          this.error=true;
+          this.selectedDept=null;
+        });
+
+      //Do some waiting here
 
       //Check if this is undefined
-      if(!this.selectedDept){
-        this.error=true;
-      }
-
-      //Else, proceed
-      else{
-        //All good
-        this.error=false;
-      }
-    
     }
 
     //If null, select all courses

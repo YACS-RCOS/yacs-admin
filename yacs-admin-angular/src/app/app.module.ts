@@ -10,6 +10,10 @@ import { DepartmentListComponent } from './department/department-list/department
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
 import {FakeYacsService} from './fake-yacs.service';
+//YACS API uses older http module
+import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { HttpModule, XHRBackend } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,12 @@ import {FakeYacsService} from './fake-yacs.service';
     CourseListComponent,
   ],
   imports: [
-    BrowserModule, AppRouterModule, FormsModule
-  ],
+    BrowserModule, FormsModule,
+    HttpModule,AppRouterModule,
+
+    HttpInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true, delay: 100}),   ],
   providers: [
-    Title, FakeYacsService
-  ],
+    Title, FakeYacsService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

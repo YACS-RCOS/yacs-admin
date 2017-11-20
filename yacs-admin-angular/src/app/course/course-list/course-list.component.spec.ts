@@ -4,13 +4,16 @@ import { CourseListComponent } from './course-list.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {FakeYacsService} from '../../fake-yacs.service';
+import {HttpModule} from '@angular/http';
+import {InMemoryDataService} from '../../in-memory-data.service';
+import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
 describe('CourseListComponent, no query parameters', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
   let mockParams = [{}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule, HttpInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100} )],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -55,7 +58,7 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -89,7 +92,7 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -133,7 +136,7 @@ describe('CourseListComponent, valid department id, no courses in department', (
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
