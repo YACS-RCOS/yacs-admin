@@ -5,6 +5,8 @@
       <th>ID</th>
       <th>Name</th>
       <th>Number</th>
+      <th>Credits</th>
+      <th>Description</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
       <!--<th></th>
       <th></th>-->
@@ -15,7 +17,9 @@
     <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
       <td>{{course.id}}</td>
       <td>{{course.name}}</td>
-      <td>{{course.num}}</td>
+      <td>{{course.department_code}}</td>
+      <td>{{course.min_credits}}</td>
+      <td>{{course.description}}</td>
     </tr>
 
   </tbody>
