@@ -6,8 +6,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Code</th>
+      <th class="id">ID</th>
+      <th class="code">Code</th>
 
       <th>Name</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
@@ -18,8 +18,8 @@
 
   <tbody>
     <tr *ngFor="let dept of departments" [class.selected]="dept === selectedDept" (click)="onSelect(dept)">
-      <td>{{dept.id}}</td>
-      <td>{{dept.code}}</td>
+      <td class="id">{{dept.id}}</td>
+      <td class="code">{{dept.code}}</td>
       <td>{{dept.name}}</td>
     </tr>
 

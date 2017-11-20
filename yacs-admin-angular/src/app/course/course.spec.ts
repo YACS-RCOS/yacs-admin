@@ -1,6 +1,6 @@
 import { Department } from '../department/department';
 import { School } from '../school/school';
-
+import { Course } from './course';
 // describe('Course', () => {
 //   it('has name', () => {
 //     const dept = new Course(1,'CPYP','Copying and Pasting',1);

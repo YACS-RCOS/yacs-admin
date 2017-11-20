@@ -14,7 +14,6 @@ export class Course {
   max_credits:number;
   description: string;
 //  sections: Section[];
-
   constructor(id, name, num, dep_code, dep_id, min_cred, max_cred, des) {
     this.id = id;
     this.name = name;
@@ -25,4 +24,6 @@ export class Course {
     this.max_credits = max_cred;
     this.description = des;
   }
+
+  
 }

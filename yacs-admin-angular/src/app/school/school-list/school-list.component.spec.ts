@@ -1,14 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchoolListComponent } from './school-list.component';
-
+import {FakeYacsService} from '../../fake-yacs.service';
 describe('SchoolListComponent', () => {
   let component: SchoolListComponent;
   let fixture: ComponentFixture<SchoolListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SchoolListComponent ]
+      declarations: [ SchoolListComponent ],
+      providers: [FakeYacsService]
     })
     .compileComponents();
   }));

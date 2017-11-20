@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from '../school';
-import { SCHOOLS } from '../../mock-data';
-//Dummy data, delete when YACS service integrated
-
+import {FakeYacsService} from '../../fake-yacs.service';
 
 @Component({
   selector: 'school-list',
@@ -10,10 +8,15 @@ import { SCHOOLS } from '../../mock-data';
   styleUrls: ['./school-list.component.css']
 })
 export class SchoolListComponent implements OnInit {
-  schools=SCHOOLS;
-  constructor() { }
+  schools: School[];
+  constructor(private yacsService: FakeYacsService) { }
+
+  getSchools(): void{
+    this.schools=this.yacsService.getSchools();
+  }
 
   ngOnInit() {
+    this.getSchools();
   }
 
 }

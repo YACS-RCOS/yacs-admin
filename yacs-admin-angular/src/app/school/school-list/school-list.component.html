@@ -1,10 +1,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
+      <th class="id">ID</th>
       <th>Name</th>
       
-      <th></th>
       <!--
       <th></th>
       <th></th>-->
@@ -13,9 +12,8 @@
 
   <tbody>
     <tr *ngFor="let school of schools">
-      <td>{{school.id}}</td>
+      <td class="id">{{school.id}}</td>
       <td>{{school.name}}</td>  
-      <td><a>Details</a></td>
     </tr>
 
   </tbody>

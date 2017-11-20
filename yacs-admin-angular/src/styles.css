@@ -29,10 +29,17 @@ td{
   color:#fff !important;
   text-decoration: none !important;
 }
-
+.id{
+  width: 10%;
+}
+.code{
+  width: 15%;
+}
 .sidelink a {
   color: #fff !important;
-  
+  display: inline-block;
+  height: 50px;
+  width: 100%;
 }
 .table-icon{
   font-size:12px;
@@ -58,17 +65,51 @@ td{
 
 }
 
+
 .sidelink-hoverable:hover, .sidelink-hoverable:focus{
   background: #d27979 !important;
+height: 40px;
+  vertical-aligh: middle;
+  overflow: hidden;
 }
 .sidelink-hoverable {
   width: 120px !important;
   font-size: 18px !important;
+  height: 40px;
+  vertical-aligh: middle;
+  overflow: hidden;
+}
+
+.sidelink-hoverable a{
+  margin-top: 10px;
+  margin-bottom: -10px;
 }
 #navtable td{
+
   padding: 0 !important;
 }
 
+
+.table thead, tbody{
+  float: left;
+  width: 100%;
+}
+.table tr{
+  text-align: left;
+  width: 100%;
+  display: table;
+}
+
+.table tbody{
+  overflow: auto;
+  height: 200px;
+}
+.table table{
+
+}
+.table td, th{
+  display: table-cell;
+}
 #content{
   width:100%;
 }

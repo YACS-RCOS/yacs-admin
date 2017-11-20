@@ -1,5 +1,7 @@
 <div id="deptDetail" *ngIf="dept">
   <h2 id ="detailHeading">{{dept.name}} Department Details</h2>
+
+  <h4><a href="courses?dept_id={{dept.id}}">Show Courses</a></h4>
   <div id = "codeField" class="form-group form-inline">
     <label for = "codeInput">Code: &nbsp;</label>
     <input id ="codeInput" class="form-control" style="width:100px !important;" [(ngModel)]="dept.code" placeholder="code"/>
@@ -14,6 +16,16 @@
     <select class="form-control" [(ngModel)]="dept.school_id" >
       <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
     </select>
+  </div>
+
+  
+  <div id="buttonHolder">
+    <button class="btn btn-search">Save Changes</button>
+    <button class="btn btn-search">Delete</button>
+  </div>
+  
+  <div id="buttonHolder">
+    &nbsp;
   </div>
 
 </div>

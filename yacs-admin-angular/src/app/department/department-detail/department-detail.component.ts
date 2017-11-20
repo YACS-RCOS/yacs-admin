@@ -9,10 +9,13 @@ import {SCHOOLS} from '../../mock-data';
 export class DepartmentDetailComponent implements OnInit {
 
   @Input() dept: Department;
+ 
+
   schools = SCHOOLS;
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
