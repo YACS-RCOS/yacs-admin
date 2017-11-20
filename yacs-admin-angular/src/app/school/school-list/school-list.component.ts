@@ -12,7 +12,8 @@ export class SchoolListComponent implements OnInit {
   constructor(private yacsService: FakeYacsService) { }
 
   getSchools(): void{
-    this.schools=this.yacsService.getSchools();
+    this.yacsService.getSchools()
+      .subscribe(schools => this.schools = schools);
   }
 
   ngOnInit() {
