@@ -77,7 +77,7 @@ export class CourseListComponent implements OnInit {
     //If null, select all courses
     else{
       this.yacsService.getCourses()
-        .subscribe(courses => this.courses = courses);
+        .subscribe(courses => this.courses = courses, error=>{this.error=true; console.log(error);});
     }
   }
 }
