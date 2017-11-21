@@ -21,11 +21,13 @@ export class DepartmentListComponent implements OnInit {
   }
 
   getDepts(): void{
-    this.departments=this.yacsService.getDepts();
+    this.yacsService.getDepts()
+      .subscribe(departments => this.departments = departments);
   }
   
   getSchools(): void{
-    this.schools=this.yacsService.getSchools();
+    this.yacsService.getSchools()
+      .subscribe(schools => this.schools = schools);
   }
 
   ngOnInit() {

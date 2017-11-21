@@ -4,13 +4,16 @@ import { CourseListComponent } from './course-list.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 import {FakeYacsService} from '../../fake-yacs.service';
+import {HttpModule} from '@angular/http';
+import {InMemoryDataService} from '../../in-memory-data.service';
+import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
 describe('CourseListComponent, no query parameters', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
   let mockParams = [{}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule, HttpInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100} )],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -55,7 +58,7 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule, HttpInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -89,7 +92,7 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule, HttpInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})] ,
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -109,11 +112,11 @@ describe('CourseListComponent, no query parameters', () => {
       });
     });
     
-    it('should render courses in the specified department', () => {
+    it('should render courses in the specified department', async() => {
       expect(component.selectedDept.id).toEqual(mockParams[0]['dept_id']);
     });
 
-    it('should render correct header', () => {
+    it('should render correct header', async() => {
       var header=document.getElementsByTagName('h2')[0];
       var pattern = 'Courses in the '+component.selectedDept.name+' Department';
       expect(header.textContent).toMatch(pattern);
@@ -133,7 +136,7 @@ describe('CourseListComponent, valid department id, no courses in department', (
     beforeEach(async()=>{
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpModule, HttpInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -153,7 +156,7 @@ describe('CourseListComponent, valid department id, no courses in department', (
       });
     });
 
-    it('should render correct header', () => {
+    it('should render correct header', async() => {
       var header=document.getElementsByTagName('h2')[0];
       var pattern = 'Courses in the '+component.selectedDept.name+' Department';
       expect(header.textContent).toMatch(pattern);

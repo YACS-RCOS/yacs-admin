@@ -2,6 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchoolListComponent } from './school-list.component';
 import {FakeYacsService} from '../../fake-yacs.service';
+import {HttpModule} from '@angular/http';
+import {InMemoryDataService} from '../../in-memory-data.service';
+import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {AppRouterModule} from '../../app-router/app-router.module';
 describe('SchoolListComponent', () => {
   let component: SchoolListComponent;
   let fixture: ComponentFixture<SchoolListComponent>;
@@ -9,6 +13,7 @@ describe('SchoolListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SchoolListComponent ],
+      imports: [HttpModule, HttpInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
       providers: [FakeYacsService]
     })
     .compileComponents();
@@ -31,7 +36,7 @@ describe('SchoolListComponent', () => {
     expect(ths[1].textContent).toContain('Name');
   });
 
-  it('renders deparment', () => {
+  it('renders deparment', async() => {
     var tbody = document.getElementsByTagName("tbody");
     var rows = tbody[0].getElementsByTagName('tr');
     //console.log(tbody[0].getElementsByTagName('tr'));

@@ -35,39 +35,49 @@ export class CourseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.departments=this.yacsService.getDepts();
-    this.schools=this.yacsService.getSchools();
-    console.log(this.route.queryParams);
+   console.log(this.route.queryParams);
     this.route.queryParams
       .filter(params => params.dept_id)
       .subscribe(params =>{
         this.department_id=Number(params.dept_id);
       });
-
+    this.yacsService.getDepts()
+      .subscribe(departments => this.departments = departments, error=>console.log(error));
+    this.yacsService.getSchools()
+      .subscribe(schools => this.schools = schools);
+ 
     console.log(this.department_id==null);
 
     //Filter the courses if department id is not null
     
     if(this.department_id){
-      this.courses=this.yacsService.getCoursesByDeptID(this.department_id);
-      this.selectedDept=this.yacsService.getDeptByID(this.department_id);
+      this.yacsService.getCoursesByDeptID(this.department_id)
+        .subscribe(courses => this.courses = courses, error=>(console.error(error)));
+      this.yacsService.getDeptByID(this.department_id)
+        .subscribe(selectedDept => { 
+          
+          if(!selectedDept){
+            this.error=true;
+          }
+          else{
+            this.error=false;
+            this.selectedDept=selectedDept;
+          }
+          
+        }, error=>{
+          this.error=true;
+          this.selectedDept=null;
+        });
+
+      //Do some waiting here
 
       //Check if this is undefined
-      if(!this.selectedDept){
-        this.error=true;
-      }
-
-      //Else, proceed
-      else{
-        //All good
-        this.error=false;
-      }
-    
     }
 
     //If null, select all courses
     else{
-      this.courses=this.yacsService.getCourses();
+      this.yacsService.getCourses()
+        .subscribe(courses => this.courses = courses, error=>{this.error=true; console.log(error);});
     }
   }
 }

@@ -3,6 +3,9 @@ import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
 import {FakeYacsService} from '../../fake-yacs.service';
+import {HttpModule} from '@angular/http';
+import {InMemoryDataService} from '../../in-memory-data.service';
+import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
@@ -10,7 +13,7 @@ describe('DepartmentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, HttpModule, HttpInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [FakeYacsService]
     })
@@ -35,7 +38,7 @@ describe('DepartmentListComponent', () => {
     expect(ths[2].textContent).toContain('Name');
   });
 
-  it('renders deparment', () => {
+  it('renders deparment', async() => {
     //making sure we can access component departments
     //console.log(component.departments);
 
@@ -71,24 +74,35 @@ describe('DepartmentListComponent', () => {
 
   describe('after selecting a department', () => {
     var expectedDept;
-    beforeEach(()=>{
+    beforeEach(async()=>{
       expectedDept = component.departments[1]; 
       const tbody = document.getElementsByTagName("tbody");
       const rows = tbody[0].getElementsByTagName('tr');
       const tr = rows[1];
       tr.click();
       fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+      });
+    
     });
 
-    it('should render the department details', () => {
+    beforeEach(()=>{
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+      });
+    })
+
+    it('should render the department details', async() => {
       expect(component.selectedDept).toEqual(expectedDept);
     });
 
-    it('should render the collapse button', () => {
+    /*it('should render the collapse button', () => {
       console.log(document.getElementById('collapse'));
       expect(document.getElementById('collapse').hidden).toBeFalsy();
 
-    });
+    });*/
 
     describe('after pressing collapse button',() => {
       beforeEach(()=>{
