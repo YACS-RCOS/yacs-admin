@@ -4,7 +4,9 @@ import { RouterModule, Routes} from '@angular/router';
 import { WelcomePageComponent } from '../welcome-page/welcome-page.component';
 import { SchoolListComponent } from '../school/school-list/school-list.component';
 import { DepartmentListComponent } from '../department/department-list/department-list.component';
-import { CourseListComponent } from '../course/course-list/course-list.component'
+import { CourseListComponent } from '../course/course-list/course-list.component';
+import {DepartmentDetailComponent} from '../department/department-detail/department-detail.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -13,6 +15,7 @@ const routes: Routes = [
   },
   {path: 'schools', component: SchoolListComponent},
   {path: 'departments', component: DepartmentListComponent},
+  {path: 'departments/:id', component: DepartmentDetailComponent},
   {path: 'courses', component: CourseListComponent},
 ];
 
