@@ -11,16 +11,18 @@
 
       <th>Name</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <!--<th></th>
-      <th></th>-->
+      <th class="code"></th>
+      <th class="code"></th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let dept of departments" [class.selected]="dept === selectedDept" (click)="onSelect(dept)">
+    <tr *ngFor="let dept of departments" [class.selected]="dept === selectedDept" >
       <td class="id">{{dept.id}}</td>
       <td class="code">{{dept.code}}</td>
       <td>{{dept.name}}</td>
+      <td class="code" style="text-align: center !important;"><a routerLink="{{dept.id}}">Details</a></td>
+      <td class="code"><a routerLink="/courses" queryParams="{dept_id: {{dept.id}} }">Show Courses</a></td>
     </tr>
 
   </tbody>

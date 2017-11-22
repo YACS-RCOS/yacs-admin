@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Department} from '../department';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {School} from '../../school/school';
 import {FakeYacsService} from '../../fake-yacs.service';
 @Component({
@@ -11,7 +11,7 @@ import {FakeYacsService} from '../../fake-yacs.service';
 export class DepartmentDetailComponent implements OnInit {
   @Input() dept: Department;
   schools: School[];
-  constructor(private yacsService: FakeYacsService, private route: ActivatedRoute) {}
+  constructor(private yacsService: FakeYacsService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.yacsService.getSchools()
@@ -31,6 +31,7 @@ export class DepartmentDetailComponent implements OnInit {
     this.yacsService.updateDepartment(this.dept)
       .subscribe(()=>{
         console.log('done');
+        this.router.navigate(['/departments']);
       }); 
   }
 

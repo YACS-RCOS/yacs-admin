@@ -4,16 +4,16 @@
   <h4><a href="courses?dept_id={{dept.id}}">Show Courses</a></h4>
   <div id = "codeField" class="form-group form-inline">
     <label for = "codeInput">Code: &nbsp;</label>
-    <input id ="codeInput" class="form-control" style="width:100px !important;" [ngModel]="dept.code" placeholder="code" #newCode/>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" [(ngModel)]="dept.code" placeholder="code" #newCode/>
   </div>
 <div id = "nameField" class="form-group form-inline">
     <label for="nameInput">Name: </label>
-    <input id ="nameInput" class="form-control" [ngModel]="dept.name" placeholder="name" #newName/>
+    <input id ="nameInput" class="form-control" [(ngModel)]="dept.name" placeholder="name" #newName/>
   </div>
 
   <div id="schoolField" class="form-group form-inline">
     <label>School: </label>
-    <select class="form-control" [ngModel]="dept.school_id" #newId >
+    <select class="form-control" [(ngModel)]="dept.school_id" #newId >
       <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
     </select>
   </div>
