@@ -38,26 +38,11 @@ export class FakeYacsService {
     return of(COURSES);
   }
 
-<<<<<<< HEAD
-  getSections(): Section[]{
-    return SECTIONS;
+  getSections(): Observable<Section[]>{
+    console.log(SECTIONS);
+    return of(SECTIONS);
   }
 
-  getDeptByID(id: number): Department{
-    return DEPTS.filter(dept => dept.id === id)[0];
-  }
-
-  getCourseByID(id: number): Course{
-    return COURSES.filter(course => course.id === id)[0];
-  }
-
-  getSchoolByID(id: number): School{
-    return SCHOOLS.filter(school => school.id === id)[0];
-  }
-
-  getCoursesByDeptID(dept_id: number): Course[]{
-    return COURSES.filter(course => course.department_id === dept_id);
-=======
   getDeptByID(id: number): Observable<Department>{
     const url=`${this.deptsUrl}/${id}`;
     console.log(url);
@@ -79,7 +64,6 @@ export class FakeYacsService {
     return of(COURSES.filter(course => course.department_id === dept_id));
 
   }
->>>>>>> upstream/master
 
   protected handleError (error: any){
     console.error(error);

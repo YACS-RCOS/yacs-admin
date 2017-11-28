@@ -1,26 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FakeYacsService} from '../../fake-yacs.service';
 import { Section } from '../section';
 import { Period } from '../period';
 
-const SHORT_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sam'];
+const SHORT_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 @Component({
-  selector: 'section',
+  selector: 'section-list',
   templateUrl: './section-list.component.html',
   styleUrls: ['./section-list.component.scss']
 })
-export class SectionListComponent {
+export class SectionListComponent implements OnInit{
   sections: Section[];
-
   constructor(private yacsService: FakeYacsService) { }
 
   getSections(): void{
-    this.sections=this.yacsService.getSections();
+    this.yacsService.getSections()
+      .subscribe(sections => this.sections = sections);
   }
 
   ngOnInit() {
-    this.getSections;
+    this.getSections();
   }
 
 
