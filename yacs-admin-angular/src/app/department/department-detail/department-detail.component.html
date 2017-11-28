@@ -4,23 +4,23 @@
   <h4><a href="courses?dept_id={{dept.id}}">Show Courses</a></h4>
   <div id = "codeField" class="form-group form-inline">
     <label for = "codeInput">Code: &nbsp;</label>
-    <input id ="codeInput" class="form-control" style="width:100px !important;" [(ngModel)]="dept.code" placeholder="code"/>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" [(ngModel)]="dept.code" placeholder="code" #newCode/>
   </div>
 <div id = "nameField" class="form-group form-inline">
     <label for="nameInput">Name: </label>
-    <input id ="nameInput" class="form-control" [(ngModel)]="dept.name" placeholder="name"/>
+    <input id ="nameInput" class="form-control" [(ngModel)]="dept.name" placeholder="name" #newName/>
   </div>
 
   <div id="schoolField" class="form-group form-inline">
     <label>School: </label>
-    <select class="form-control" [(ngModel)]="dept.school_id" >
+    <select class="form-control" [(ngModel)]="dept.school_id" #newId >
       <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
     </select>
   </div>
 
   
   <div id="buttonHolder">
-    <button class="btn btn-search">Save Changes</button>
+    <button class="btn btn-search" (click)="save(newCode, newName, newId)">Save Changes</button>
     <button class="btn btn-search">Delete</button>
   </div>
   

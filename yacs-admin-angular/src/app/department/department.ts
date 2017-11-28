@@ -14,4 +14,6 @@ export class Department {
     this.code=code;
     this.school_id=school_id;
   }
+
+
 }

@@ -3,9 +3,9 @@ import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
 import {FakeYacsService} from '../../fake-yacs.service';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../in-memory-data.service';
-import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
@@ -13,7 +13,7 @@ describe('DepartmentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpModule, HttpInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [FakeYacsService]
     })

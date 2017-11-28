@@ -17,7 +17,8 @@ export class DepartmentListComponent implements OnInit {
   constructor(private yacsService: FakeYacsService) { }
   selectedDept: Department;
   onSelect(dept: Department): void{
-    this.selectedDept=dept;
+    let newDept = new Department(dept.id,dept.code, dept.name, dept.school_id);
+    this.selectedDept=newDept;
   }
 
   getDepts(): void{

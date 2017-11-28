@@ -6,12 +6,10 @@ import { Section } from './section/section';
 import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Headers, Http, Response } from '@angular/http';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/do';
-const cudOptions = { headers: new Headers({ 'Content-Type': 'application/json' })};
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { catchError, map, tap} from 'rxjs/operators';
+
+const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
 @Injectable()
 export class FakeYacsService {
@@ -19,39 +17,44 @@ export class FakeYacsService {
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getSchools(): Observable<School[]>{
+<<<<<<< HEAD
     return this.http.get(this.schoolsUrl)
             //.do(data => console.log(data))
             .map(res=>res.json())
             .catch(this.handleError);
+=======
+    return this.http.get<School[]>(this.schoolsUrl);
+>>>>>>> upstream/master
   }
-
   getDepts(): Observable<Department[]>{
-    return this.http.get(this.deptsUrl)
-            .map(res=> res.json())
-            .catch(this.handleError);
+    return this.http.get<Department[]>(this.deptsUrl);
   }
 
   getCourses(): Observable<Course[]>{
     return of(COURSES);
+<<<<<<< HEAD
   }
 
   getSections(): Observable<Section[]>{
     console.log(SECTIONS);
     return of(SECTIONS);
+=======
+>>>>>>> upstream/master
   }
 
   getDeptByID(id: number): Observable<Department>{
     const url=`${this.deptsUrl}/${id}`;
     console.log(url);
-    return this.http.get(url)
-            .do(data => console.log(data.json() as Department))
-            .map((r: Response) => r.json() as Department)
-            .catch(this.handleError);
+    return this.http.get<Department>(url);
   }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> upstream/master
   getCourseByID(id: number): Observable<Course>{
     return of(COURSES.filter(course => course.id === id)[0]);
   }
@@ -65,8 +68,16 @@ export class FakeYacsService {
 
   }
 
-  protected handleError (error: any){
-    console.error(error);
-    return Observable.throw(error);
+  updateDepartment(dept: Department): Observable<any> {
+    return this.http.put(this.deptsUrl, dept, cudOptions).pipe(
+      tap(_ => console.log(dept)),
+      catchError(this.handleError<any>('updateDepartment'))
+    );  }
+
+  private handleError<T> (operation = 'operation', result?: T){
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }

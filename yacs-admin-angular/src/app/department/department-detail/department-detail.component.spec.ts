@@ -2,14 +2,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentDetailComponent } from './department-detail.component';
 import {Department} from '../department';
+import {FakeYacsService} from '../../fake-yacs.service';
+import {InMemoryDataService} from '../../in-memory-data.service';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {HttpClientModule} from '@angular/common/http';
+
+
 describe('DepartmentDetailComponent', () => {
   let component: DepartmentDetailComponent;
   let fixture: ComponentFixture<DepartmentDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [ DepartmentDetailComponent ]
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      declarations: [ DepartmentDetailComponent ],
+      providers: [FakeYacsService]
     })
     .compileComponents();
   }));

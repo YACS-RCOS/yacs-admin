@@ -15,6 +15,7 @@ import {FakeYacsService} from './fake-yacs.service';
 import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,9 @@ import { HttpModule, XHRBackend } from '@angular/http';
   ],
   imports: [
     BrowserModule, FormsModule,
-    HttpModule,AppRouterModule,
+    HttpClientModule,AppRouterModule,
 
-    HttpInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true, delay: 100}),   ],
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),   ],
   providers: [
     Title, FakeYacsService  ],
   bootstrap: [AppComponent]

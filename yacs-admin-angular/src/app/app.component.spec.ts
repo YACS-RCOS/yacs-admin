@@ -9,8 +9,8 @@ import { SchoolListComponent } from './school/school-list/school-list.component'
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
-import {HttpModule} from '@angular/http';
-import {HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './in-memory-data.service';
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,8 +25,8 @@ describe('AppComponent', () => {
         CourseListComponent,
       ],
       imports: [
-        FormsModule, HttpModule, 
-        HttpInMemoryWebApiModule.forRoot(InMemoryDataService), AppRouterModule
+        FormsModule, HttpClientModule, 
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService), AppRouterModule
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}

@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import {SchoolPage} from './school.po';
 
 describe('yacs-admin-angular App', () => {
   let page: AppPage;
@@ -18,3 +19,23 @@ describe('yacs-admin-angular App', () => {
   });
 
 });
+
+describe('schools page', () => {
+  let page: SchoolPage;
+
+  beforeEach(()=>{
+    page=new SchoolPage();
+  });
+
+  it('should display correct headers',()=>{
+    page.navigateTo();
+    let headers = page.getHeaderRows();
+    console.log(headers[0]);
+    for(let header of headers){
+      //console.log(header);
+      
+    }
+    expect(1).toEqual(1);
+  });
+
+} );

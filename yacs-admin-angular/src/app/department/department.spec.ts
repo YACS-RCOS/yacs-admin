@@ -24,4 +24,10 @@ describe('Department', () => {
     //expect(dept.school_id).toEqual(school.id);
 
   });
+
+  it('can clone', () => {
+    const dept = new Department(1,'CPYP','Copying and Pasting',1);
+    const deptClone=dept.clone();
+    expect(deptClone).toEqual(dept);
+  });
 });

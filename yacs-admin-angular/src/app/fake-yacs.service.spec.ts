@@ -1,11 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { FakeYacsService } from './fake-yacs.service';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 describe('FakeYacsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [HttpClientModule],
       providers: [FakeYacsService]
     });
   });
