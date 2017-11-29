@@ -2,7 +2,7 @@
  * Based off of: https://github.com/YACS-RCOS/yacs-web/blob/master/src/app/course-list/course/course.ts
  */
 
-//import { Section } from '../section/section';
+import { Section } from '../section/section';
 
 export class Course {
   id: number;
@@ -13,8 +13,9 @@ export class Course {
   min_credits:number;
   max_credits:number;
   description: string;
-//  sections: Section[];
-  constructor(id, name, num, dep_code, dep_id, min_cred, max_cred, des) {
+  sections: Section[];
+
+  constructor(id, name, num, dep_code, dep_id, min_cred, max_cred, des, sections) {
     this.id = id;
     this.name = name;
     this.num = num;
@@ -25,5 +26,5 @@ export class Course {
     this.description = des;
   }
 
-  
+
 }

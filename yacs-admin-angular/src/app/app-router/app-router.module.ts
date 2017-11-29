@@ -5,7 +5,8 @@ import { WelcomePageComponent } from '../welcome-page/welcome-page.component';
 import { SchoolListComponent } from '../school/school-list/school-list.component';
 import { DepartmentListComponent } from '../department/department-list/department-list.component';
 import { CourseListComponent } from '../course/course-list/course-list.component';
-import {DepartmentDetailComponent} from '../department/department-detail/department-detail.component';
+import { SectionListComponent } from '../section/section-list/section-list.component';
+import { DepartmentDetailComponent } from '../department/department-detail/department-detail.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'departments', component: DepartmentListComponent},
   {path: 'departments/:id', component: DepartmentDetailComponent},
   {path: 'courses', component: CourseListComponent},
+  {path: 'sections', component: SectionListComponent},
 ];
 
 @NgModule({
