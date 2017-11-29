@@ -6,9 +6,11 @@ import { Section } from './section/section';
 import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, map, tap} from 'rxjs/operators';
-
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/do';
 const cudOptions = { headers: new Headers({ 'Content-Type': 'application/json' })};
 
 @Injectable()
