@@ -35,10 +35,6 @@ td{
 .code{
   width: 15%;
 }
-
-.name{
-  width: 50% !important;
-}
 .sidelink a {
   color: #fff !important;
   display: inline-block;
