@@ -22,6 +22,7 @@ export class DepartmentDetailComponent implements OnInit {
     this.route.params.subscribe(params=>{id=+params['id']});
     this.yacsService.getDeptByID(id)
       .subscribe(dept => this.dept = dept);
+    console.log(this.dept);
   }
   
   saveDept(){
