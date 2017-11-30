@@ -69,6 +69,16 @@ export class FakeYacsService {
     );
   }
 
+  deleteDepartment(dept: Department | number): Observable<Department>{
+    const id=typeof dept === 'number' ? dept : dept.id;
+    const url = `${this.deptsUrl}/${id}`;
+
+    return this.http.delete<Department>(url, cudOptions).pipe(
+      tap(_=> console.log('deleted')),
+      catchError(this.handleError<Department>('deleteDepartment'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       console.error(error);

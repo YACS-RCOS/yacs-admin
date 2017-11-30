@@ -42,6 +42,15 @@ export class DepartmentListComponent implements OnInit {
     }
   }
 
+  deleteDept(dept): void{
+    let promptString = 'Are you sure you want to delete the '+ dept.name + ' department?';
+    if(confirm(promptString)){
+      this.yacsService.deleteDepartment(dept)
+        .subscribe(()=>{
+          this.getDepts();
+        });
+    }
+  }
   createDept(code, name, school_name): void{
     let newDept: Department;
     console.log(this.departments.length);
