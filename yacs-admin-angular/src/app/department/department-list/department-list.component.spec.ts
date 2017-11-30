@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
@@ -63,30 +63,26 @@ describe('DepartmentListComponent', () => {
     }
   });
   
-  describe('before selecting a department', () => {
-    it('should not display any departments', () => {
-      expect(component.selectedDept).toBeUndefined();
+  describe('before clicking \'New Department\'', () => {
+
+
+    it('should not display the form', () => {
+      expect(document.getElementById('newDept')).toBeNull();
     });
 
-    /* Collapse button, details on same page deprecated 
-    it('should not display the collapse button',() => {
-      expect(document.getElementById('collapse').hidden).toBe(true);
+    it('should display \'New Department\'',() => {
+      expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
     });
   });
-
-  describe('after selecting a department', () => {
-    var expectedDept;
+  describe('after clicking \'New Department\'', () => {
     beforeEach(async()=>{
-      expectedDept = component.departments[1]; 
-      const tbody = document.getElementsByTagName("tbody");
-      const rows = tbody[0].getElementsByTagName('tr');
-      const tr = rows[1];
-      tr.click();
+      const newDeptBtn=document.getElementById('newDeptBtn');
+      newDeptBtn.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-    
+       
     });
 
     beforeEach(()=>{
@@ -94,10 +90,16 @@ describe('DepartmentListComponent', () => {
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-    })
+    });
 
-    it('should render the department details', async() => {
-      expect(component.selectedDept).toEqual(expectedDept);
+    it('should set creatingDept to true', async() => {
+      tick();
+      expect(component.creatingDept).toEqual(true);
+    });
+    it('should render the form', async() => {
+      tick(); 
+      expect(document.getElementById('newDept')).toBeTruthy();
+      //expect(component.selectedDept).toEqual(expectedDept);
     });
 
     /*it('should render the collapse button', () => {

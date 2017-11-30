@@ -43,4 +43,35 @@ export class DepartmentDetailComponent implements OnInit {
     this.location.back();
   }
 
+  confirmUnsavedChanges(dept){
+
+    let cancelAction = false;
+        if(this.dept.code != dept.code || 
+           this.dept.name != dept.name ||
+           this.dept.school_id != dept.school_id){
+          cancelAction = confirm('You have unsaved changes. Are you sure you want to cancel?');
+          
+        }
+        else{
+          cancelAction=true;
+        }
+   if(cancelAction){
+      this.location.back();
+    } 
+  }
+
+  cancel(code,name,id){
+    
+    //Retrieve the current state of the object
+    this.yacsService.getDeptByID(this.dept.id)
+      .subscribe(dept => {
+        this.confirmUnsavedChanges(dept); 
+        
+        
+      });
+    console.log(this.dept);
+    console.log(this.dept.code);
+    console.log(code);
+    
+  }
 }

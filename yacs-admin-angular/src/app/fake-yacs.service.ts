@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
-
+import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
 @Injectable()
@@ -20,6 +20,14 @@ export class FakeYacsService {
 
   getSchools(): Observable<School[]>{
     return this.http.get<School[]>(this.schoolsUrl);
+  }
+
+  getSchoolByName(name: string): Observable<School>{
+    return this.http.get<School[]>(this.schoolsUrl)
+      .map(schools=>{
+        let results=schools.filter(school=> school.name == name);
+        return((results.length==1) ? results[0] : null);
+      })
   }
   getDepts(): Observable<Department[]>{
     return this.http.get<Department[]>(this.deptsUrl);
@@ -53,6 +61,13 @@ export class FakeYacsService {
       tap(_ => console.log(dept)),
       catchError(this.handleError<any>('updateDepartment'))
     );  }
+
+  addDepartment(dept: Department): Observable<any>{
+    return this.http.post(this.deptsUrl, dept, cudOptions).pipe(
+      tap(_ => console.log(dept)),
+      catchError(this.handleError<any>('addDepartment'))
+    );
+  }
 
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
