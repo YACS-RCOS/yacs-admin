@@ -6,14 +6,14 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-
+import {RouterTestingModule} from '@angular/router/testing';
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [FakeYacsService]
     })
@@ -67,6 +67,8 @@ describe('DepartmentListComponent', () => {
     it('should not display any departments', () => {
       expect(component.selectedDept).toBeUndefined();
     });
+
+    /* Collapse button, details on same page deprecated 
     it('should not display the collapse button',() => {
       expect(document.getElementById('collapse').hidden).toBe(true);
     });
@@ -104,7 +106,7 @@ describe('DepartmentListComponent', () => {
 
     });*/
 
-    describe('after pressing collapse button',() => {
+    /*describe('after pressing collapse button',() => {
       beforeEach(()=>{
         const collapseButton=document.getElementById('collapse');
         collapseButton.click();
@@ -114,7 +116,7 @@ describe('DepartmentListComponent', () => {
       it('should not display any departments', () => {
         /*Note that the department detail is now null
          * rather than undefined since it was declared
-         * previously.*/
+         * previously.
         expect(component.selectedDept).toBeNull();
       });
       
@@ -122,7 +124,7 @@ describe('DepartmentListComponent', () => {
         expect(document.getElementById('collapse').hidden).toBe(true);
       });
 
-    });
+    });*/
 
   }); 
 

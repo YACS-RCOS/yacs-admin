@@ -6,15 +6,15 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {HttpClientModule} from '@angular/common/http';
-
-
+import {RouterTestingModule} from '@angular/router/testing';
+import {ActivatedRoute} from '@angular/router';
 describe('DepartmentDetailComponent', () => {
   let component: DepartmentDetailComponent;
   let fixture: ComponentFixture<DepartmentDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentDetailComponent ],
       providers: [FakeYacsService]
     })
@@ -25,20 +25,28 @@ describe('DepartmentDetailComponent', () => {
     fixture = TestBed.createComponent(DepartmentDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+    });
   });
 
-  it('should create', () => {
+  /*it('should create', () => {
     //console.log(component.dept);
     expect(component).toBeTruthy();
   });
 
   it('should not render when department not passed', () => {
     expect(document.getElementById('deptDetail')).toBeNull();
-  });
+  });*/
   describe('when department passed', ()=>{
     beforeEach(() => {
       component.dept=new Department(1,'CPYP','Copying and Pasting', 1);
       fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+    });
+ 
+    
     }); 
     it('should render',() => {
       expect(document.getElementById('deptDetail')).toBeTruthy();
