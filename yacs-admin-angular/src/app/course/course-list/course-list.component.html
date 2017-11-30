@@ -29,13 +29,19 @@
 </table>
 <div id="no-courses" *ngIf="courses.length==0">
   <p>There are currently no courses under this department.</p>
-  <a href="/departments">Back to departments</a>
-  <a href="/courses">Go to all courses</a>
+</div>
+
+<div *ngIf="selectedDept">
+  <p><a href="/departments">Back to departments</a></p>
+  <p><a href="/courses">Go to all courses</a></p>
+
 </div>
 
 </div>
+
 
 <div id="errorMsg" *ngIf="error">
   <h1>An error occured!</h1>
   <h4>The department you queried for does not exist.</h4>
+
 </div>

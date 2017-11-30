@@ -102,7 +102,7 @@ height: 40px;
 
 .table tbody{
   overflow: auto;
-  height: 200px;
+  max-height: 400px;
 }
 .table table{
 
