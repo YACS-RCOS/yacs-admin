@@ -86,3 +86,4 @@ yacs-admin-angular/Thumbs.db
 
 yacs-admin-angular/.gitignore
 *.*.swp
+*.*.swm
