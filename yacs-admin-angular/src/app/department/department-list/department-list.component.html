@@ -1,8 +1,41 @@
+<div id="newDept" *ngIf="creatingDept">
+  <h3>New Department</h3>
+  <div id = "codeField" class="form-group form-inline">
+    <label for = "codeInput">Code: &nbsp;</label>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" placeholder="CODE" #newCode/>
+  </div>
 
+  <div id = "nameField" class="form-group form-inline"    >
+    <label for="nameInput">Name: </label>
+    <input id ="nameInput" class="form-control" placeholder="Name" #newName/>
+
+  </div>
+
+  <div id="schoolField" class="form-group form-inline">
+    <label>School: </label>
+    <select class="form-control" #newId>
+      <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+    </select>
+  
+  </div>
+
+  <div id="buttonHolder">
+    <button class="btn btn-search" (click)="createDept(newCode.value, newName.value, newId.value)">Create Department </button>
+    <button class="btn btn-search" (click)="cancelNewDept()">Cancel</button>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-6"><h2>All Departments</h2></div>
+  <div class="col-xs-6 new-object-link"><h3><a *ngIf="!creatingDept" (click)="showDeptForm()"> <i class="fa fa-plus" aria-hidden="true"></i>  New Department</a></h3></div>
+</div>
 <!--<department-detail [dept]="selectedDept"></department-detail>
-<button id="collapse" [hidden]="!selectedDept" class="btn btn-search" (click)="onSelect(null)">Collapse</button>
+
+
+  
+  <button id="collapse" [hidden]="!selectedDept" class="btn btn-search" (click)="onSelect(null)">Collapse</button>
 -->
-<h2>All Departments</h2>
 
 <table class="table">
   <thead>
