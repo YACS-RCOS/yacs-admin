@@ -32,11 +32,11 @@ describe('DepartmentDetailComponent', () => {
     });
   });
 
-  /*it('should create', () => {
+  it('should create', () => {
     //console.log(component.dept);
     expect(component).toBeTruthy();
   });
-
+/*
   it('should not render when department not passed', () => {
     expect(document.getElementById('deptDetail')).toBeNull();
   });*/
