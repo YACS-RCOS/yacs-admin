@@ -21,9 +21,12 @@ describe('DepartmentListComponent', () => {
   }));
 
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(DepartmentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    spyOn(component, 'getDepts');
+    spyOn(component, 'getSchools');
   });
 
   it('should create', () => {
@@ -36,6 +39,11 @@ describe('DepartmentListComponent', () => {
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Code');
     expect(ths[2].textContent).toContain('Name');
+  });
+
+  it('calls getDepts()', async()=>{
+    tick();
+    expect(component.getDepts).toHaveBeenCalled();
   });
 
   it('renders deparment', async() => {
@@ -102,31 +110,50 @@ describe('DepartmentListComponent', () => {
       //expect(component.selectedDept).toEqual(expectedDept);
     });
 
-    /*it('should render the collapse button', () => {
-      console.log(document.getElementById('collapse'));
-      expect(document.getElementById('collapse').hidden).toBeFalsy();
-
-    });*/
-
-    /*describe('after pressing collapse button',() => {
-      beforeEach(()=>{
-        const collapseButton=document.getElementById('collapse');
-        collapseButton.click();
+    describe('when \'Cancel\' is pressed', () => {
+      beforeEach(async()=>{
+        const cancelBtn=document.getElementById('cancelBtn');
+        cancelBtn.click();
         fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
+      });
+
+      beforeEach(()=>{
+        spyOn(component, 'cancelNewDept').and.callThrough();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
       });
     
-      it('should not display any departments', () => {
-        /*Note that the department detail is now null
-         * rather than undefined since it was declared
-         * previously.
-        expect(component.selectedDept).toBeNull();
-      });
-      
-      it('should not display the collapse button',() => {
-        expect(document.getElementById('collapse').hidden).toBe(true);
+        /*This spec is pending until we can replace
+         *  this dialog with a Bootstrap modal.*/
+
+        xit('displays the dialog', async()=>{
+          tick();
+          expect(component.cancelNewDept).toHaveBeenCalled();
+        });
+
+});
+
+
+    describe('When \'Create Department\' is pressed', () => {
+      beforeEach(async()=>{
+        const createBtn=document.getElementById('createBtn');
+        createBtn.click();
       });
 
-    });*/
+      beforeEach(()=>{
+        spyOn(component,'createDept');
+      });
+
+      it('should call createDept', async()=>{
+        tick();
+        expect(component.createDept).toHaveBeenCalled();
+      });
+    });
 
   }); 
 
