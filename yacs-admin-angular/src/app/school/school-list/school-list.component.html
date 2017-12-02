@@ -1,6 +1,19 @@
+<div id="newSchool" *ngIf="creatingSchool">
+  <h3>New School</h3>
+  <div id="nameField" class="form-group">
+    <label for="nameInput">Name:</label>
+    <input id="nameInput" class="form-control" placeholder="Name" #newName/>
+  </div>
+
+  <div id="buttonHolder">
+    <button class="btn btn-search" (click)="createSchool(newName.value)" id="createBtn">Create School</button>
+    <button class="btn btn-search" (click)="cancelNewSchool()" id="cancelBtn">Cancel</button>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-xs-6"><h2>All Schools</h2></div>
-  <div class="col-xs-6 new-object-link"><h3><a><i class="fa fa-plus" aria-hidden="true"></i> New School</a></h3></div>
+  <div class="col-xs-6 new-object-link" *ngIf="!creatingSchool"><h3><a (click)="showSchoolForm()" id="newSchoolBtn"><i class="fa fa-plus" aria-hidden="true"></i> New School</a></h3></div>
 </div>
 
 <table class="table">
