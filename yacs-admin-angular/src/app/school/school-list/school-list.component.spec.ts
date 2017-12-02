@@ -22,11 +22,19 @@ describe('SchoolListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SchoolListComponent);
     component = fixture.componentInstance;
+    spyOn(component, 'getSchools');
     fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+    });
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call getSchools',()=>{
+    expect(component.getSchools).toHaveBeenCalled();
   });
 
   it('renders header', () => {
@@ -35,6 +43,8 @@ describe('SchoolListComponent', () => {
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Name');
   });
+
+
 
   it('renders deparment', async() => {
     var tbody = document.getElementsByTagName("tbody");
