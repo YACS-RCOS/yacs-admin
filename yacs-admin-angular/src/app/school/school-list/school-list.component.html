@@ -1,19 +1,27 @@
+<div class="row">
+  <div class="col-xs-6"><h2>All Schools</h2></div>
+  <div class="col-xs-6 new-object-link"><h3><a><i class="fa fa-plus" aria-hidden="true"></i> New School</a></h3></div>
+</div>
+
 <table class="table">
   <thead>
     <tr>
       <th class="id">ID</th>
       <th>Name</th>
       
-      <!--
-      <th></th>
-      <th></th>-->
+      <th></th> 
+      <th>Actions</th>
+      <!--<th></th>-->
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let school of schools">
       <td class="id">{{school.id}}</td>
-      <td>{{school.name}}</td>  
+      <td>{{school.name}}</td> 
+      <td class="code"><a>Details</a></td> 
+      <td class="code"><a>Show Depts.</a></td>
+      <td class="code"><a>Delete</a></td>
     </tr>
 
   </tbody>
