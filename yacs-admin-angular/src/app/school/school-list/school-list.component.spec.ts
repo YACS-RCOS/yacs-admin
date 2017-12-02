@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchoolListComponent } from './school-list.component';
 import {FakeYacsService} from '../../fake-yacs.service';
@@ -7,7 +7,7 @@ import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AppRouterModule} from '../../app-router/app-router.module';
 import {RouterTestingModule} from '@angular/router/testing';
-
+import {School} from '../school';
 describe('SchoolListComponent', () => {
   let component: SchoolListComponent;
   let fixture: ComponentFixture<SchoolListComponent>;
@@ -61,6 +61,26 @@ describe('SchoolListComponent', () => {
       expect(component.schools[i].id).toMatch(data[0].innerHTML);
       expect(component.schools[i].name).toMatch(data[1].innerHTML);
     }
+  });
+
+  describe('when \'Delete\' is pressed', ()=>{
+    let schoolToDelete: School;
+    beforeEach(async()=>{
+      schoolToDelete=component.schools[0];
+      let deleteLink=document.getElementsByClassName('delete')[0] as HTMLElement;
+      deleteLink.click();
+      //Store school before deleting
+      
+    });
+
+    beforeEach(()=>{
+      spyOn(component, 'deleteSchool');
+    });
+
+    it('should call deleteSchool() with the right school', async()=>{
+      tick();
+      expect(component.deleteSchool).toHaveBeenCalledWith(schoolToDelete);
+    });
   });
 
 });

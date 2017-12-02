@@ -16,6 +16,10 @@ export class SchoolListComponent implements OnInit {
       .subscribe(schools => this.schools = schools);
   }
 
+  deleteSchool(school: School): void{
+    this.yacsService.deleteSchool(school)
+      .subscribe(()=>{this.getSchools()});
+  }
   ngOnInit() {
     this.getSchools();
   }
