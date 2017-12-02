@@ -15,6 +15,7 @@ import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angula
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     DepartmentListComponent,
     DepartmentDetailComponent,
     CourseListComponent,
+    SchoolDetailComponent,
   ],
   imports: [
     BrowserModule, FormsModule,

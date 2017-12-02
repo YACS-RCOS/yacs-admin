@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import {APP_BASE_HREF} from '@angular/common';
 import { SchoolListComponent } from './school/school-list/school-list.component';
+import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         AppNavComponent,
         WelcomePageComponent,
         SchoolListComponent,
+        SchoolDetailComponent,
         DepartmentListComponent,
         DepartmentDetailComponent,
         CourseListComponent,
