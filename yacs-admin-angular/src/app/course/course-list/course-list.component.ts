@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../course';
 import {Department} from '../../department/department';
-import {School} from '../../school/school';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {FakeYacsService} from '../../fake-yacs.service';
@@ -17,7 +16,6 @@ export class CourseListComponent implements OnInit {
   courses: Course[];
   selectedDept: Department;
   departments: Department[];
-  schools: School[];
   //ActivatedRoute is used to access parameters
   constructor(private route: ActivatedRoute, private yacsService: FakeYacsService) {}
   
@@ -34,26 +32,30 @@ export class CourseListComponent implements OnInit {
     this.selectedCourse=course;
   }
 
-  ngOnInit() {
-   console.log(this.route.queryParams);
+  getAllDepts(): void{
+    this.yacsService.getDepts()
+      .subscribe(departments => this.departments = departments, error=>console.log(error));
+ 
+
+  }
+
+  setDeptId(): void{
     this.route.queryParams
       .filter(params => params.dept_id)
       .subscribe(params =>{
         this.department_id=Number(params.dept_id);
       });
-    this.yacsService.getDepts()
-      .subscribe(departments => this.departments = departments, error=>console.log(error));
-    this.yacsService.getSchools()
-      .subscribe(schools => this.schools = schools);
- 
-    console.log(this.department_id==null);
+  }
 
-    //Filter the courses if department id is not null
-    
-    if(this.department_id){
-      this.yacsService.getCoursesByDeptID(this.department_id)
+  getAllCourses(): void{
+    this.yacsService.getCourses()
+        .subscribe(courses => this.courses = courses, error=>{this.error=true; console.log(error);});
+  }
+
+  getCoursesInDept(department_id: number): void{
+     this.yacsService.getCoursesByDeptID(department_id)
         .subscribe(courses => this.courses = courses, error=>(console.error(error)));
-      this.yacsService.getDeptByID(this.department_id)
+      this.yacsService.getDeptByID(department_id)
         .subscribe(selectedDept => { 
           
           if(!selectedDept){
@@ -69,15 +71,21 @@ export class CourseListComponent implements OnInit {
           this.selectedDept=null;
         });
 
-      //Do some waiting here
 
-      //Check if this is undefined
+  }
+
+  ngOnInit() {
+
+    this.getAllDepts();
+    //Filter the courses if department id is not null
+    this.setDeptId(); 
+    if(this.department_id){
+        this.getCoursesInDept(this.department_id);
     }
 
     //If null, select all courses
     else{
-      this.yacsService.getCourses()
-        .subscribe(courses => this.courses = courses, error=>{this.error=true; console.log(error);});
+      this.getAllCourses();    
     }
   }
 }
