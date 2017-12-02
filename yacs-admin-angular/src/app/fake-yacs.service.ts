@@ -50,7 +50,30 @@ export class FakeYacsService {
     const url=`${this.schoolsUrl}/${id}`;
     return this.http.get<School>(url);
   }
-  
+ 
+  updateSchool(school: School): Observable<any>{
+    return this.http.put(this.schoolsUrl, school, cudOptions).pipe(
+      tap(_=>console.log(school),
+      catchError(this.handleError<any>('updateSchool')))
+    );
+  }
+
+  addSchool(school: School): Observable<any>{
+    return this.http.post(this.schoolsUrl, school, cudOptions).pipe(
+      tap(_=>console.log(school)),
+      catchError(this.handleError<any>('addSchool'))
+    );
+  }
+
+  deleteSchool(school: School | number): Observable<School>{
+    const id=typeof school === 'number' ? school : school.id;
+    const url = `${this.schoolsUrl}/${id}`;
+    return this.http.delete<School>(url, cudOptions).pipe(
+      tap(_ => console.log('deleted')),
+      catchError(this.handleError<School>('deleteSchool'))
+    );
+  }
+
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
     return of(COURSES.filter(course => course.department_id === dept_id));
 
