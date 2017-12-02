@@ -25,11 +25,14 @@ export class SchoolDetailComponent implements OnInit {
   }
 
   save(name){
-    console.log('new name: '+name);
+    this.yacsService.updateSchool(this.school)
+      .subscribe(()=>{
+        this.router.navigate(['/schools']);
+      });
   }
 
   cancel(name){
-    console.log('cancelling changes');
+    this.goBack();
   }
   goBack(){
     this.location.back();
