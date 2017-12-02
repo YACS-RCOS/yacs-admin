@@ -7,7 +7,10 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-describe('CourseListComponent, no query parameters', () => {
+
+describe('CourseListComponent', ()=>{
+
+describe('no query parameters', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
   let mockParams = [{}];
@@ -74,7 +77,7 @@ describe('CourseListComponent, no query parameters', () => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
 });
-  describe('CourseListComponent, invalid department id is passed', () => {
+  describe('invalid department id is passed', () => {
     
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
@@ -135,8 +138,9 @@ describe('CourseListComponent, no query parameters', () => {
     });
   
   });
-
-  describe('CourseListComponent, valid department id is passed, department has courses', () => {
+  
+  describe('valid department id is passed', ()=>{
+  describe('department has courses', () => {
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
    let mockParams=[{'dept_id': 1}];
@@ -198,7 +202,7 @@ describe('CourseListComponent, no query parameters', () => {
 
   });
 
-describe('CourseListComponent, valid department id, no courses in department', () => {
+describe('no courses in department', () => {
   
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
@@ -258,6 +262,7 @@ describe('CourseListComponent, valid department id, no courses in department', (
     });
 
 });
+});
   // it('renders header', () => {
   //   var header = document.getElementsByClassName("table");
   //   var ths = header[0].getElementsByTagName("th");
@@ -290,4 +295,4 @@ describe('CourseListComponent, valid department id, no courses in department', (
   //     expect(component.courses[i].num).toMatch(data[2].innerHTML);
   //   }
   // });
-
+});
