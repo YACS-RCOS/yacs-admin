@@ -19,7 +19,7 @@
     <tr *ngFor="let school of schools">
       <td class="id">{{school.id}}</td>
       <td>{{school.name}}</td> 
-      <td class="code"><a>Details</a></td> 
+      <td class="code"><a routerLink={{school.id}}>Details</a></td> 
       <td class="code"><a>Show Depts.</a></td>
       <td class="code"><a>Delete</a></td>
     </tr>
