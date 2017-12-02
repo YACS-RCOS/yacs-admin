@@ -27,7 +27,7 @@ export class FakeYacsService {
       .map(schools=>{
         let results=schools.filter(school=> school.name == name);
         return((results.length==1) ? results[0] : null);
-      })
+      });
   }
   getDepts(): Observable<Department[]>{
     return this.http.get<Department[]>(this.deptsUrl);
@@ -39,7 +39,6 @@ export class FakeYacsService {
 
   getDeptByID(id: number): Observable<Department>{
     const url=`${this.deptsUrl}/${id}`;
-    console.log(url);
     return this.http.get<Department>(url);
   }
  
@@ -48,12 +47,45 @@ export class FakeYacsService {
   }
   
   getSchoolByID(id: number): Observable<School>{
-    return of(SCHOOLS.filter(school => school.id === id)[0]);
+    const url=`${this.schoolsUrl}/${id}`;
+    return this.http.get<School>(url);
   }
-  
+ 
+  updateSchool(school: School): Observable<any>{
+    return this.http.put(this.schoolsUrl, school, cudOptions).pipe(
+      tap(_=>console.log(school),
+      catchError(this.handleError<any>('updateSchool')))
+    );
+  }
+
+  addSchool(school: School): Observable<any>{
+    return this.http.post(this.schoolsUrl, school, cudOptions).pipe(
+      tap(_=>console.log(school)),
+      catchError(this.handleError<any>('addSchool'))
+    );
+  }
+
+  deleteSchool(school: School | number): Observable<School>{
+    const id=typeof school === 'number' ? school : school.id;
+    const url = `${this.schoolsUrl}/${id}`;
+    return this.http.delete<School>(url, cudOptions).pipe(
+      tap(_ => console.log('deleted')),
+      catchError(this.handleError<School>('deleteSchool'))
+    );
+  }
+
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
     return of(COURSES.filter(course => course.department_id === dept_id));
 
+  }
+
+
+  getDeptsBySchoolID(school_id: number): Observable<Department[]>{
+  return this.http.get<Department[]>(this.deptsUrl)
+      .map(depts=>{
+        let results=depts.filter(dept=> dept.school_id == school_id);
+        return results;
+      });
   }
 
   updateDepartment(dept: Department): Observable<any> {
