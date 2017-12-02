@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing' ;
 import { CourseListComponent } from './course-list.component';
 import {ActivatedRoute} from '@angular/router';
@@ -7,7 +7,10 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-describe('CourseListComponent, no query parameters', () => {
+
+describe('CourseListComponent', ()=>{
+
+describe('no query parameters', () => {
   let component: CourseListComponent;
   let fixture: ComponentFixture<CourseListComponent>;
   let mockParams = [{}];
@@ -29,14 +32,38 @@ describe('CourseListComponent, no query parameters', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseListComponent);
     component = fixture.componentInstance;
+    
+    spyOn(component, 'getAllDepts');
+    
+    
     fixture.detectChanges();
+    
+
     fixture.whenStable().then(()=>{
       fixture.detectChanges();
     });
+    
+    spyOn(component, 'setDeptId');
+  
+    spyOn(component, 'getAllCourses');
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get departments', () => {
+    expect(component.getAllDepts).toHaveBeenCalled();
+  });
+
+  it('should get all courses', async()=>{
+    tick();
+    expect(component.getAllCourses).toHaveBeenCalled();
+  });
+
+  it('should attempt to retrieve the department id', async()=>{
+    tick();
+    expect(component.setDeptId).toHaveBeenCalled();
   });
 
   
@@ -50,7 +77,7 @@ describe('CourseListComponent, no query parameters', () => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
 });
-  describe('CourseListComponent, invalid department id is passed', () => {
+  describe('invalid department id is passed', () => {
     
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
@@ -73,19 +100,47 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(CourseListComponent);
       component = fixture.componentInstance;
+      
+      spyOn(component, 'getAllDepts');
+      
       fixture.detectChanges(); 
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
       });
+
+      spyOn(component, 'getCoursesInDept');
+      spyOn(component, 'setDeptId');
+    });
+
+
+    it('should set error to true',()=>{
+      expect(component.error).toBe(true);
     });
 
     it('should display an error message', async() => {
+      tick();
       var errorMessage=document.getElementById('errorMsg');
       expect(errorMessage).toBeTruthy();
     });
-  });
+  
+    it('should get departments', () => {
+      expect(component.getAllDepts).toHaveBeenCalled();
+    });
+    
+    it('should attempt to retrieve the department id', async()=>{
+      tick();
+      expect(component.setDeptId).toHaveBeenCalled();
+    });
 
-  describe('CourseListComponent, valid department id is passed, department has courses', () => {
+    it('should attempt to get courses', async()=>{
+      tick();
+      expect(component.getCoursesInDept).toHaveBeenCalledWith(mockParams['dept_id']);
+    });
+  
+  });
+  
+  describe('valid department id is passed', ()=>{
+  describe('department has courses', () => {
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
    let mockParams=[{'dept_id': 1}];
@@ -107,10 +162,13 @@ describe('CourseListComponent, no query parameters', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(CourseListComponent);
       component = fixture.componentInstance;
+      spyOn(component, 'getAllDepts');
       fixture.detectChanges(); 
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
       });
+      spyOn(component, 'getCoursesInDept');
+      spyOn(component, 'setDeptId');
     });
     
     it('should render courses in the specified department', async() => {
@@ -126,9 +184,25 @@ describe('CourseListComponent, no query parameters', () => {
     it('should display the table',() => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
+
+    it('should get departments', () => {
+      expect(component.getAllDepts).toHaveBeenCalled();
+    });
+    
+    it('should attempt to retrieve the department id', async()=>{
+      tick();
+      expect(component.setDeptId).toHaveBeenCalled();
+    });
+
+    it('should attempt to get courses', async()=>{
+      tick();
+      expect(component.getCoursesInDept).toHaveBeenCalledWith(mockParams['dept_id']);
+    });
+
+
   });
 
-describe('CourseListComponent, valid department id, no courses in department', () => {
+describe('no courses in department', () => {
   
    let component: CourseListComponent;
    let fixture: ComponentFixture<CourseListComponent>;     
@@ -151,13 +225,17 @@ describe('CourseListComponent, valid department id, no courses in department', (
     beforeEach(() => {
       fixture = TestBed.createComponent(CourseListComponent);
       component = fixture.componentInstance;
+      spyOn(component, 'getAllDepts');
       fixture.detectChanges(); 
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
       });
+      spyOn(component, 'getCoursesInDept');
+      spyOn(component, 'setDeptId');
     });
 
     it('should render correct header', async() => {
+      tick();
       var header=document.getElementsByTagName('h2')[0];
       var pattern = 'Courses in the '+component.selectedDept.name+' Department';
       expect(header.textContent).toMatch(pattern);
@@ -168,6 +246,22 @@ describe('CourseListComponent, valid department id, no courses in department', (
     console.log(pageText);
     expect(pageText.textContent).toMatch('There are currently no courses under this department');
   });
+
+    it('should get departments', () => {
+      expect(component.getAllDepts).toHaveBeenCalled();
+    });
+    
+    it('should attempt to retrieve the department id', async()=>{
+      tick();
+      expect(component.setDeptId).toHaveBeenCalled();
+    });
+
+    it('should attempt to get courses', async()=>{
+      tick();
+      expect(component.getCoursesInDept).toHaveBeenCalledWith(mockParams['dept_id']);
+    });
+
+});
 });
   // it('renders header', () => {
   //   var header = document.getElementsByClassName("table");
@@ -201,4 +295,4 @@ describe('CourseListComponent, valid department id, no courses in department', (
   //     expect(component.courses[i].num).toMatch(data[2].innerHTML);
   //   }
   // });
-
+});

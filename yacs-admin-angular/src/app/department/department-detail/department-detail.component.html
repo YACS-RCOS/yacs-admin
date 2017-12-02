@@ -14,15 +14,15 @@
 
   <div id="schoolField" class="form-group form-inline">
     <label>School: </label>
-    <select class="form-control" name="dept.school_id" [(ngModel)]="dept.school_id" #newId >
+    <select class="form-control" id="schools-dropdown" name="dept.school_id" [(ngModel)]="dept.school_id" #newId >
       <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
     </select>
   </div>
 
   
   <div id="buttonHolder">
-    <button class="btn btn-search" (click)="save(newCode, newName, newId)">Save Changes</button>
-    <button class="btn btn-search" (click)="cancel(newCode, newName, newId)" >Cancel</button>
+    <button class="btn btn-search" id="save" (click)="save(newCode, newName, newId)">Save Changes</button>
+    <button class="btn btn-search" id="cancel" (click)="cancel(newCode, newName, newId)" >Cancel</button>
   </div>
   
   <div id="buttonHolder">
