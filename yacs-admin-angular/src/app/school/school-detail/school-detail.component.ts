@@ -24,4 +24,15 @@ export class SchoolDetailComponent implements OnInit {
     this.getSchool(id);
   }
 
+  save(name){
+    console.log('new name: '+name);
+  }
+
+  cancel(name){
+    console.log('cancelling changes');
+  }
+  goBack(){
+    this.location.back();
+  }
+
 }
