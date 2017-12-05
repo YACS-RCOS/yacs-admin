@@ -9,6 +9,7 @@ import {FakeYacsService} from '../../fake-yacs.service';
 })
 export class SchoolListComponent implements OnInit {
   schools: School[];
+  creatingSchool: boolean;
   constructor(private yacsService: FakeYacsService) { }
 
   getSchools(): void{
@@ -16,7 +17,31 @@ export class SchoolListComponent implements OnInit {
       .subscribe(schools => this.schools = schools);
   }
 
+  deleteSchool(school: School): void{
+    this.yacsService.deleteSchool(school)
+      .subscribe(()=>{this.getSchools()});
+  }
+
+  showSchoolForm(): void{
+    this.creatingSchool=true;
+  }
+
+  cancelNewSchool(): void{
+    this.creatingSchool=false;
+  }
+
+  createSchool(name): void{
+    let newSchool: School;
+    newSchool=new School((this.schools.length + 1), name, []);
+    this.yacsService.addSchool(newSchool)
+      .subscribe(()=>{
+        this.getSchools();
+        this.creatingSchool=false;
+      });
+  }
+
   ngOnInit() {
+    this.creatingSchool=false;
     this.getSchools();
   }
 

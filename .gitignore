@@ -85,4 +85,4 @@ yacs-admin-angular/e2e/*.map
 yacs-admin-angular/Thumbs.db
 
 yacs-admin-angular/.gitignore
-*.*.swp
+*.*.sw*

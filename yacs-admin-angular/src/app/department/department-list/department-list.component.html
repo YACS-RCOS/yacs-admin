@@ -1,7 +1,41 @@
+<div id="newDept" *ngIf="creatingDept">
+  <h3>New Department</h3>
+  <div id = "codeField" class="form-group form-inline">
+    <label for = "codeInput">Code: &nbsp;</label>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" placeholder="CODE" #newCode/>
+  </div>
 
-<department-detail [dept]="selectedDept"></department-detail>
-<button id="collapse" [hidden]="!selectedDept" class="btn btn-search" (click)="onSelect(null)">Collapse</button>
-<h2>All Departments</h2>
+  <div id = "nameField" class="form-group form-inline"    >
+    <label for="nameInput">Name: </label>
+    <input id ="nameInput" class="form-control" placeholder="Name" #newName/>
+
+  </div>
+
+  <div id="schoolField" class="form-group form-inline">
+    <label>School: </label>
+    <select class="form-control" #newId>
+      <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
+    </select>
+  
+  </div>
+
+  <div id="buttonHolder">
+    <button class="btn btn-search" (click)="createDept(newCode.value, newName.value, newId.value)" id="createBtn">Create Department </button>
+    <button class="btn btn-search" (click)="cancelNewDept()" id="cancelBtn">Cancel</button>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-6"><h2>All Departments</h2></div>
+  <div class="col-xs-6 new-object-link"><h3><a *ngIf="!creatingDept" (click)="showDeptForm()" id="newDeptBtn"> <i class="fa fa-plus" aria-hidden="true"></i>  New Department</a></h3></div>
+</div>
+<!--<department-detail [dept]="selectedDept"></department-detail>
+
+
+  
+  <button id="collapse" [hidden]="!selectedDept" class="btn btn-search" (click)="onSelect(null)">Collapse</button>
+-->
 
 <table class="table">
   <thead>
@@ -11,8 +45,7 @@
 
       <th>Name</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <th class="code"></th>
-      <th class="code"></th>
+     <th>Actions</th>
     </tr>
   </thead>
 
@@ -22,7 +55,8 @@
       <td class="code">{{dept.code}}</td>
       <td>{{dept.name}}</td>
       <td class="code" style="text-align: center !important;"><a routerLink="{{dept.id}}">Details</a></td>
-      <td class="code"><a routerLink="/courses" queryParams="{dept_id: {{dept.id}} }">Show Courses</a></td>
+      <td class="code"  style="text-align: center !important;"><a routerLink="/courses" [queryParams]="{dept_id: dept.id }">Show Courses</a></td>
+      <td class="code"  style="text-align: center !important;"><a class="delete" (click)="deleteDept(dept)">Delete</a></td>
     </tr>
 
   </tbody>

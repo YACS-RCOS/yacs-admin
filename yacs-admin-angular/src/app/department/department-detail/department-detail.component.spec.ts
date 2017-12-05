@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentDetailComponent } from './department-detail.component';
 import {Department} from '../department';
@@ -6,17 +6,19 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {HttpClientModule} from '@angular/common/http';
-
-
+import {RouterTestingModule} from '@angular/router/testing';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 describe('DepartmentDetailComponent', () => {
   let component: DepartmentDetailComponent;
   let fixture: ComponentFixture<DepartmentDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentDetailComponent ],
-      providers: [FakeYacsService]
+      providers: [FakeYacsService, {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
     })
     .compileComponents();
   }));
@@ -25,6 +27,9 @@ describe('DepartmentDetailComponent', () => {
     fixture = TestBed.createComponent(DepartmentDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+    });
   });
 
   it('should create', () => {
@@ -32,13 +37,20 @@ describe('DepartmentDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
+
+/*
   it('should not render when department not passed', () => {
     expect(document.getElementById('deptDetail')).toBeNull();
-  });
+  });*/
   describe('when department passed', ()=>{
     beforeEach(() => {
       component.dept=new Department(1,'CPYP','Copying and Pasting', 1);
       fixture.detectChanges();
+    fixture.whenStable().then(()=>{
+      fixture.detectChanges();
+    });
+ 
+    
     }); 
     it('should render',() => {
       expect(document.getElementById('deptDetail')).toBeTruthy();
@@ -61,8 +73,8 @@ describe('DepartmentDetailComponent', () => {
     });
     
     it('should render school dropdown', ()=> {
-      const dropdown = document.getElementsByTagName('select');
-      expect(dropdown[0]).toBeTruthy();
+      const dropdown = document.getElementById('schools-dropdown');
+      expect(dropdown).toBeTruthy();
     });
     /* Ideally, we want to change the code
      * to only update the values when a form
@@ -74,6 +86,23 @@ describe('DepartmentDetailComponent', () => {
     it('should update department name when triggered', () => {
       expect(1).toEqual(1);
     });*/
+
+    describe('when save button pressed', ()=>{
+      beforeEach(async()=>{
+        let saveBtn=document.getElementById('save');
+        saveBtn.click();
+      });
+
+      beforeEach(()=>{
+        spyOn(component, 'save');
+      });
+
+      it('should call save()', async()=>{
+        tick();
+        expect(component.save).toHaveBeenCalled();``
+      });
+
+    });
   });
   
 });

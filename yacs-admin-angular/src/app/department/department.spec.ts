@@ -25,9 +25,9 @@ describe('Department', () => {
 
   });
 
-  it('can clone', () => {
+/*  it('can clone', () => {
     const dept = new Department(1,'CPYP','Copying and Pasting',1);
     const deptClone=dept.clone();
     expect(deptClone).toEqual(dept);
-  });
+  });*/
 });

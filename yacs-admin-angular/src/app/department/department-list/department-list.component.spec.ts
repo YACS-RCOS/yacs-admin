@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
@@ -6,14 +6,14 @@ import {FakeYacsService} from '../../fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-
+import {RouterTestingModule} from '@angular/router/testing';
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true})],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [FakeYacsService]
     })
@@ -21,9 +21,12 @@ describe('DepartmentListComponent', () => {
   }));
 
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(DepartmentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    spyOn(component, 'getDepts');
+    spyOn(component, 'getSchools');
   });
 
   it('should create', () => {
@@ -36,6 +39,11 @@ describe('DepartmentListComponent', () => {
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Code');
     expect(ths[2].textContent).toContain('Name');
+  });
+
+  it('calls getDepts()', async()=>{
+    tick();
+    expect(component.getDepts).toHaveBeenCalled();
   });
 
   it('renders deparment', async() => {
@@ -63,28 +71,26 @@ describe('DepartmentListComponent', () => {
     }
   });
   
-  describe('before selecting a department', () => {
-    it('should not display any departments', () => {
-      expect(component.selectedDept).toBeUndefined();
+  describe('before clicking \'New Department\'', () => {
+
+
+    it('should not display the form', () => {
+      expect(document.getElementById('newDept')).toBeNull();
     });
-    it('should not display the collapse button',() => {
-      expect(document.getElementById('collapse').hidden).toBe(true);
+
+    it('should display \'New Department\'',() => {
+      expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
     });
   });
-
-  describe('after selecting a department', () => {
-    var expectedDept;
+  describe('after clicking \'New Department\'', () => {
     beforeEach(async()=>{
-      expectedDept = component.departments[1]; 
-      const tbody = document.getElementsByTagName("tbody");
-      const rows = tbody[0].getElementsByTagName('tr');
-      const tr = rows[1];
-      tr.click();
+      const newDeptBtn=document.getElementById('newDeptBtn');
+      newDeptBtn.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-    
+       
     });
 
     beforeEach(()=>{
@@ -92,36 +98,61 @@ describe('DepartmentListComponent', () => {
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-    })
-
-    it('should render the department details', async() => {
-      expect(component.selectedDept).toEqual(expectedDept);
     });
 
-    /*it('should render the collapse button', () => {
-      console.log(document.getElementById('collapse'));
-      expect(document.getElementById('collapse').hidden).toBeFalsy();
+    it('should set creatingDept to true', async() => {
+      tick();
+      expect(component.creatingDept).toEqual(true);
+    });
+    it('should render the form', async() => {
+      tick(); 
+      expect(document.getElementById('newDept')).toBeTruthy();
+      //expect(component.selectedDept).toEqual(expectedDept);
+    });
 
-    });*/
-
-    describe('after pressing collapse button',() => {
-      beforeEach(()=>{
-        const collapseButton=document.getElementById('collapse');
-        collapseButton.click();
+    describe('when \'Cancel\' is pressed', () => {
+      beforeEach(async()=>{
+        const cancelBtn=document.getElementById('cancelBtn');
+        cancelBtn.click();
         fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
+      });
+
+      beforeEach(()=>{
+        spyOn(component, 'cancelNewDept').and.callThrough();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
       });
     
-      it('should not display any departments', () => {
-        /*Note that the department detail is now null
-         * rather than undefined since it was declared
-         * previously.*/
-        expect(component.selectedDept).toBeNull();
-      });
-      
-      it('should not display the collapse button',() => {
-        expect(document.getElementById('collapse').hidden).toBe(true);
+        /*This spec is pending until we can replace
+         *  this dialog with a Bootstrap modal.*/
+
+        xit('displays the dialog', async()=>{
+          tick();
+          expect(component.cancelNewDept).toHaveBeenCalled();
+        });
+
+});
+
+
+    describe('When \'Create Department\' is pressed', () => {
+      beforeEach(async()=>{
+        const createBtn=document.getElementById('createBtn');
+        createBtn.click();
       });
 
+      beforeEach(()=>{
+        spyOn(component,'createDept');
+      });
+
+      it('should call createDept', async()=>{
+        tick();
+        expect(component.createDept).toHaveBeenCalled();
+      });
     });
 
   }); 

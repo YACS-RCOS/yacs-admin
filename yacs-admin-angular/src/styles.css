@@ -35,10 +35,6 @@ td{
 .code{
   width: 15%;
 }
-
-.name{
-  width: 50% !important;
-}
 .sidelink a {
   color: #fff !important;
   display: inline-block;
@@ -106,7 +102,7 @@ height: 40px;
 
 .table tbody{
   overflow: auto;
-  height: 200px;
+  max-height: 400px;
 }
 .table table{
 
@@ -140,4 +136,8 @@ body{
   padding-top: 0px !important;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
   font-weight: 300 !important;
+}
+
+.new-object-link{
+  text-align: right;
 }
