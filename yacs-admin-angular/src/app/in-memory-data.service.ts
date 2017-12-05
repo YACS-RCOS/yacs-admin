@@ -1,10 +1,14 @@
-import { InMemoryDbService} from 'angular-in-memory-web-api';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb(){
+    const sections= [
+      {id: 1, course_id: 1, name: '01', crn: 87654, instructors: ["Goldschmidt", "Krishnamoorthy"],
+      seats: 10, seats_taken: 5, conflicts: [1, 2, 3], num_periods: 2},
+    ];
     const courses = [
-      {id: 1, name: 'Stars, Galaxies and the Cosmos', num: '1960', department_code: 'ASTR', 
+      {id: 1, name: 'Stars, Galaxies and the Cosmos', num: '1960', department_code: 'ASTR',
         department_id: 1, min_credits: 4, max_credits: 4,
         description: 'Check back soon'},
       {id: 2, name: 'Special Projects in Astronomy', num: '2940', department_code: 'ASTR',
@@ -35,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 3, name: 'School of Science', departments: departments},
       {id: 4, name: 'School of Architecture',departments:[]}
     ];
-    
-    return {courses, departments, schools};
+
+    return {courses, departments, schools, sections};
   }
 }

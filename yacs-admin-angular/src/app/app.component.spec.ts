@@ -10,9 +10,11 @@ import { SchoolDetailComponent } from './school/school-detail/school-detail.comp
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
+import { SectionListComponent } from './section/section-list/section-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './in-memory-data.service';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,9 +27,10 @@ describe('AppComponent', () => {
         DepartmentListComponent,
         DepartmentDetailComponent,
         CourseListComponent,
+        SectionListComponent
       ],
       imports: [
-        FormsModule, HttpClientModule, 
+        FormsModule, HttpClientModule,
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService), AppRouterModule
       ],
       providers: [

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {School} from './school/school';
 import { Department } from './department/department';
 import { Course } from './course/course';
-import {SCHOOLS, DEPTS, COURSES} from './mock-data'
+import {Section} from './section/section';
+import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -37,20 +38,24 @@ export class FakeYacsService {
     return of(COURSES);
   }
 
+  getSections(): Observable<Section[]>{
+    return of(SECTIONS);
+  }
+
   getDeptByID(id: number): Observable<Department>{
     const url=`${this.deptsUrl}/${id}`;
     return this.http.get<Department>(url);
   }
- 
+
   getCourseByID(id: number): Observable<Course>{
     return of(COURSES.filter(course => course.id === id)[0]);
   }
-  
+
   getSchoolByID(id: number): Observable<School>{
     const url=`${this.schoolsUrl}/${id}`;
     return this.http.get<School>(url);
   }
- 
+
   updateSchool(school: School): Observable<any>{
     return this.http.put(this.schoolsUrl, school, cudOptions).pipe(
       tap(_=>console.log(school),
