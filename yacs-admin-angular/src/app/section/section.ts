@@ -16,8 +16,7 @@ export class Section {
   //periods: Period[];
   num_periods: number;
 
-  constructor(id, course_id, name, crn, instructors, seats, seats_taken, conflicts, periods,
-     num_periods, course_name, course_number, dep_code) {
+  constructor(id, course_id, name, crn, instructors, seats, seats_taken, conflicts, num_periods) {
     this.id = id;
     this.course_id = course_id;
     this.name = name;
