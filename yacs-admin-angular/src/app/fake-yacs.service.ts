@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { School } from './school/school';
+import {School} from './school/school';
 import { Department } from './department/department';
 import { Course } from './course/course';
-import { Section } from './section/section';
+import {Section} from './section/section';
 import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -17,13 +17,10 @@ export class FakeYacsService {
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getSchools(): Observable<School[]>{
-    return this.http.get(this.schoolsUrl)
-            //.do(data => console.log(data))
-            .map(res=>res.json())
-            .catch(this.handleError);
+    return this.http.get<School[]>(this.schoolsUrl);
   }
 
   getSchoolByName(name: string): Observable<School>{
@@ -34,9 +31,7 @@ export class FakeYacsService {
       });
   }
   getDepts(): Observable<Department[]>{
-    return this.http.get(this.deptsUrl)
-            .map(res=> res.json())
-            .catch(this.handleError);
+    return this.http.get<Department[]>(this.deptsUrl);
   }
 
   getCourses(): Observable<Course[]>{
