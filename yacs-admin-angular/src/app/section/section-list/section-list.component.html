@@ -3,9 +3,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="id">ID</th>
+      <th class="id">Name</th>
       <th class="code">CRN</th>
-
       <th class="code">Instructors</th>
       <th class="code">Seats</th>
     </tr>
@@ -13,10 +12,10 @@
 
   <tbody>
     <tr *ngFor="let section of sections">
-      <td class="section-name">{{section.name}}</td>
-      <td class="section-crn">{{section.crn}}</td>
-      <td class="section-instructors">{{ section.instructors.join(', ') }}</td>
-      <td class="section-seats-available">
+      <td class="id section-name">{{section.name}}</td>
+      <td class="code section-crn">{{section.crn}}</td>
+      <td class="code section-instructors">{{ section.instructors.join(', ') }}</td>
+      <td class="code section-seats-available">
         {{ section.seats-section.seats_taken }} / {{ section.seats }} seats
       </td>
 
