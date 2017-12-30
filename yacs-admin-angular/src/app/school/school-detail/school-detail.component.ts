@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {School} from '../school';
-import {FakeYacsService} from '../../services/fake-yacs.service';
+import {YacsService} from '../../services/yacs.service';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 @Component({
@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class SchoolDetailComponent implements OnInit {
 
   @Input () school: School;
-  constructor(private yacsService: FakeYacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
+  constructor(private yacsService: YacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
   getSchool(id: number){
     this.yacsService.getSchoolByID(id)

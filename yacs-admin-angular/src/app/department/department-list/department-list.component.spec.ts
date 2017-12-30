@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {RouterTestingModule} from '@angular/router/testing';
+import {YacsService} from '../../services/yacs.service';
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
@@ -15,7 +16,7 @@ describe('DepartmentListComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
-      providers: [FakeYacsService]
+      providers: [{provide: YacsService, useClass: FakeYacsService}]
     })
     .compileComponents();
   }));

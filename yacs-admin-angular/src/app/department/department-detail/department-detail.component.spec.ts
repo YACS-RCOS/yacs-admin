@@ -10,6 +10,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {YacsService} from '../../services/yacs.service';
 describe('DepartmentDetailComponent', () => {
   let component: DepartmentDetailComponent;
   let fixture: ComponentFixture<DepartmentDetailComponent>;
@@ -18,7 +19,8 @@ describe('DepartmentDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentDetailComponent ],
-      providers: [FakeYacsService, {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}, 
+        {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
     })
     .compileComponents();
   }));

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FakeYacsService } from '../../services/fake-yacs.service';
+import { YacsService } from '../../services/yacs.service';
 import { Section } from '../section';
 import { Period } from '../period';
 
@@ -12,7 +12,7 @@ const SHORT_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 })
 export class SectionListComponent implements OnInit{
   sections: Section[];
-  constructor(private yacsService: FakeYacsService) { }
+  constructor(private yacsService: YacsService) { }
 
   getSections(): void{
     this.yacsService.getSections()

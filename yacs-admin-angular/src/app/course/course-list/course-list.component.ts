@@ -3,7 +3,7 @@ import { Course } from '../course';
 import {Department} from '../../department/department';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
-import {FakeYacsService} from '../../services/fake-yacs.service';
+import {YacsService} from '../../services/yacs.service';
 
 @Component({
     selector: 'course-list',
@@ -17,7 +17,7 @@ export class CourseListComponent implements OnInit {
   selectedDept: Department;
   departments: Department[];
   //ActivatedRoute is used to access parameters
-  constructor(private route: ActivatedRoute, private yacsService: FakeYacsService) {}
+  constructor(private route: ActivatedRoute, private yacsService: YacsService) {}
   
   /*Modified from yacs-web, "credit(s)" will 
    * not display because credits is column title*/

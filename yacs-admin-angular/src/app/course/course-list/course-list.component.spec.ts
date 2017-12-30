@@ -7,7 +7,7 @@ import {FakeYacsService} from '../../services/fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-
+import {YacsService} from '../../services/yacs.service';
 describe('CourseListComponent', ()=>{
 
 describe('no query parameters', () => {
@@ -19,7 +19,7 @@ describe('no query parameters', () => {
       imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
       declarations: [ CourseListComponent ],
       providers: [
-        FakeYacsService,
+        {provide: YacsService, useClass: FakeYacsService},
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -90,7 +90,7 @@ describe('no query parameters', () => {
       imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
       declarations: [ CourseListComponent ],
       providers: [
-        FakeYacsService,
+        {provide: YacsService, useClass: FakeYacsService},
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -152,7 +152,7 @@ describe('no query parameters', () => {
       imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})] ,
       declarations: [ CourseListComponent ],
       providers: [
-        FakeYacsService,
+         {provide: YacsService, useClass: FakeYacsService},
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }
@@ -215,7 +215,8 @@ describe('no courses in department', () => {
       imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
       declarations: [ CourseListComponent ],
       providers: [
-        FakeYacsService,
+        {provide: YacsService, useClass: FakeYacsService},
+
         {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
         }

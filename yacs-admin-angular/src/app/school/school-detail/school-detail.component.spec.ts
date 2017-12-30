@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {School} from '../school';
 import { SchoolDetailComponent } from './school-detail.component';
-
+import {YacsService} from '../../services/yacs.service';
 describe('SchoolDetailComponent', () => {
   let component: SchoolDetailComponent;
   let fixture: ComponentFixture<SchoolDetailComponent>;
@@ -19,7 +19,8 @@ describe('SchoolDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ SchoolDetailComponent ],
-      providers: [FakeYacsService, {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}
+        , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
     })
     .compileComponents();
   }));
