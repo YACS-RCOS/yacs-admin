@@ -3,7 +3,7 @@ import { Course } from '../course';
 import {Department} from '../../department/department';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 
 @Component({
     selector: 'course-list',
@@ -85,7 +85,8 @@ export class CourseListComponent implements OnInit {
 
     //If null, select all courses
     else{
-      this.getAllCourses();    
+      this.getAllCourses();   
+      //console.log(this.courses);
     }
   }
 }

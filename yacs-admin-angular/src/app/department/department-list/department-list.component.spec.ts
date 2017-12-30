@@ -2,9 +2,9 @@ import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core
 import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {RouterTestingModule} from '@angular/router/testing';
 describe('DepartmentListComponent', () => {

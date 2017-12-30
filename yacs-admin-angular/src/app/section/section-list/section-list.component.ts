@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FakeYacsService } from '../../fake-yacs.service';
+import { FakeYacsService } from '../../services/fake-yacs.service';
 import { Section } from '../section';
 import { Period } from '../period';
 

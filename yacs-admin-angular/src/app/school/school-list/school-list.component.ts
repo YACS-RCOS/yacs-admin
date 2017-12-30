@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from '../school';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 
 @Component({
   selector: 'school-list',

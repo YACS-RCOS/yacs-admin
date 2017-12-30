@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {School} from '../school';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 @Component({

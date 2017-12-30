@@ -3,9 +3,9 @@ import { RouterTestingModule } from '@angular/router/testing' ;
 import { CourseListComponent } from './course-list.component';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 describe('CourseListComponent', ()=>{
@@ -16,7 +16,7 @@ describe('no query parameters', () => {
   let mockParams = [{}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100} )],
+      imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
       declarations: [ CourseListComponent ],
       providers: [
         FakeYacsService,
@@ -49,6 +49,7 @@ describe('no query parameters', () => {
   });
 
   it('should create', () => {
+    console.log(component.courses);
     expect(component).toBeTruthy();
   });
 

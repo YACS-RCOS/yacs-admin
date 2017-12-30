@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {School} from './school/school';
-import { Department } from './department/department';
-import { Course } from './course/course';
-import {Section} from './section/section';
-import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
+import {School} from '../school/school';
+import { Department } from '../department/department';
+import { Course } from '../course/course';
+import {Section} from '../section/section';
+import {SCHOOLS, DEPTS, COURSES, SECTIONS} from '../mock-data'
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -35,6 +35,8 @@ export class FakeYacsService {
   }
 
   getCourses(): Observable<Course[]>{
+    
+    //return this.http.get<Course[]>(this.coursesUrl);
     return of(COURSES);
   }
 
@@ -121,6 +123,7 @@ export class FakeYacsService {
       //Borrowed error message from yacs-web
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
       console.error(errorMessage);
+      //return Observable.throw(errorMessage);
       return of(result as T);
     };
   }

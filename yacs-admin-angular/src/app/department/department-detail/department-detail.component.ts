@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Department} from '../department';
 import {ActivatedRoute, Router} from '@angular/router';
 import {School} from '../../school/school';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {Location} from '@angular/common';
 
 @Component({

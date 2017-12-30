@@ -10,10 +10,10 @@ import { DepartmentListComponent } from './department/department-list/department
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { SectionListComponent } from './section/section-list/section-list.component';
-import { FakeYacsService } from './fake-yacs.service';
+import { FakeYacsService } from './services/fake-yacs.service';
 //YACS API uses older http module
 import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
