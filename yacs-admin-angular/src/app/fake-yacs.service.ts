@@ -118,7 +118,9 @@ export class FakeYacsService {
 
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
-      console.error(error);
+      //Borrowed error message from yacs-web
+      let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
+      console.error(errorMessage);
       return of(result as T);
     };
   }
