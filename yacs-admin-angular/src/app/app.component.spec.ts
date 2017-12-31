@@ -13,7 +13,7 @@ import { CourseListComponent } from './course/course-list/course-list.component'
 import { SectionListComponent } from './section/section-list/section-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {InMemoryDataService} from './in-memory-data.service';
+import {InMemoryDataService} from './services/in-memory-data.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -30,8 +30,8 @@ describe('AppComponent', () => {
         SectionListComponent
       ],
       imports: [
-        FormsModule, HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService), AppRouterModule
+        FormsModule, HttpClientModule,AppRouterModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}), 
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}

@@ -1,13 +1,14 @@
 import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SchoolListComponent } from './school-list.component';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AppRouterModule} from '../../app-router/app-router.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {School} from '../school';
+import {YacsService} from '../../services/yacs.service';
 describe('SchoolListComponent', () => {
   let component: SchoolListComponent;
   let fixture: ComponentFixture<SchoolListComponent>;
@@ -16,7 +17,7 @@ describe('SchoolListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ SchoolListComponent ],
       imports: [HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
-      providers: [FakeYacsService]
+      providers: [{provide: YacsService, useClass: FakeYacsService}]
     })
     .compileComponents();
   }));

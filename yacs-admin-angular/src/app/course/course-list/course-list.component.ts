@@ -3,8 +3,8 @@ import { Course } from '../course';
 import {Department} from '../../department/department';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
-import {FakeYacsService} from '../../fake-yacs.service';
-
+import {YacsService} from '../../services/yacs.service';
+import {environment} from '../../../environments/environment';
 @Component({
     selector: 'course-list',
     templateUrl: './course-list.component.html',
@@ -17,7 +17,7 @@ export class CourseListComponent implements OnInit {
   selectedDept: Department;
   departments: Department[];
   //ActivatedRoute is used to access parameters
-  constructor(private route: ActivatedRoute, private yacsService: FakeYacsService) {}
+  constructor(private route: ActivatedRoute, private yacsService: YacsService) {}
   
   /*Modified from yacs-web, "credit(s)" will 
    * not display because credits is column title*/
@@ -27,6 +27,11 @@ export class CourseListComponent implements OnInit {
     }
     return String(course.min_credits);
   }
+
+  public getNumber(course: Course): string{
+      return course.number;
+  }
+
   selectedCourse: Course;
   onSelect(course: Course): void{
     this.selectedCourse=course;
@@ -39,6 +44,13 @@ export class CourseListComponent implements OnInit {
 
   }
 
+  public getCourseDeptCode(course: Course): string{
+    if(environment.useRealData){
+    let department = this.departments.filter(dept =>dept.id == course.department_id)[0];
+    return department.code;
+    }
+    return course.department_code;
+  }
   setDeptId(): void{
     this.route.queryParams
       .filter(params => params.dept_id)
@@ -85,7 +97,8 @@ export class CourseListComponent implements OnInit {
 
     //If null, select all courses
     else{
-      this.getAllCourses();    
+      this.getAllCourses();   
+      //console.log(this.courses);
     }
   }
 }

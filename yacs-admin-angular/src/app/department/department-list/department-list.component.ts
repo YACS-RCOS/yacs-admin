@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from '../department';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {YacsService} from '../../services/yacs.service';
 import {School} from '../../school/school';
 
 @Component({
@@ -15,7 +15,7 @@ export class DepartmentListComponent implements OnInit {
   creatingDept: boolean;
   departments: Department[];
   schools: School[];
-  constructor(private yacsService: FakeYacsService) { }
+  constructor(private yacsService: YacsService) { }
   /*selectedDept: Department;
   onSelect(dept: Department): void{
     let newDept = new Department(dept.id,dept.code, dept.name, dept.school_id);

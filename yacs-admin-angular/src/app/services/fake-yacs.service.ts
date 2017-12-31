@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {School} from './school/school';
-import { Department } from './department/department';
-import { Course } from './course/course';
-import {Section} from './section/section';
-import {SCHOOLS, DEPTS, COURSES, SECTIONS} from './mock-data'
+import {School} from '../school/school';
+import { Department } from '../department/department';
+import { Course } from '../course/course';
+import {Section} from '../section/section';
+import {SCHOOLS, DEPTS, COURSES, SECTIONS} from '../mock-data'
 import { Observable } from 'rxjs/Observable';
+import {YacsService} from './yacs.service';
 import { of } from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
@@ -12,12 +13,13 @@ import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
 @Injectable()
-export class FakeYacsService {
+export class FakeYacsService implements YacsService{
 
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getSchools(): Observable<School[]>{
     return this.http.get<School[]>(this.schoolsUrl);
@@ -35,6 +37,8 @@ export class FakeYacsService {
   }
 
   getCourses(): Observable<Course[]>{
+    
+    //return this.http.get<Course[]>(this.coursesUrl);
     return of(COURSES);
   }
 
@@ -121,6 +125,7 @@ export class FakeYacsService {
       //Borrowed error message from yacs-web
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
       console.error(errorMessage);
+      //return Observable.throw(errorMessage);
       return of(result as T);
     };
   }

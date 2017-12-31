@@ -1,7 +1,7 @@
 import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import {FakeYacsService} from '../../fake-yacs.service';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {School} from '../school';
 import { SchoolDetailComponent } from './school-detail.component';
-
+import {YacsService} from '../../services/yacs.service';
 describe('SchoolDetailComponent', () => {
   let component: SchoolDetailComponent;
   let fixture: ComponentFixture<SchoolDetailComponent>;
@@ -19,7 +19,8 @@ describe('SchoolDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ SchoolDetailComponent ],
-      providers: [FakeYacsService, {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}
+        , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
     })
     .compileComponents();
   }));

@@ -2,11 +2,12 @@ import { async, fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core
 import {FormsModule} from '@angular/forms';
 import { DepartmentListComponent } from './department-list.component';
 import {DepartmentDetailComponent} from '../department-detail/department-detail.component';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
 import {HttpClientModule} from '@angular/common/http';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {RouterTestingModule} from '@angular/router/testing';
+import {YacsService} from '../../services/yacs.service';
 describe('DepartmentListComponent', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
@@ -15,7 +16,7 @@ describe('DepartmentListComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
-      providers: [FakeYacsService]
+      providers: [{provide: YacsService, useClass: FakeYacsService}]
     })
     .compileComponents();
   }));

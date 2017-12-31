@@ -10,13 +10,16 @@ import { DepartmentListComponent } from './department/department-list/department
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { SectionListComponent } from './section/section-list/section-list.component';
-import { FakeYacsService } from './fake-yacs.service';
+import { FakeYacsService } from './services/fake-yacs.service';
+import {YacsService} from './services/yacs.service';
 //YACS API uses older http module
 import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
+import {YacsProdService} from './services/yacs-prod.service';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,13 @@ import { SchoolDetailComponent } from './school/school-detail/school-detail.comp
 
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),   ],
   providers: [
-    Title, FakeYacsService  ],
+    Title,
+    /* Check environment to determine which YacsService
+     *  should be used.
+     * If we are in production, use YacsProdService,
+     * otherwise use FakeYacsService */
+    {provide: YacsService, 
+      useClass: environment.useRealData ? YacsProdService : FakeYacsService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

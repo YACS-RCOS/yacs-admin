@@ -2,14 +2,15 @@ import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import { DepartmentDetailComponent } from './department-detail.component';
 import {Department} from '../department';
-import {FakeYacsService} from '../../fake-yacs.service';
-import {InMemoryDataService} from '../../in-memory-data.service';
+import {FakeYacsService} from '../../services/fake-yacs.service';
+import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {YacsService} from '../../services/yacs.service';
 describe('DepartmentDetailComponent', () => {
   let component: DepartmentDetailComponent;
   let fixture: ComponentFixture<DepartmentDetailComponent>;
@@ -18,7 +19,8 @@ describe('DepartmentDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentDetailComponent ],
-      providers: [FakeYacsService, {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}, 
+        {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
     })
     .compileComponents();
   }));

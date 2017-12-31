@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { School } from '../school';
-import {FakeYacsService} from '../../fake-yacs.service';
+import {YacsService} from '../../services/yacs.service';
 
 @Component({
   selector: 'school-list',
@@ -10,7 +10,7 @@ import {FakeYacsService} from '../../fake-yacs.service';
 export class SchoolListComponent implements OnInit {
   schools: School[];
   creatingSchool: boolean;
-  constructor(private yacsService: FakeYacsService) { }
+  constructor(private yacsService: YacsService) { }
 
   getSchools(): void{
     this.yacsService.getSchools()
