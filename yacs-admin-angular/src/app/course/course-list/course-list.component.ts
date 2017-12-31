@@ -4,7 +4,7 @@ import {Department} from '../../department/department';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {YacsService} from '../../services/yacs.service';
-
+import {environment} from '../../../environments/environment';
 @Component({
     selector: 'course-list',
     templateUrl: './course-list.component.html',
@@ -27,6 +27,11 @@ export class CourseListComponent implements OnInit {
     }
     return String(course.min_credits);
   }
+
+  public getNumber(course: Course): string{
+      return course.number;
+  }
+
   selectedCourse: Course;
   onSelect(course: Course): void{
     this.selectedCourse=course;
@@ -39,6 +44,13 @@ export class CourseListComponent implements OnInit {
 
   }
 
+  public getCourseDeptCode(course: Course): string{
+    if(environment.useRealData){
+    let department = this.departments.filter(dept =>dept.id == course.department_id)[0];
+    return department.code;
+    }
+    return course.department_code;
+  }
   setDeptId(): void{
     this.route.queryParams
       .filter(params => params.dept_id)

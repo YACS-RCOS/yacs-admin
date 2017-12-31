@@ -17,7 +17,11 @@ export class YacsProdService implements YacsService{
   constructor(private http: HttpClient) {}
   
   getSchools(): Observable<School[]>{
-    return this.http.get<School[]>(this.baseUrl+'/schools');
+    return this.http.get<School[]>(this.baseUrl+'/schools')
+    .map(data => {
+      console.log(data['schools']);
+      return data['schools'] as School[];
+    });
   }
   
   //Use params in prod implementation
@@ -27,7 +31,7 @@ export class YacsProdService implements YacsService{
     })
     .map(schools=>{
       //Get only the first result
-      let results = schools.filter(school => school.name == name);
+      let results = schools['schools'].filter(school => school.name == name);
       return((results.length==1) ? results[0] : null);
     });
   }
@@ -38,7 +42,7 @@ export class YacsProdService implements YacsService{
     })
     .map(schools=>{
       //Get only the first result
-      let results = schools.filter(school => school.id == id);
+      let results = schools['schools'].filter(school => school.id == id);
       return((results.length==1) ? results[0] : null);
     });
   }
@@ -69,7 +73,10 @@ export class YacsProdService implements YacsService{
   }
 
   getDepts(): Observable<Department[]>{
-    return this.http.get<Department[]>(this.baseUrl+'/departments');
+    return this.http.get<Department[]>(this.baseUrl+'/departments')
+    .map(data=>{
+      return data['departments'] as Department[];
+    });
   }
 
   getDeptByID(id: number): Observable<Department>{
@@ -77,7 +84,7 @@ export class YacsProdService implements YacsService{
       params: new HttpParams().set('id', String(id))
     })
     .map(depts=>{
-      let results = depts.filter(dept => dept.id == id);
+      let results = depts['departments'].filter(dept => dept.id == id);
       return((results.length==1) ? results[0] : null);
     });
   }
@@ -85,7 +92,8 @@ export class YacsProdService implements YacsService{
   getDeptsBySchoolID(school_id: number): Observable<Department[]>{
     return this.http.get<Department[]>(this.baseUrl+'/departments', {
       params: new HttpParams().set('school_id', String(school_id))
-    });
+    })
+    .map(data=>{return data['departments'] as Department[]});
   }
 
   updateDepartment(dept: Department): Observable<any>{
@@ -112,7 +120,8 @@ export class YacsProdService implements YacsService{
   }
 
   getCourses(): Observable<Course[]>{
-    return this.http.get<Course[]>(this.baseUrl+'/courses');
+    return this.http.get<Course[]>(this.baseUrl+'/courses')
+    .map(data=>{return data['courses'] as Course[]});
   }
 
   getCourseByID(id: number): Observable<Course>{
@@ -120,7 +129,7 @@ export class YacsProdService implements YacsService{
       params: new HttpParams().set('id', String(id))
     })
     .map(courses=>{
-      let results=courses.filter(course => course.id == id);
+      let results=courses['courses'].filter(course => course.id == id);
       return((results.length==1)? results[0]: null);
     });
 
@@ -130,10 +139,14 @@ export class YacsProdService implements YacsService{
     return this.http.get<Course[]>(this.baseUrl+'/courses', {
       params: new HttpParams().set('department_id', String(dept_id))
     })
+    .map(courses=>{
+      return courses['courses'] as Course[]
+    });
   }
 
   getSections(): Observable<Section[]>{
-    return this.http.get<Section[]>(this.baseUrl+'/sections');
+    return this.http.get<Section[]>(this.baseUrl+'/sections')
+    .map(data=>{return data['sections'] as Section[]});
   }
 
   private handleError<T> (operation = 'operation', result?: T){

@@ -18,6 +18,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
+import {YacsProdService} from './services/yacs-prod.service';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,12 @@ import { SchoolDetailComponent } from './school/school-detail/school-detail.comp
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),   ],
   providers: [
     Title,
-    //Use FakeYacsService where YacsService is needed
-    {provide: YacsService, useClass: FakeYacsService}],
+    /* Check environment to determine which YacsService
+     *  should be used.
+     * If we are in production, use YacsProdService,
+     * otherwise use FakeYacsService */
+    {provide: YacsService, 
+      useClass: environment.useRealData ? YacsProdService : FakeYacsService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

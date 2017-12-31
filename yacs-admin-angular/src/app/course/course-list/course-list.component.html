@@ -20,8 +20,8 @@
     <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
       <td class="id">{{course.id}}</td>
       <td>{{course.name}}</td>
-      <td class="code" *ngIf="!selectedDept">{{course.department_code}}</td>
-      <td class="code">{{course.num}}</td>
+      <td class="code" *ngIf="!selectedDept">{{getCourseDeptCode(course)}}</td>
+      <td class="code">{{course.number}}</td>
       <td class="code">{{creditRange(course)}}</td>
     </tr>
 
