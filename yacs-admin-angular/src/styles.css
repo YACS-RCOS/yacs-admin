@@ -128,9 +128,9 @@ height: 40px;
   text-align: left !important;
 }
 #page-title a{
-  /*I know it doesn't align with the text on 
+  /*I know it doesn't align with the text on
    * the page, but it looks a bit nicer*/
-  padding-left: 20px !important; 
+  padding-left: 20px !important;
 }
 body{
   padding-top: 0px !important;
