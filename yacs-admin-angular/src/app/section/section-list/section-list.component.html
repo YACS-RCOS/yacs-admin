@@ -1,3 +1,31 @@
+<h2>All Sections</h2>
+<table class="table">
+<thead>
+    <tr>
+      <th class="id">ID</th>
+      <th class="id">Name</th>
+      <th class="code">CRN</th>
+      <th>Instructors</th>
+      <!--<%if show_school_id%><th>School ID</th><%end%>-->
+      <th class="code">Seats Open</th>
+      <!--<th></th>-->
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let section of sections">
+    <td class="id">{{section.id}}</td>
+    <td class="id">{{section.name}}</td>
+    <td class="code">{{section.crn}}</td>
+    <td>{{ section.instructors.join(', ') }}</td>
+    <td class="code">{{ section.seats-section.seats_taken }}/{{section.seats}}</td>
+
+  </tr>
+  
+  </tbody>
+
+
+<!--
 <div *ngFor="let section of sections">
 <span class="section-information">
   <span class="section-name">{{section.name}}</span>
@@ -6,7 +34,7 @@
   <span class="section-seats-available">
     {{ section.seats-section.seats_taken }}<span class="section-seats">/{{ section.seats }} seats</span>
   </span>
-</span>
+</span>-->
 
 <!--<div *ngIf="doesConflict(section?.id)" class="conflict-note">
   <span class="conflict-img-center"></span>
@@ -21,4 +49,6 @@
     <span class="period-time">{{ getHours(period) }}</span>
   </span>
 </div>-->
-</div>
+<!--</div>-->
+
+</table>
