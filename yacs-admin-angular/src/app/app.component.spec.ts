@@ -14,7 +14,7 @@ import { SectionListComponent } from './section/section-list/section-list.compon
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
-
+import {CourseDetailComponent} from './course/course-detail/course-detail.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,6 +27,7 @@ describe('AppComponent', () => {
         DepartmentListComponent,
         DepartmentDetailComponent,
         CourseListComponent,
+        CourseDetailComponent,
         SectionListComponent
       ],
       imports: [
