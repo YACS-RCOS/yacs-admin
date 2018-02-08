@@ -1,3 +1,55 @@
 <p>
   course-detail works!
 </p>
+
+<div id="courseDetail" *ngIf="course">
+  <h2 id="detailHeading">
+    {{course.department_code}} {{course.number}}: {{course.name}} Details
+  </h2>
+  <div class="form-row justify-content-start">
+    <div id="deptField" class="form-group form-inline ">
+      <label>Department: </label>
+      <select class="form-control" id="depts-dropdown" name="course.department_code" [(ngModel)]="course.department_code" #newCode>
+        <option *ngFor="let dept of depts" [ngValue]="dept.code">{{dept.code}}</option>
+      </select>
+      &nbsp;
+      <label for="numInput">Course #: </label>
+      <input id="numInput" class="form-control" [(ngModel)]="course.number" placeholder="num" #newNum>
+    </div>
+    
+  </div>
+  <div class="form-row">
+  <div id="nameField" class="form-group form-inline">
+    <label for="nameInput">Name: </label>
+    <input id="nameInput" class="form-control" style ="width:95% !important;"[(ngModel)]="course.name" placeholder="name" #newName>
+  </div>
+  </div>
+
+  <div class="form-row">
+    <div id="credField" class="form-group form-inline">
+      <label for="minCredInput">Min Credits: </label>
+      <input id="minCredInput" class="form-control" style="width: 70px !important" [(ngModel)]="course.min_credits" placeholder="mincreds" #newMinCred>
+      &nbsp;
+      <label for="maxCredInput">Max Credits: </label>
+      <input id="maxCredInput" class="form-control" style="width: 70px !important" [(ngModel)]="course.max_credits" placeholder="maxcreds" #newMaxCred>
+
+    </div>
+
+
+  </div>
+
+  <div class="form-row">
+    <div id="descField" class="form-group form-inline">
+      <label for="descInput">Description: &nbsp;</label>
+      <textarea id="descInput" class="form-control" style="width: 90% !important" [(ngModel)]="course.description" rows="5" #newDesc></textarea>
+    </div>
+  </div>
+
+  <div id="buttonHolder">
+    <!-- These are intentionally left without a (click) function 
+      for now, TODO implement functionality -->
+    <button class="btn btn-search" id="save">Save Changes</button>
+    <button class="btn btn-search" id="cancel">Cancel</button>
+  </div>
+
+</div>
