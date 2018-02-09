@@ -50,7 +50,7 @@ export abstract class YacsService {
 
   //DELETE method for departments 
   abstract deleteDepartment(dept: Department | number): Observable<Department>;
-
+  abstract getCourseByID(id: number): Observable<Course>;
 
   abstract getCourses(): Observable<Course[]>;
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;

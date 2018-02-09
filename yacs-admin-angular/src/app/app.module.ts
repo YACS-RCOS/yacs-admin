@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SchoolDetailComponent } from './school/school-detail/school-detail.component';
 import {YacsProdService} from './services/yacs-prod.service';
 import {environment} from '../environments/environment';
+import { CourseDetailComponent } from './course/course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {environment} from '../environments/environment';
     CourseListComponent,
     SectionListComponent,
     SchoolDetailComponent,
+    CourseDetailComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
