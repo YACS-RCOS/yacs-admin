@@ -20,6 +20,7 @@ export class Section {
     this.id = id;
     this.course_id = course_id;
     this.name = name;
+    this.crn = crn;
     this.instructors = instructors;
     this.seats = seats;
     this.seats_taken = seats_taken;

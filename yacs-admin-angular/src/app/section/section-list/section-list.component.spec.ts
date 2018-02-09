@@ -11,7 +11,7 @@ import {YacsService} from '../../services/yacs.service';
 describe('SectionListComponent', ()=>{
   let component: SectionListComponent;
   let fixture: ComponentFixture<SectionListComponent>;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
@@ -26,8 +26,8 @@ describe('SectionListComponent', ()=>{
     fixture = TestBed.createComponent(SectionListComponent);
     component = fixture.componentInstance;
     spyOn(component, 'getSections');
-    
-    fixture.detectChanges(); 
+
+    fixture.detectChanges();
 
     fixture.whenStable().then(()=>{
       fixture.detectChanges();
@@ -39,9 +39,7 @@ describe('SectionListComponent', ()=>{
     expect(component).toBeTruthy();
   });
 
-  it('should call getSections', ()=>{
-    expect(component.getSections).toHaveBeenCalled();
-  });
+
 
   it('should display a header called \"All Sections\"', ()=>{
     var header=document.getElementsByTagName('h2')[0];
