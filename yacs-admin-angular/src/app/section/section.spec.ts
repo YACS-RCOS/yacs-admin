@@ -21,7 +21,8 @@ describe('Section', () => {
   });
 
   it('has instructors', () => {
-    expect(section.instructors).toBe(['Goldschmidt', 'Krishnamoorthy']);
+    expect(section.instructors).toEqual(['Goldschmidt', 'Krishnamoorthy']);
+
   });
 
   it('has seats', () => {
@@ -33,7 +34,7 @@ describe('Section', () => {
   });
 
   it('has conflicts', () => {
-    expect(section.conflicts).toBe([1, 2, 3]);
+    expect(section.conflicts).toEqual([1, 2, 3]);
   });
 
   // it('has periods', () => {
