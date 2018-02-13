@@ -18,7 +18,7 @@ export class FakeYacsService implements YacsService{
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
-  //sectionsUrl='api/sections';
+  sectionsUrl='api/sections';
   constructor(private http: HttpClient) {
   }
 
@@ -39,15 +39,18 @@ export class FakeYacsService implements YacsService{
 
   getCourses(): Observable<Course[]>{
     
-    return this.http.get<Course[]>(this.coursesUrl)
-    .pipe(
-      catchError(this.handleError('getCourses', []))
-    );
+    return this.http.get<Course[]>(this.coursesUrl);
     //return of(COURSES);
   }
 
   getSections(): Observable<Section[]>{
-    return of(SECTIONS);
+    return this.http.get<Section[]>(this.sectionsUrl);
+    //return of(SECTIONS);
+  }
+
+  getSectionByID(id: number): Observable<Section>{
+    const url = `${this.sectionsUrl}/${id}`;
+    return this.http.get<Section>(url); 
   }
 
   getDeptByID(id: number): Observable<Department>{
