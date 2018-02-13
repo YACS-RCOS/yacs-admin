@@ -32,18 +32,24 @@ export class FakeYacsService implements YacsService{
         return((results.length==1) ? results[0] : null);
       });
   }
+
   getDepts(): Observable<Department[]>{
     return this.http.get<Department[]>(this.deptsUrl);
   }
 
   getCourses(): Observable<Course[]>{
-    
+
     //return this.http.get<Course[]>(this.coursesUrl);
     return of(COURSES);
   }
 
   getSections(): Observable<Section[]>{
     return of(SECTIONS);
+  }
+
+  getSchoolByID(id: number): Observable<School>{
+    const url=`${this.schoolsUrl}/${id}`;
+    return this.http.get<School>(url);
   }
 
   getDeptByID(id: number): Observable<Department>{
@@ -55,10 +61,9 @@ export class FakeYacsService implements YacsService{
     return of(COURSES.filter(course => course.id === id)[0]);
   }
 
-  getSchoolByID(id: number): Observable<School>{
-    const url=`${this.schoolsUrl}/${id}`;
-    return this.http.get<School>(url);
-  }
+  // getSectionByID(id: number): Observable<Section>{
+  //   return
+  // }
 
   updateSchool(school: School): Observable<any>{
     return this.http.put(this.schoolsUrl, school, cudOptions).pipe(
