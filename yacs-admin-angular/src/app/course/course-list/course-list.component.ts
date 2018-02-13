@@ -61,12 +61,12 @@ export class CourseListComponent implements OnInit {
 
   getAllCourses(): void{
     this.yacsService.getCourses()
-        .subscribe(courses => this.courses = courses, error=>{this.error=true; console.log(error);});
+        .subscribe(courses => this.courses = courses);
   }
 
   getCoursesInDept(department_id: number): void{
      this.yacsService.getCoursesByDeptID(department_id)
-        .subscribe(courses => this.courses = courses, error=>(console.error(error)));
+        .subscribe(courses => this.courses = courses);
       this.yacsService.getDeptByID(department_id)
         .subscribe(selectedDept => { 
           
@@ -98,7 +98,7 @@ export class CourseListComponent implements OnInit {
     //If null, select all courses
     else{
       this.getAllCourses();   
-      //console.log(this.courses);
+      console.log(this.courses);
     }
   }
 }

@@ -38,8 +38,11 @@ export class FakeYacsService implements YacsService{
 
   getCourses(): Observable<Course[]>{
     
-    //return this.http.get<Course[]>(this.coursesUrl);
-    return of(COURSES);
+    return this.http.get<Course[]>(this.coursesUrl)
+    .pipe(
+      catchError(this.handleError('getCourses', []))
+    );
+    //return of(COURSES);
   }
 
   getSections(): Observable<Section[]>{
