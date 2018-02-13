@@ -18,6 +18,7 @@ export class FakeYacsService implements YacsService{
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
+  sectionsUrl='api/sections';
   constructor(private http: HttpClient) {
   }
 
@@ -38,12 +39,18 @@ export class FakeYacsService implements YacsService{
 
   getCourses(): Observable<Course[]>{
     
-    //return this.http.get<Course[]>(this.coursesUrl);
-    return of(COURSES);
+    return this.http.get<Course[]>(this.coursesUrl);
+    //return of(COURSES);
   }
 
   getSections(): Observable<Section[]>{
-    return of(SECTIONS);
+    return this.http.get<Section[]>(this.sectionsUrl);
+    //return of(SECTIONS);
+  }
+
+  getSectionByID(id: number): Observable<Section>{
+    const url = `${this.sectionsUrl}/${id}`;
+    return this.http.get<Section>(url); 
   }
 
   getDeptByID(id: number): Observable<Department>{
@@ -52,7 +59,9 @@ export class FakeYacsService implements YacsService{
   }
 
   getCourseByID(id: number): Observable<Course>{
-    return of(COURSES.filter(course => course.id === id)[0]);
+    const url = `${this.coursesUrl}/${id}`;
+    return this.http.get<Course>(url);
+    //return of(COURSES.filter(course => course.id === id)[0]);
   }
 
   getSchoolByID(id: number): Observable<School>{
@@ -84,7 +93,12 @@ export class FakeYacsService implements YacsService{
   }
 
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
-    return of(COURSES.filter(course => course.department_id === dept_id));
+    return this.http.get<Course[]>(this.coursesUrl)
+      .map(courses => {
+        let results = courses.filter(course => course.department_id == dept_id);
+        return results;
+      });
+    //return of(COURSES.filter(course => course.department_id === dept_id));
 
   }
 
