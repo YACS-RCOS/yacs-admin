@@ -1,27 +1,39 @@
 import { Department } from '../department/department';
 import { School } from '../school/school';
 import { Course } from './course';
-// describe('Course', () => {
-//   it('has name', () => {
-//     const dept = new Course(1,'CPYP','Copying and Pasting',1);
-//     expect(dept.name).toBe('Copying and Pasting');
-//   });
-//
-//   it('has code', () => {
-//     const dept = new Course(1,'CPYP','Copying and Pasting',1);
-//     expect(dept.code).toBe('CPYP');
-//   });
-//
-//   it('has id', () => {
-//     const dept = new Course(1,'CPYP','Copying and Pasting',1);
-//     expect(dept.id).toBe(1);
-//   });
-//
-//   it('belongs to a school', () => {
-//     const dept = new Course(1,'CPYP','Copying and Pasting',1);
-//     const school = new School(1, 'School of StackOverflow',[dept]);
-//     expect(school.departments).toContain(dept);
-//     //expect(dept.school_id).toEqual(school.id);
-//
-//   });
-// });
+describe('Course', () => {
+  const course = new Course(1, 'Stars, Galaxies and the Cosmos', '1960', 'ASTR',
+                            1, 4, 4, 'Check back soon', []);
+  it('has id', () => {
+    expect(course.name).toBe('Stars, Galaxies and the Cosmos');
+  });
+
+  it('has number', () => {
+    expect(course.number).toBe('1960');
+  });
+
+  it('has department code', () => {
+    expect(course.department_code).toBe('ASTR');
+  });
+
+  it('has department id', () => {
+    expect(course.department_id).toBe(1);
+  });
+
+  it('has minimum credits', () => {
+    expect(course.min_credits).toBe(4);
+  });
+
+  it('has maximum credits', () => {
+    expect(course.max_credits).toBe(4);
+  });
+
+  it('has description', () => {
+    expect(course.description).toBe('Check back soon');
+  });
+
+  // it('has sections', () => {
+  //   expect(course.sections).toBe('Check back soon');
+  // });
+
+});
