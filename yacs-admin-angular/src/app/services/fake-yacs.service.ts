@@ -18,6 +18,7 @@ export class FakeYacsService implements YacsService{
   schoolsUrl=`api/schools`;
   deptsUrl='api/departments';
   coursesUrl='api/courses';
+  //sectionsUrl='api/sections';
   constructor(private http: HttpClient) {
   }
 
@@ -89,7 +90,12 @@ export class FakeYacsService implements YacsService{
   }
 
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
-    return of(COURSES.filter(course => course.department_id === dept_id));
+    return this.http.get<Course[]>(this.coursesUrl)
+      .map(courses => {
+        let results = courses.filter(course => course.department_id == dept_id);
+        return results;
+      });
+    //return of(COURSES.filter(course => course.department_id === dept_id));
 
   }
 
