@@ -20,7 +20,9 @@ describe('CourseDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ CourseDetailComponent ],
-      providers: [{provide: YacsService, useClass: FakeYacsService}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}
+      , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}
+      ]
     })
     .compileComponents();
   }));
