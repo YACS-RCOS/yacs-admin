@@ -14,8 +14,13 @@ export class CourseDetailComponent implements OnInit {
   constructor(private yacsService: YacsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-     
-    this.getCourse();
+    let id: number;
+
+   
+     this.route.params.subscribe(params=>{id=+params['id']});
+      this.yacsService.getCourseByID(id)
+      .subscribe(course => this.course = course);
+    //this.getCourse();
     this.getDepts();
   }
 
@@ -24,12 +29,8 @@ export class CourseDetailComponent implements OnInit {
       .subscribe(depts => this.depts = depts);
   }
 
-  getCourse(){
-    let id: number;
-    this.route.params.subscribe(params=>{id=+params['id']});
-
-    this.yacsService.getCourseByID(id)
-      .subscribe(course => this.course = course);
-  }
+  //getCourse(){
+    
+  //}
 
 }

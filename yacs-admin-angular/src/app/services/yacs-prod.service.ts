@@ -15,7 +15,7 @@ const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/jso
 export class YacsProdService implements YacsService{
   baseUrl='https://yacs.cs.rpi.edu/api/v5';
   constructor(private http: HttpClient) {}
-  
+
   getSchools(): Observable<School[]>{
     return this.http.get<School[]>(this.baseUrl+'/schools')
     .map(data => {
@@ -23,7 +23,7 @@ export class YacsProdService implements YacsService{
       return data['schools'] as School[];
     });
   }
-  
+
   //Use params in prod implementation
   getSchoolByName(name: string): Observable<School>{
     return this.http.get<School[]>(this.baseUrl+'/schools', {
@@ -88,7 +88,7 @@ export class YacsProdService implements YacsService{
       return((results.length==1) ? results[0] : null);
     });
   }
- 
+
   getDeptsBySchoolID(school_id: number): Observable<Department[]>{
     return this.http.get<Department[]>(this.baseUrl+'/departments', {
       params: new HttpParams().set('school_id', String(school_id))
@@ -149,6 +149,16 @@ export class YacsProdService implements YacsService{
     .map(data=>{return data['sections'] as Section[]});
   }
 
+  getSectionByID(id: number): Observable<Section>{
+    return this.http.get<Section[]>(this.baseUrl+'/sections', {
+      params: new HttpParams().set('id', String(id))
+    })
+    .map(sections=>{
+      let results=sections['sections'].filter(section => section.id == id);
+      return((results.length==1)? results[0]: null);
+    });
+  }
+
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
@@ -157,4 +167,5 @@ export class YacsProdService implements YacsService{
       return Observable.throw(errorMessage);
     };
   }
+
 }
