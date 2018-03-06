@@ -150,15 +150,24 @@ export class YacsProdService implements YacsService{
   }
 
   getSectionByID(id: number): Observable<Section>{
-    return this.http.get<Section[]>(this.baseUrl+'/sections', {
+   return this.http.get<Section[]>(this.baseUrl+'/sections', {
       params: new HttpParams().set('id', String(id))
     })
     .map(sections=>{
       let results=sections['sections'].filter(section => section.id == id);
       return((results.length==1)? results[0]: null);
     });
-  }
 
+  }
+  getSectionsByCourseID(course_id: number): Observable<Section[]>{
+   return this.http.get<Section[]>(this.baseUrl+'/sections', {
+      params: new HttpParams().set('course_id', String(course_id))
+    })
+    .map(sections=>{
+      return sections['sections'] as Section[]
+    });
+
+  }
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
