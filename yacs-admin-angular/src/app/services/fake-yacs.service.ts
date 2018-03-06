@@ -53,6 +53,14 @@ export class FakeYacsService implements YacsService{
     return this.http.get<Section>(url); 
   }
 
+  getSectionsByCourseID(course_id: number): Observable<Section[]>{
+    return this.http.get<Section[]>(this.sectionsUrl)
+      .map(sections => {
+        let results = sections.filter(section => section.course_id == course_id);
+        return results;
+      });
+  }
+
   getDeptByID(id: number): Observable<Department>{
     const url=`${this.deptsUrl}/${id}`;
     return this.http.get<Department>(url);

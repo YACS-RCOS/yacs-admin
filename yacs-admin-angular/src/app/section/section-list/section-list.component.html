@@ -1,4 +1,5 @@
-<h2>All Sections</h2>
+<h2 *ngIf="!selectedCourse">All Sections</h2>
+<h2 *ngIf="selectedCourse">Sections of {{selectedCourse.name}}</h2>
 <table class="table">
 <thead>
     <tr>

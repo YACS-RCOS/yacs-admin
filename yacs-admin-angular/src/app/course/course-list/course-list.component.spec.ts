@@ -35,7 +35,7 @@ describe('no query parameters', () => {
     
     spyOn(component, 'getAllDepts');
     
-    
+     
     fixture.detectChanges();
     
 

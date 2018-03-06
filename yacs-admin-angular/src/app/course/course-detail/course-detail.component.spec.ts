@@ -43,6 +43,7 @@ describe('CourseDetailComponent', () => {
   describe('when course passed', ()=>{
     beforeEach(()=>{
       component.course=new Course(1, 'Introduction to Googling', '1010', 'CPYP', 1, 4, 4, 'An introduction to using Google to help debug code', []);
+      console.log(component.course);
       fixture.detectChanges();
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
