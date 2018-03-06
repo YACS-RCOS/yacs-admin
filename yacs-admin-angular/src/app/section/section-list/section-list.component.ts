@@ -24,7 +24,7 @@ export class SectionListComponent implements OnInit{
 
   ngOnInit() {
     this.setCourseId();
-    this.getSelectedCourse(0);
+    //this.getSelectedCourse(0);
     //this.getCourseSections(0);
     if (this.course_id){
       this.getSelectedCourse(this.course_id);
