@@ -21,6 +21,8 @@ import { SchoolDetailComponent } from './school/school-detail/school-detail.comp
 import {YacsProdService} from './services/yacs-prod.service';
 import {environment} from '../environments/environment';
 import { CourseDetailComponent } from './course/course-detail/course-detail.component';
+import { SectionDetailComponent } from './section/section-detail/section-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { CourseDetailComponent } from './course/course-detail/course-detail.comp
     SectionListComponent,
     SchoolDetailComponent,
     CourseDetailComponent,
+    SectionDetailComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
@@ -46,7 +49,7 @@ import { CourseDetailComponent } from './course/course-detail/course-detail.comp
      *  should be used.
      * If we are in production, use YacsProdService,
      * otherwise use FakeYacsService */
-    {provide: YacsService, 
+    {provide: YacsService,
       useClass: environment.useRealData ? YacsProdService : FakeYacsService}],
   bootstrap: [AppComponent]
 })

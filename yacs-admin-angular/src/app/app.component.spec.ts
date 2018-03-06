@@ -15,6 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
 import {CourseDetailComponent} from './course/course-detail/course-detail.component';
+import { SectionDetailComponent } from './section/section-detail/section-detail.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,11 +30,12 @@ describe('AppComponent', () => {
         DepartmentDetailComponent,
         CourseListComponent,
         CourseDetailComponent,
-        SectionListComponent
+        SectionListComponent,
+        SectionDetailComponent,
       ],
       imports: [
         FormsModule, HttpClientModule,AppRouterModule,
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}), 
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}
