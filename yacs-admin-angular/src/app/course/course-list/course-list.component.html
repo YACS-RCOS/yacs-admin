@@ -3,7 +3,7 @@
 <!-- Get department id param-->
 <h2 *ngIf="!selectedDept">All Courses</h2>
 <h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2>
-<table class="table" *ngIf ="courses.length>0">
+<table class="table" *ngIf ="courses">
   <thead>
     <tr>
       <th class="id">ID</th>
@@ -27,9 +27,10 @@
 
   </tbody>
 </table>
-<div id="no-courses" *ngIf="courses.length==0">
+<ng-template #nocourses><div id="no-courses" *ngIf="!courses">
   <p>There are currently no courses under this department.</p>
 </div>
+</ng-template>
 
 <div *ngIf="selectedDept">
   <p><a href="/departments">Back to departments</a></p>

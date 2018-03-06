@@ -56,4 +56,6 @@ export abstract class YacsService {
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;
 
   abstract getSections(): Observable<Section[]>;
+  abstract getSectionByID(id: number): Observable<Section>;
+  abstract getSectionsByCourseID(course_id: number): Observable<Section[]>;
 }

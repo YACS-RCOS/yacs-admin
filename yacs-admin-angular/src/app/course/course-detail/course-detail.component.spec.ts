@@ -20,7 +20,9 @@ describe('CourseDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ CourseDetailComponent ],
-      providers: [{provide: YacsService, useClass: FakeYacsService}]
+      providers: [{provide: YacsService, useClass: FakeYacsService}
+      , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}
+      ]
     })
     .compileComponents();
   }));
@@ -41,6 +43,7 @@ describe('CourseDetailComponent', () => {
   describe('when course passed', ()=>{
     beforeEach(()=>{
       component.course=new Course(1, 'Introduction to Googling', '1010', 'CPYP', 1, 4, 4, 'An introduction to using Google to help debug code', []);
+      console.log(component.course);
       fixture.detectChanges();
       fixture.whenStable().then(()=>{
         fixture.detectChanges();

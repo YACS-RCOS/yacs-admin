@@ -35,7 +35,7 @@ describe('no query parameters', () => {
     
     spyOn(component, 'getAllDepts');
     
-    
+     
     fixture.detectChanges();
     
 
@@ -48,8 +48,9 @@ describe('no query parameters', () => {
     spyOn(component, 'getAllCourses');
   });
 
-  it('should create', () => {
-    console.log(component.courses);
+  it('should create', async() => {
+    tick();
+    //console.log(component.courses);
     expect(component).toBeTruthy();
   });
 
@@ -243,7 +244,8 @@ describe('no courses in department', () => {
       expect(header.textContent).toMatch(pattern);
     });
 
-  it('should state there are no courses in the department', () => {
+  it('should state there are no courses in the department', async() => {
+    tick();
     var pageText=document.getElementsByTagName('p')[0];
     console.log(pageText);
     expect(pageText.textContent).toMatch('There are currently no courses under this department');
