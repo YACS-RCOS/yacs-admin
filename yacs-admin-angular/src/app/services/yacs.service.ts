@@ -54,7 +54,9 @@ export abstract class YacsService {
 
   abstract getCourses(): Observable<Course[]>;
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;
-
+//PUT method for courses
+  abstract updateCourse(course: Course): Observable<any>;
+  
   abstract getSections(): Observable<Section[]>;
   abstract getSectionByID(id: number): Observable<Section>;
   abstract getSectionsByCourseID(course_id: number): Observable<Section[]>;
