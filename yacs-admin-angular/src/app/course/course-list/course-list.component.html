@@ -8,28 +8,39 @@
     <tr>
       <th class="id">ID</th>
       <th>Name</th>
-      <th class="code" *ngIf="!selectedDept">Dept.</th>
-      <th class="code">Number</th>
+      <th class="id" *ngIf="!selectedDept">Dept.</th>
+      <th class="id">Number</th>
       <!--<%if show_school_id%><th>School ID</th><%end%>-->
-      <th class="code">Credits</th>
-      <!--<th></th>-->
+      <th class="id">Credits</th>
+
+      <th class="id">Actions</th>
+<th class="id"></th>
+
+<th class="id"></th>
+
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse" (click)="onSelect(course)">
       <td class="id">{{course.id}}</td>
-      <td>{{course.name}}</td>
-      <td class="code" *ngIf="!selectedDept">{{getCourseDeptCode(course)}}</td>
-      <td class="code">{{course.number}}</td>
-      <td class="code">{{creditRange(course)}}</td>
+      <td >{{course.name}}</td>
+      <td class="id" *ngIf="!selectedDept">{{getCourseDeptCode(course)}}</td>
+      <td class="id">{{course.number}}</td>
+      <td class="id">{{creditRange(course)}}</td>
+      <td class="id" style="text-align: center !important;"><a routerLink="{{course.id}}">Details</a></td>
+      <td class="id"  style="text-align: center !important;"><a routerLink="/sections" [queryParams]="{course_id: course.id }">Show Sections</a></td>
+      <td class="id"  style="text-align: center !important;"><a class="delete" >Delete</a></td>
     </tr>
 
   </tbody>
 </table>
 <ng-template #nocourses><div id="no-courses" *ngIf="!courses">
   <p>There are currently no courses under this department.</p>
-</ng-template>
+</div>
+
+</ng-template> <!-- This actually should be here,
+                      I incorrectly thought it should be further down-->
 
 <div *ngIf="selectedDept">
   <p><a href="/departments">Back to departments</a></p>
