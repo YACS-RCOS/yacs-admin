@@ -108,7 +108,12 @@ export class FakeYacsService implements YacsService{
       });
     //return of(COURSES.filter(course => course.department_id === dept_id));
   }
-
+  updateCourse(course: Course): Observable<any>{
+    return this.http.put(this.coursesUrl, course, cudOptions).pipe(
+      tap(_=>console.log(course),
+      catchError(this.handleError<any>('updateCourse')))
+    );
+  }
 
   getDeptsBySchoolID(school_id: number): Observable<Department[]>{
   return this.http.get<Department[]>(this.deptsUrl)

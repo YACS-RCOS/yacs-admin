@@ -3,6 +3,7 @@ import {Course} from '../course';
 import {Department} from '../../department/department';
 import {YacsService} from '../../services/yacs.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CourseDetailComponent implements OnInit {
   @Input() course: Course;
   depts: Department[];
-  constructor(private yacsService: YacsService, private route: ActivatedRoute) { }
+  constructor(private yacsService: YacsService, private route: ActivatedRoute,  private router: Router, private location: Location) { }
 
   ngOnInit() {
     let id: number;
@@ -32,5 +33,16 @@ export class CourseDetailComponent implements OnInit {
   //getCourse(){
     
   //}
+
+  saveCourse(){
+    this.yacsService.updateCourse(this.course)
+      .subscribe(()=> this.goBack());
+    this.getCourse();
+  }
+  goBack(){
+    this.location.back();
+  }
+
+
 
 }

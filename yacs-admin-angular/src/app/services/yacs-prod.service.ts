@@ -134,7 +134,12 @@ export class YacsProdService implements YacsService{
     });
 
   }
-
+  updateCourse(course: Course): Observable<any>{
+    return this.http.put(this.baseUrl+'/courses', course, cudOptions).pipe(
+      tap(_=> console.log(course)),
+      catchError(this.handleError<any>('updateCourse'))
+    );
+  }
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
     return this.http.get<Course[]>(this.baseUrl+'/courses', {
       params: new HttpParams().set('department_id', String(dept_id))

@@ -85,6 +85,40 @@ describe('CourseDetailComponent', () => {
       expect(descElem.getAttribute('ng-reflect-model')).toMatch(component.course.description.substr(0, 30));
     });
     
+    describe('when save button pressed', ()=>{
+      beforeEach(async()=>{
+        let saveBtn=document.getElementById('save');
+        saveBtn.click();
+        spyOn(component, 'saveCourse');
+      });
+
+      it('should call saveCourse()', async()=>{
+        fixture.whenStable().then(()=>{
+          expect(component.saveCourse).toHaveBeenCalled();``
+        });
+      });
+
+    });
+
+
+describe('when cancel button pressed', ()=>{
+      beforeEach(async()=>{
+        let cancelBtn=document.getElementById('cancel');
+        cancelBtn.click();
+      });
+
+      beforeEach(async()=>{
+        spyOn(component, 'goBack');
+      });
+
+      it('should call goBack()', async()=>{
+        fixture.whenStable().then(()=>{
+        expect(component.goBack).toHaveBeenCalled();
+        });
+      });
+
+    });
+
   });
   
 });
