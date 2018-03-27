@@ -99,7 +99,14 @@ export class FakeYacsService implements YacsService{
       catchError(this.handleError<School>('deleteSchool'))
     );
   }
-
+  deleteCourse(course: Course | number): Observable<Course>{
+    const id=typeof course === 'number' ? course : course.id;
+    const url = `${this.coursesUrl}/${id}`;
+    return this.http.delete<Course>(url, cudOptions).pipe(
+      tap(_ => console.log('deleted')),
+      catchError(this.handleError<Course>('deleteCourse'))
+    );
+  }
   getCoursesByDeptID(dept_id: number): Observable<Course[]>{
     return this.http.get<Course[]>(this.coursesUrl)
       .map(courses => {

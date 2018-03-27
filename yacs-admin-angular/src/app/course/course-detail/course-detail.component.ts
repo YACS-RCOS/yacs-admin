@@ -37,7 +37,6 @@ export class CourseDetailComponent implements OnInit {
   saveCourse(){
     this.yacsService.updateCourse(this.course)
       .subscribe(()=> this.goBack());
-    this.getCourse();
   }
   goBack(){
     this.location.back();

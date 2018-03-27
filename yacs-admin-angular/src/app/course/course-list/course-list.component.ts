@@ -43,7 +43,22 @@ export class CourseListComponent implements OnInit {
  
 
   }
+  deleteCourse(course): void{
 
+      this.yacsService.deleteCourse(course)
+        .subscribe(()=>{
+        if(this.department_id){
+        this.getCoursesInDept(this.department_id);
+    }
+
+    //If null, select all courses
+    else{
+      this.getAllCourses();   
+      //console.log(this.courses);
+    }
+        });
+
+  }
   public getCourseDeptCode(course: Course): string{
     if(environment.useRealData){
     let department = this.departments.filter(dept =>dept.id == course.department_id)[0];
