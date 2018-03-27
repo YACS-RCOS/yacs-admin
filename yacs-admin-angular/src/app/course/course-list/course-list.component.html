@@ -1,8 +1,11 @@
 <div *ngIf="!error">
 
 <!-- Get department id param-->
-<h2 *ngIf="!selectedDept">All Courses</h2>
-<h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2>
+<div class="row">
+  <div class="col-xs-6">
+  <h2 *ngIf="!selectedDept">All Courses</h2>
+  <h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2></div>
+<div class="col-xs-6 new-object-link" ><h3><a id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
 <table class="table" *ngIf ="courses">
   <thead>
     <tr>
