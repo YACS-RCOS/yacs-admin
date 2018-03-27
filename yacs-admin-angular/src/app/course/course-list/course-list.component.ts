@@ -15,6 +15,7 @@ export class CourseListComponent implements OnInit {
   error: boolean;
   courses: Course[];
   selectedDept: Department;
+  creatingCourse: boolean;
   departments: Department[];
   //ActivatedRoute is used to access parameters
   constructor(private route: ActivatedRoute, private yacsService: YacsService) {}
@@ -100,8 +101,12 @@ export class CourseListComponent implements OnInit {
 
 
   }
-
+  showCourseForm(): void{
+      this.creatingCourse=true;
+  }
   ngOnInit() {
+
+    this.creatingCourse=false;
 
     this.getAllDepts();
     //Filter the courses if department id is not null
