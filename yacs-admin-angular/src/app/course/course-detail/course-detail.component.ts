@@ -17,7 +17,7 @@ export class CourseDetailComponent implements OnInit {
   ngOnInit() {
     let id: number;
 
-   
+
      this.route.params.subscribe(params=>{id=+params['id']});
       this.yacsService.getCourseByID(id)
       .subscribe(course => this.course = course);
@@ -30,9 +30,10 @@ export class CourseDetailComponent implements OnInit {
       .subscribe(depts => this.depts = depts);
   }
 
-  //getCourse(){
-    
-  //}
+  getCourse(){
+    this.yacsService.getSectionByID(id)
+      .subscribe(section=>this.section = section);
+  }
 
   saveCourse(){
     this.yacsService.updateCourse(this.course)

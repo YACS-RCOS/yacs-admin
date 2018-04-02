@@ -24,12 +24,12 @@ export class SectionDetailComponent implements OnInit {
     this.getSection(id);
   }
 
-  // save(name){
-  //   this.yacsService.updateSection(this.section)
-  //     .subscribe(()=>{
-  //       this.router.navigate(['/sections']);
-  //     });
-  // }
+  saveSection(name){
+    this.yacsService.updateSection(this.section)
+      .subscribe(()=>{
+        this.router.navigate(['/sections']);
+      });
+  }
 
   cancel(name){
     this.goBack();
