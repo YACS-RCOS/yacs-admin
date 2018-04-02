@@ -134,6 +134,17 @@ export class YacsProdService implements YacsService{
     });
 
   }
+
+
+  deleteCourse(course: Course | number): Observable<Course>{
+    const id = typeof course === 'number' ? course : course.id;
+    const url = `${this.baseUrl}/courses/${id}`;
+    return this.http.delete<Course>(url, cudOptions).pipe(
+      tap(_=> console.log('deleted course')),
+      catchError(this.handleError<Course>('deleteCourse'))
+    );
+  }
+
   updateCourse(course: Course): Observable<any>{
     return this.http.put(this.baseUrl+'/courses', course, cudOptions).pipe(
       tap(_=> console.log(course)),
