@@ -30,10 +30,10 @@ export class CourseDetailComponent implements OnInit {
       .subscribe(depts => this.depts = depts);
   }
 
-  getCourse(){
-    this.yacsService.getSectionByID(id)
-      .subscribe(section=>this.section = section);
-  }
+  // getCourse(){
+  //   this.yacsService.getSectionByID(id)
+  //     .subscribe(section=>this.section = section);
+  // }
 
   saveCourse(){
     this.yacsService.updateCourse(this.course)

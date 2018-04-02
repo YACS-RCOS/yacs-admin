@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {School} from '../school/school';
-import {Department} from '../department/department';
+import { Injectable } from '@angular/core';
+import { School } from '../school/school';
+import { Department } from '../department/department';
 import { Course } from '../course/course';
-import {Section} from '../section/section';
+import { Section } from '../section/section';
 import { Observable } from 'rxjs/Observable';
-import {YacsService} from './yacs.service';
+import { YacsService } from './yacs.service';
 import { of } from 'rxjs/observable/of';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { catchError, map, tap} from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
@@ -182,8 +182,15 @@ export class YacsProdService implements YacsService{
     .map(sections=>{
       return sections['sections'] as Section[]
     });
-
   }
+
+  updateSection(section: Section): Observable<any>{
+    return this.http.put(this.baseUrl+'/sections', section, cudOptions).pipe(
+      tap(_=> console.log(section)),
+      catchError(this.handleError<any>('updateSection'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
