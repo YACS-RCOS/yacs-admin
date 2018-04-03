@@ -191,6 +191,15 @@ export class YacsProdService implements YacsService{
     );
   }
 
+  deleteSection(section: Section | number): Observable<Section>{
+    const id = typeof section === 'number' ? section : section.id;
+    const url = `${this.baseUrl}/sections/${id}`;
+    return this.http.delete<Section>(url, cudOptions).pipe(
+      tap(_=> console.log('deleted section')),
+      catchError(this.handleError<Section>('deleteSection'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;

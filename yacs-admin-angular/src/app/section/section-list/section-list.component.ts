@@ -16,7 +16,7 @@ export class SectionListComponent implements OnInit{
   selectedCourse: Course;
   course_id: number;
   constructor(private route: ActivatedRoute, private yacsService: YacsService) { }
-  
+
   getSections(): void{
     this.yacsService.getSections()
       .subscribe(sections => this.sections = sections);
@@ -59,6 +59,22 @@ export class SectionListComponent implements OnInit{
           this.selectedCourse = course;
         }
       });
+  }
+
+  deleteSection(section): void{
+      this.yacsService.deleteSection(section)
+        .subscribe(()=>{
+        if(this.course_id){
+        this.yacsService.getSectionsByCourseID(this.course_id);
+    }
+
+    //If null, select all courses
+    else{
+      this.getSections();
+      //console.log(this.courses);
+    }
+        });
+
   }
 
 
