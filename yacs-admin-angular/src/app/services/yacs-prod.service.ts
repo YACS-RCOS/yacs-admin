@@ -9,8 +9,7 @@ import { of } from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
 import 'rxjs/add/operator/map';
-const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-
+const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'x-www-form-urlencoded' }), withCredentials: true};
 @Injectable()
 export class YacsProdService implements YacsService{
   baseUrl='https://yacs.cs.rpi.edu/api/v5';
@@ -49,7 +48,7 @@ export class YacsProdService implements YacsService{
 
   updateSchool(school: School): Observable<any>{
     //TODO: implement admin token
-    return this.http.put(this.baseUrl+'/schools', school, cudOptions).pipe(
+    return this.http.put(this.baseUrl+`/schools/${school.id}`, school, cudOptions).pipe(
       //TODO: send to an actual logging system instead of console.log
       tap(_=>console.log(school)),
       catchError(this.handleError<any>('updateSchool'))
@@ -88,7 +87,15 @@ export class YacsProdService implements YacsService{
       return((results.length==1) ? results[0] : null);
     });
   }
- 
+   getDeptByCode(code: string): Observable<Department>{
+    return this.http.get<Department[]>(this.baseUrl+'/departments', {
+      params: new HttpParams().set('code', code)
+    })
+    .map(depts=>{
+      let results = depts['departments'].filter(dept => dept.code == code);
+      return((results.length==1) ? results[0] : null);
+    });
+  }
   getDeptsBySchoolID(school_id: number): Observable<Department[]>{
     return this.http.get<Department[]>(this.baseUrl+'/departments', {
       params: new HttpParams().set('school_id', String(school_id))
@@ -97,7 +104,7 @@ export class YacsProdService implements YacsService{
   }
 
   updateDepartment(dept: Department): Observable<any>{
-    return this.http.put(this.baseUrl+'/departments', dept, cudOptions).pipe(
+    return this.http.put(this.baseUrl+`/departments/${dept.id}`, dept, cudOptions).pipe(
       tap(_=> console.log(dept)),
       catchError(this.handleError<any>('updateDepartment'))
     );
@@ -134,6 +141,13 @@ export class YacsProdService implements YacsService{
     });
 
   }
+  addCourse(course: Course): Observable<any>{
+    return this.http.post(this.baseUrl+'/courses', course, cudOptions).pipe(
+      tap(_=> console.log(course)),
+      catchError(this.handleError<any>('addCourse'))
+    );
+  }
+
 
 
   deleteCourse(course: Course | number): Observable<Course>{
@@ -146,7 +160,7 @@ export class YacsProdService implements YacsService{
   }
 
   updateCourse(course: Course): Observable<any>{
-    return this.http.put(this.baseUrl+'/courses', course, cudOptions).pipe(
+    return this.http.put(this.baseUrl+`/courses/${course.id}`, course, cudOptions).pipe(
       tap(_=> console.log(course)),
       catchError(this.handleError<any>('updateCourse'))
     );

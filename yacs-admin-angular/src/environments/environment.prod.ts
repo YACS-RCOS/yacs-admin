@@ -1,4 +1,7 @@
+import { YacsProdService } from '../app/services/yacs-prod.service';
+
 export const environment = {
   production: true,
-  useRealData: true
+  yacsService: YacsProdService,
+  useRealData: true,
 };

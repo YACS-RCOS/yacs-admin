@@ -3,7 +3,10 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+import { FakeYacsService } from '../app/services/fake-yacs.service';
+
 export const environment = {
   production: false,
-  useRealData: false
+  yacsService: FakeYacsService,
+  useRealData: false,
 };

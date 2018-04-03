@@ -5,7 +5,7 @@
     <div id="deptField" class="form-group form-inline ">
       <label>Department: </label>
       <select class="form-control" id="depts-dropdown" #newCode>
-        <option *ngFor="let dept of departments" [ngValue]="dept.id">{{dept.code}}</option>
+        <option *ngFor="let dept of departments" ngValue="dept.id">{{dept.code}}</option>
       </select>
       &nbsp;
       <label for="numInput">Course #: </label>
@@ -38,8 +38,8 @@
     </div>
   </div>
   <div id="buttonHolder">
-    <button class="btn btn-search" id="createBtn">Create Course</button>
-    <button class="btn btn-search" id="cancelBtn">Cancel</button>
+    <button class="btn btn-search" (click)="createCourse(newCode.value, newName.value, newNum.value, newMinCred.value, newMaxCred.value, newDesc.value)" id="createBtn">Create Course</button>
+    <button class="btn btn-search" (click)="cancelNewCourse()" id="cancelBtn">Cancel</button>
   </div>
   <!--
 
