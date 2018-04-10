@@ -78,6 +78,90 @@ describe('no query parameters', () => {
     it('should display the table',() => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
+
+ it('should not display the form', () => {
+      expect(document.getElementById('newCourse')).toBeNull();
+    });
+
+    it('should display \'New Course\'',() => {
+      expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
+    });
+  describe('after clicking \'New Course\'', () => {
+    beforeEach(async()=>{
+      const newBtn=document.getElementById('newCourseBtn');
+      newBtn.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+      });
+       
+    });
+
+    beforeEach(()=>{
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+      });
+    });
+
+    it('should set creatingCourse to true', async() => {
+      tick();
+      expect(component.creatingCourse).toEqual(true);
+    });
+    it('should render the form', async() => {
+      tick(); 
+      expect(document.getElementById('newCourse')).toBeTruthy();
+      //expect(component.selectedDept).toEqual(expectedDept);
+    });
+
+    describe('when \'Cancel\' is pressed', () => {
+      beforeEach(async()=>{
+        const cancelBtn=document.getElementById('cancelBtn');
+        cancelBtn.click();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
+      });
+
+      beforeEach(()=>{
+        spyOn(component, 'cancelNewCourse').and.callThrough();
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+        });
+      });
+    
+        /*This spec is pending until we can replace
+         *  this dialog with a Bootstrap modal.*/
+
+        xit('displays the dialog', async()=>{
+          tick();
+          expect(component.cancelNewCourse).toHaveBeenCalled();
+        });
+
+});
+
+
+    describe('When \'Create Course\' is pressed', () => {
+      beforeEach(async()=>{
+        const createBtn=document.getElementById('createBtn');
+        createBtn.click();
+      });
+
+      beforeEach(()=>{
+        spyOn(component,'createCourse');
+      });
+
+      it('should call createDept', async()=>{
+        tick();
+        expect(component.createCourse).toHaveBeenCalled();
+      });
+    });
+
+  }); 
+
+
 });
   describe('invalid department id is passed', () => {
     

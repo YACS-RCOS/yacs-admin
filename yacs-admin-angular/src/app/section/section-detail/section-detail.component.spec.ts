@@ -1,17 +1,18 @@
 import { async, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import {FakeYacsService} from '../../services/fake-yacs.service';
-import {InMemoryDataService} from '../../services/in-memory-data.service';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterTestingModule} from '@angular/router/testing';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import { FakeYacsService} from '../../services/fake-yacs.service';
+import { InMemoryDataService} from '../../services/in-memory-data.service';
+import { HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { HttpClientModule} from '@angular/common/http';
+import { RouterTestingModule} from '@angular/router/testing';
+import { ActivatedRoute} from '@angular/router';
+import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import {Section} from '../section';
-import {SectionDetailComponent} from './section-detail.component';
-import {YacsService} from '../../services/yacs.service';
-describe('SchoolDetailComponent', () => {
+import { Section } from '../section';
+import { SectionDetailComponent} from './section-detail.component';
+import { YacsService} from '../../services/yacs.service';
+
+describe('SectionDetailComponent', () => {
   let component: SectionDetailComponent;
   let fixture: ComponentFixture<SectionDetailComponent>;
 
@@ -28,8 +29,8 @@ describe('SchoolDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SectionDetailComponent);
     component = fixture.componentInstance;
-    component.section=new Section(1, 1, '01', 87654, ['Goldschmidt', 'Krishnamoorthy'],
-    10, 5, [1, 2, 3], 2);
+    component.section = new Section(1, 1, '01', 87654, ['Goldschmidt', 'Krishnamoorthy'],
+                                    10, 5, [1, 2, 3], 2);
     spyOn(component, 'getSection');
     fixture.detectChanges();
     fixture.whenStable().then(()=>{
@@ -41,7 +42,7 @@ describe('SchoolDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getSchool', ()=>{
+  it('should call getSection', ()=>{
     expect(component.getSection).toHaveBeenCalled();
   });
 
@@ -51,29 +52,29 @@ describe('SchoolDetailComponent', () => {
     expect(headingText).toMatch(headingPattern);
   });
 
-  it('should display school name', ()=>{
+  it('should display section name', ()=>{
     const nameElem=document.getElementById('nameInput');
 
     //Note: sometimes this is truncated to 30 characters
     expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.section.name.substring(0,30));
   });
 
-  describe('when save button pressed',()=>{
-    beforeEach(async()=>{
-      let saveBtn=document.getElementById('save');
-      saveBtn.click();
-    });
-
-    // beforeEach(()=>{
-    //   spyOn(component, 'save');
-    // });
-    //
-    // it('should call save()', async()=>{
-    //   tick();
-    //   expect(component.save).toHaveBeenCalled();
-    // });
-
-  });
+  // describe('when save button pressed',()=>{
+  //   beforeEach(async()=>{
+  //     let saveBtn=document.getElementById('save');
+  //     saveBtn.click();
+  //   });
+  //
+  //   // beforeEach(()=>{
+  //   //   spyOn(component, 'save');
+  //   // });
+  //   //
+  //   // it('should call save()', async()=>{
+  //   //   tick();
+  //   //   expect(component.save).toHaveBeenCalled();
+  //   // });
+  //
+  // });
 
   describe('when cancel button pressed', ()=>{
     beforeEach(async()=>{

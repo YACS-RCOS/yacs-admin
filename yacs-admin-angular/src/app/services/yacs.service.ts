@@ -37,7 +37,7 @@ export abstract class YacsService {
   /* HTTP GET method
    * Return a singular department by ID */
   abstract getDeptByID(id: number): Observable<Department>;
-
+  abstract getDeptByCode(code: string): Observable<Department>;
   //HTTP GET method
   //Return all departments in a school
   abstract getDeptsBySchoolID(school_id: number): Observable<Department[]>;
@@ -57,8 +57,8 @@ export abstract class YacsService {
 
   abstract getCourseByID(id: number): Observable<Course>;
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;
-
-  //PUT method for courses
+  abstract addCourse(course: Course): Observable<any>;
+//PUT method for courses
   abstract updateCourse(course: Course): Observable<any>;
 
   abstract deleteCourse(course: Course | number): Observable<Course>;
