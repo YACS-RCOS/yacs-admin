@@ -1,8 +1,66 @@
 <div *ngIf="!error">
+<div id="newCourse" *ngIf="creatingCourse">
+  <h3>New Course</h3>
+    <div class="form-row justify-content-start">
+    <div id="deptField" class="form-group form-inline ">
+      <label>Department: </label>
+      <select class="form-control" id="depts-dropdown" #newCode>
+        <option *ngFor="let dept of departments" ngValue="dept.id">{{dept.code}}</option>
+      </select>
+      &nbsp;
+      <label for="numInput">Course #: </label>
+      <input id="numInput" class="form-control"  placeholder="Course number" #newNum>
+    </div>
+    
+  </div>
+  <div class="form-row">
+  <div id="nameField" class="form-group form-inline">
+    <label for="nameInput">Name: </label>
+    <input id="nameInput" class="form-control" style ="width:95% !important;" placeholder="Name" #newName>
+  </div>
+  </div>
+  <div class="form-row">
+    <div id="credField" class="form-group form-inline">
+      <label for="minCredInput">Min Credits: </label>
+      <input id="minCredInput" class="form-control" style="width: 70px !important"  #newMinCred>
+      &nbsp;
+      <label for="maxCredInput">Max Credits: </label>
+      <input id="maxCredInput" class="form-control" style="width: 70px !important" #newMaxCred>
+
+    </div>
+
+
+  </div>
+    <div class="form-row">
+    <div id="descField" class="form-group form-inline">
+      <label for="descInput">Description: &nbsp;</label>
+      <textarea id="descInput" class="form-control" style="width: 90% !important" rows="5" #newDesc></textarea>
+    </div>
+  </div>
+  <div id="buttonHolder">
+    <button class="btn btn-search" (click)="createCourse(newCode.value, newName.value, newNum.value, newMinCred.value, newMaxCred.value, newDesc.value)" id="createBtn">Create Course</button>
+    <button class="btn btn-search" (click)="cancelNewCourse()" id="cancelBtn">Cancel</button>
+  </div>
+  <!--
+
+<div id = "codeField" class="form-group form-inline">
+    <label for = "codeInput">Code: &nbsp;</label>
+    <input id ="codeInput" class="form-control" style="width:100px !important;" placeholder="CODE" #newCode/>
+  </div>
+
+
+
+
+  -->
+
+</div>
 
 <!-- Get department id param-->
-<h2 *ngIf="!selectedDept">All Courses</h2>
-<h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2>
+<div class="row">
+  <div class="col-xs-6">
+  <h2 *ngIf="!selectedDept">All Courses</h2>
+  <h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2></div>
+<div class="col-xs-6 new-object-link" ><h3><a (click) = "showCourseForm()"id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
 <table class="table" *ngIf ="courses">
   <thead>
     <tr>

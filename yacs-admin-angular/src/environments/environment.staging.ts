@@ -1,4 +1,7 @@
+import { YacsStagingService } from '../app/services/yacs-staging.service';
+
 export const environment = {
   production: false,
-  useRealData: true
+  yacsService: YacsStagingService,
+  useRealData: true,
 };
