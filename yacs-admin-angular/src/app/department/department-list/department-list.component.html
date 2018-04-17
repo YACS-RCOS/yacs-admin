@@ -26,8 +26,8 @@
 
 </div>
 
-<div class="row">
-  <div class="col-xs-6"><h2>All Departments</h2></div>
+<div class="row" *ngIf="!error">
+  <div class="col-xs-6"><h2 *ngIf = "!selectedSchool">All Departments</h2><h2 *ngIf="selectedSchool">Departments in the {{selectedSchool.name}}</h2></div>
   <div class="col-xs-6 new-object-link"><h3><a *ngIf="!creatingDept" (click)="showDeptForm()" id="newDeptBtn"> <i class="fa fa-plus" aria-hidden="true"></i>  New Department</a></h3></div>
 </div>
 <!--<department-detail [dept]="selectedDept"></department-detail>
@@ -37,7 +37,7 @@
   <button id="collapse" [hidden]="!selectedDept" class="btn btn-search" (click)="onSelect(null)">Collapse</button>
 -->
 
-<table class="table">
+<table class="table" *ngIf="!error">
   <thead>
     <tr>
       <th class="id">ID</th>
@@ -61,3 +61,9 @@
 
   </tbody>
 </table>
+
+<div id="errorMsg" *ngIf="error">
+  <h1>An error occured!</h1>
+  <h4>The school you queried for does not exist.</h4>
+
+</div>
