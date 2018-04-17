@@ -55,7 +55,12 @@ export class DepartmentListComponent implements OnInit {
     if(confirm(promptString)){
       this.yacsService.deleteDepartment(dept)
         .subscribe(()=>{
-          this.getDepts();
+            if(this.school_id){
+              this.getDeptsById(this.school_id);
+            }
+            else{
+              this.getDepts();
+            }
         });
     }
   }
@@ -70,7 +75,12 @@ export class DepartmentListComponent implements OnInit {
         this.yacsService.addDepartment(newDept)
           .subscribe( ()=>{
             //Get departments with new dept
-            this.getDepts();
+            if(this.school_id){
+              this.getDeptsById(this.school_id);
+            }
+            else{
+              this.getDepts();
+            }
             this.creatingDept=false;
           }
         );
