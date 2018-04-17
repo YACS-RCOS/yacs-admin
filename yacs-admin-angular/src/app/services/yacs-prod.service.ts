@@ -1,20 +1,20 @@
-import {Injectable} from '@angular/core';
-import {School} from '../school/school';
-import {Department} from '../department/department';
+import { Injectable } from '@angular/core';
+import { School } from '../school/school';
+import { Department } from '../department/department';
 import { Course } from '../course/course';
-import {Section} from '../section/section';
+import { Section } from '../section/section';
 import { Observable } from 'rxjs/Observable';
-import {YacsService} from './yacs.service';
+import { YacsService } from './yacs.service';
 import { of } from 'rxjs/observable/of';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { catchError, map, tap} from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'x-www-form-urlencoded' }), withCredentials: true};
 @Injectable()
 export class YacsProdService implements YacsService{
   baseUrl='https://yacs.cs.rpi.edu/api/v5';
   constructor(private http: HttpClient) {}
-  
+
   getSchools(): Observable<School[]>{
     return this.http.get<School[]>(this.baseUrl+'/schools')
     .map(data => {
@@ -22,7 +22,7 @@ export class YacsProdService implements YacsService{
       return data['schools'] as School[];
     });
   }
-  
+
   //Use params in prod implementation
   getSchoolByName(name: string): Observable<School>{
     return this.http.get<School[]>(this.baseUrl+'/schools', {
@@ -196,8 +196,24 @@ export class YacsProdService implements YacsService{
     .map(sections=>{
       return sections['sections'] as Section[]
     });
-
   }
+
+  updateSection(section: Section): Observable<any>{
+    return this.http.put(this.baseUrl+'/sections', section, cudOptions).pipe(
+      tap(_=> console.log(section)),
+      catchError(this.handleError<any>('updateSection'))
+    );
+  }
+
+  deleteSection(section: Section | number): Observable<Section>{
+    const id = typeof section === 'number' ? section : section.id;
+    const url = `${this.baseUrl}/sections/${id}`;
+    return this.http.delete<Section>(url, cudOptions).pipe(
+      tap(_=> console.log('deleted section')),
+      catchError(this.handleError<Section>('deleteSection'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T){
     return (error: any): Observable<T> => {
       let errorMessage: string = `YACS API Error on ${operation} - ${error}`;
@@ -206,4 +222,5 @@ export class YacsProdService implements YacsService{
       return Observable.throw(errorMessage);
     };
   }
+
 }

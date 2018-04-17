@@ -6,9 +6,10 @@ import { SchoolListComponent } from '../school/school-list/school-list.component
 import { DepartmentListComponent } from '../department/department-list/department-list.component';
 import { CourseListComponent } from '../course/course-list/course-list.component';
 import { SectionListComponent } from '../section/section-list/section-list.component';
-import {DepartmentDetailComponent} from '../department/department-detail/department-detail.component';
-import {SchoolDetailComponent} from '../school/school-detail/school-detail.component';
-import {CourseDetailComponent} from '../course/course-detail/course-detail.component';
+import { DepartmentDetailComponent } from '../department/department-detail/department-detail.component';
+import { SchoolDetailComponent } from '../school/school-detail/school-detail.component';
+import { CourseDetailComponent } from '../course/course-detail/course-detail.component';
+import { SectionDetailComponent } from '../section/section-detail/section-detail.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'courses', component: CourseListComponent},
   {path: 'courses/:id', component: CourseDetailComponent},
   {path: 'sections', component: SectionListComponent},
+  {path: 'sections/:id', component: SectionDetailComponent},
 ];
 
 @NgModule({

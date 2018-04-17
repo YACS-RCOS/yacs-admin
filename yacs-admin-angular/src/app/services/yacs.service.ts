@@ -1,16 +1,16 @@
-import {School} from '../school/school';
-import {Department} from '../department/department';
-import {Course} from '../course/course';
-import {Section} from '../section/section';
-import {Observable} from 'rxjs/Observable';
+import { School } from '../school/school';
+import { Department } from '../department/department';
+import { Course } from '../course/course';
+import { Section } from '../section/section';
+import { Observable } from 'rxjs/Observable';
 
-/*Abstract YacsService.
+/* Abstract YacsService.
  * This can be used to implement
  * services for varying environments*/
 
 export abstract class YacsService {
 
-  //Return all schools
+  // Return all schools
   // GET method
   abstract getSchools(): Observable<School[]>;
 
@@ -30,7 +30,7 @@ export abstract class YacsService {
   //DELETE method for schools
   abstract deleteSchool(school: School | number): Observable<School>;
 
-  //Return all departments 
+  //Return all departments
   // GET method
   abstract getDepts(): Observable<Department[]>;
 
@@ -42,23 +42,36 @@ export abstract class YacsService {
   //Return all departments in a school
   abstract getDeptsBySchoolID(school_id: number): Observable<Department[]>;
 
-  //PUT method for departments 
+  //PUT method for departments
   abstract updateDepartment(dept: Department): Observable<any>;
 
-  //POST method for departments 
+  //POST method for departments
   abstract addDepartment(dept: Department): Observable<any>;
 
-  //DELETE method for departments 
+  //DELETE method for departments
   abstract deleteDepartment(dept: Department | number): Observable<Department>;
-  abstract getCourseByID(id: number): Observable<Course>;
+
+
 
   abstract getCourses(): Observable<Course[]>;
+
+  abstract getCourseByID(id: number): Observable<Course>;
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;
   abstract addCourse(course: Course): Observable<any>;
 //PUT method for courses
   abstract updateCourse(course: Course): Observable<any>;
+
   abstract deleteCourse(course: Course | number): Observable<Course>;
+
+
+
   abstract getSections(): Observable<Section[]>;
+
   abstract getSectionByID(id: number): Observable<Section>;
   abstract getSectionsByCourseID(course_id: number): Observable<Section[]>;
+
+  abstract updateSection(section: Section): Observable<any>;
+
+  abstract deleteSection(section: Section | number): Observable<Section>;
+
 }

@@ -1,0 +1,12 @@
+<div id ="sectionDetail" *ngIf="section">
+  <h2 id="detailHeading">{{section.name}} Details</h2>
+  <div id="nameField" class="form-group">
+    <label for="nameInput">Name: </label>
+    <input id="nameInput" class="form-control" [(ngModel)]="section.name" placeholder="name" #newName/>
+  </div>
+
+  <div id="buttonHolder">
+    <button class="btn btn-search" id="save" (click) ="save(newName)">Save Changes</button>
+    <button class="btn btn-search" id="cancel" (click)="cancel(newName)" >Cancel</button>
+  </div>
+</div>

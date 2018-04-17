@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {School} from '../school/school';
-import { Department } from '../department/department';
-import { Course } from '../course/course';
+import {Department} from '../department/department';
+import {Course} from '../course/course';
 import {Section} from '../section/section';
 import {SCHOOLS, DEPTS, COURSES, SECTIONS} from '../mock-data'
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import {YacsService} from './yacs.service';
-import { of } from 'rxjs/observable/of';
+import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, map, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
@@ -33,12 +33,12 @@ export class FakeYacsService implements YacsService{
         return((results.length==1) ? results[0] : null);
       });
   }
+
   getDepts(): Observable<Department[]>{
     return this.http.get<Department[]>(this.deptsUrl);
   }
 
   getCourses(): Observable<Course[]>{
-    
     return this.http.get<Course[]>(this.coursesUrl);
     //return of(COURSES);
   }
@@ -48,9 +48,9 @@ export class FakeYacsService implements YacsService{
     //return of(SECTIONS);
   }
 
-  getSectionByID(id: number): Observable<Section>{
-    const url = `${this.sectionsUrl}/${id}`;
-    return this.http.get<Section>(url); 
+  getSchoolByID(id: number): Observable<School>{
+    const url=`${this.schoolsUrl}/${id}`;
+    return this.http.get<School>(url);
   }
 
   getSectionsByCourseID(course_id: number): Observable<Section[]>{
@@ -72,9 +72,9 @@ export class FakeYacsService implements YacsService{
     //return of(COURSES.filter(course => course.id === id)[0]);
   }
 
-  getSchoolByID(id: number): Observable<School>{
-    const url=`${this.schoolsUrl}/${id}`;
-    return this.http.get<School>(url);
+  getSectionByID(id: number): Observable<Section>{
+    const url = `${this.sectionsUrl}/${id}`;
+    return this.http.get<Section>(url);
   }
 
   updateSchool(school: School): Observable<any>{
@@ -114,7 +114,6 @@ export class FakeYacsService implements YacsService{
         return results;
       });
     //return of(COURSES.filter(course => course.department_id === dept_id));
-
   }
 
   addCourse(course: Course): Observable<any>{
@@ -152,7 +151,8 @@ export class FakeYacsService implements YacsService{
     return this.http.put(this.deptsUrl, dept, cudOptions).pipe(
       tap(_ => console.log(dept)),
       catchError(this.handleError<any>('updateDepartment'))
-    );  }
+    );
+  }
 
   addDepartment(dept: Department): Observable<any>{
     return this.http.post(this.deptsUrl, dept, cudOptions).pipe(
@@ -168,6 +168,22 @@ export class FakeYacsService implements YacsService{
     return this.http.delete<Department>(url, cudOptions).pipe(
       tap(_=> console.log('deleted')),
       catchError(this.handleError<Department>('deleteDepartment'))
+    );
+  }
+
+  updateSection(section: Section): Observable<any>{
+    return this.http.put(this.sectionsUrl, section, cudOptions).pipe(
+      tap(_=>console.log(section),
+      catchError(this.handleError<any>('updateSchool')))
+    );
+  }
+
+  deleteSection(section: Section | number): Observable<Section>{
+    const id = typeof section === 'number' ? section : section.id;
+    const url = `${this.sectionsUrl}/${id}`;
+    return this.http.delete<Section>(url, cudOptions).pipe(
+      tap(_=> console.log('deleted section')),
+      catchError(this.handleError<Section>('deleteSection'))
     );
   }
 
