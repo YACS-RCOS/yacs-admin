@@ -13,10 +13,10 @@ export class Section {
   seats: number;
   seats_taken: number;
   conflicts: number[];
-  //periods: Period[];
+  periods: Period[];
   num_periods: number;
 
-  constructor(id, course_id, name, crn, instructors, seats, seats_taken, conflicts, num_periods) {
+  constructor(id, course_id, name, crn, instructors, seats, seats_taken, conflicts, periods, num_periods) {
     this.id = id;
     this.course_id = course_id;
     this.name = name;
@@ -25,7 +25,7 @@ export class Section {
     this.seats = seats;
     this.seats_taken = seats_taken;
     this.conflicts = conflicts;
-    //this.periods = periods;
+    this.periods = periods;
     this.num_periods = num_periods;
   }
 }

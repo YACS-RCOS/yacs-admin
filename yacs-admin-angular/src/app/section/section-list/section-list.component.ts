@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { YacsService } from '../../services/yacs.service';
-import { Section } from '../section';
 import { Course } from '../../course/course';
+import { Section } from '../section';
 import { Period } from '../period';
 import { ActivatedRoute } from '@angular/router';
 const SHORT_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -13,14 +13,11 @@ const SHORT_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 })
 export class SectionListComponent implements OnInit{
   sections: Section[];
+  test_periods: Period[];
+  selectedSection: Section;
   selectedCourse: Course;
   course_id: number;
   constructor(private route: ActivatedRoute, private yacsService: YacsService) { }
-
-  getSections(): void{
-    this.yacsService.getSections()
-      .subscribe(sections => this.sections = sections);
-  }
 
   ngOnInit() {
     this.setCourseId();
@@ -33,6 +30,10 @@ export class SectionListComponent implements OnInit{
     else{
       this.getSections();
     }
+    this.test_periods = [
+      {start:800, end:950, day:2},
+      {start:800, end:950, day:5},
+    ];
   }
 
   setCourseId(): void{
@@ -41,6 +42,11 @@ export class SectionListComponent implements OnInit{
       .subscribe(params =>{
         this.course_id=Number(params.course_id);
       });
+  }
+
+  getSections(): void{
+    this.yacsService.getSections()
+      .subscribe(sections => this.sections = sections);
   }
 
   getCourseSections(course_id: number): void{
@@ -75,6 +81,11 @@ export class SectionListComponent implements OnInit{
     }
         });
 
+  }
+
+  showPeriods(section): void{
+    this.selectedSection = section;
+    console.log(section.periods);
   }
 
 

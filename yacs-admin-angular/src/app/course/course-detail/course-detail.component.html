@@ -12,7 +12,7 @@
       <label for="numInput">Course #: </label>
       <input id="numInput" class="form-control" [(ngModel)]="course.number" placeholder="num" #newNum>
     </div>
-    
+
   </div>
   <div class="form-row">
   <div id="nameField" class="form-group form-inline">
@@ -42,7 +42,7 @@
   </div>
 
   <div id="buttonHolder">
-    <!-- These are intentionally left without a (click) function 
+    <!-- These are intentionally left without a (click) function
       for now, TODO implement functionality -->
     <button class="btn btn-search" id="save" (click)="saveCourse()">Save Changes</button>
     <button class="btn btn-search" id="cancel" (click)="goBack()">Cancel</button>

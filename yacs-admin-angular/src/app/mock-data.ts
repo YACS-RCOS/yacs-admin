@@ -2,12 +2,21 @@ import { School } from './school/school';
 import { Department } from './department/department';
 import { Course } from './course/course';
 import { Section } from './section/section';
+import { Period } from './section/period';
 
 export const SECTIONS: Section[] = [
     {id: 1, course_id: 1, name: '01', crn: 87654, instructors: ["Goldschmidt", "Krishnamoorthy"],
-    seats: 10, seats_taken: 5, conflicts: [1, 2, 3], num_periods: 2},
+    seats: 10, seats_taken: 5, conflicts: [1, 2, 3],
+    periods: [
+      new Period(800, 950, 2),
+      new Period(800, 950, 5),
+    ], num_periods: 2},
     {id: 2, course_id: 1, name: '02', crn: 87655, instructors: ["Goldschmidt"],
-    seats: 10, seats_taken: 3, conflicts: [1, 2, 3], num_periods: 2},
+    seats: 10, seats_taken: 3, conflicts: [1, 2, 3],
+    periods: [
+      new Period(1600, 1750, 1),
+      new Period(1600, 1750, 4),
+    ], num_periods: 2},
 ];
 
 export const COURSES: Course[] = [
