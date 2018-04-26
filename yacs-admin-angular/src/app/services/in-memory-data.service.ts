@@ -6,7 +6,17 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb(){
     const sections= [
       {id: 1, course_id: 1, name: '01', crn: 87654, instructors: ["Goldschmidt", "Krishnamoorthy"],
-      seats: 10, seats_taken: 5, conflicts: [1, 2, 3], num_periods: 2},
+      seats: 10, seats_taken: 5, conflicts: [1, 2, 3],
+      periods: [
+        {start: 800, end: 950, day: 2},
+        {start: 800, end: 950, day: 5},
+      ], num_periods: 2},
+      {id: 2, course_id: 1, name: '02', crn: 87655, instructors: ["Goldschmidt", "Krishnamoorthy"],
+      seats: 10, seats_taken: 3, conflicts: [1, 2, 3],
+      periods: [
+        {start: 1600, end: 1750, day: 1},
+        {start: 1600, end: 1750, day: 4},
+      ], num_periods: 2},
     ];
     const courses = [
       {id: 1, name: 'Stars, Galaxies and the Cosmos', number: '1960', department_code: 'ASTR',

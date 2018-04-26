@@ -1,8 +1,21 @@
 <div id ="sectionDetail" *ngIf="section">
-  <h2 id="detailHeading">{{section.name}} Details</h2>
-  <div id="nameField" class="form-group">
+  <h2 id="detailHeading">
+    Section {{section.department_code}} {{section.number}} {{section.name}} Details
+  </h2>
+
+  <div id="nameField" class="form-group form-inline">
     <label for="nameInput">Name: </label>
     <input id="nameInput" class="form-control" [(ngModel)]="section.name" placeholder="name" #newName/>
+  </div>
+
+  <div id = "crnField" class="form-group form-inline">
+    <label for = "crnField">CRN: &nbsp;</label>
+    <input id ="crnField" class="form-control" style="width:100px !important;" [(ngModel)]="section.crn" placeholder="crn" #newCode/>
+  </div>
+
+  <div id = "instructorField" class="form-group form-inline">
+    <label for="instructorInput">Instructor(s): </label>
+    <input id ="instructorField" class="form-control" [(ngModel)]="section.instructors" placeholder="instructors" #newInstructors/>
   </div>
 
   <div id="buttonHolder">

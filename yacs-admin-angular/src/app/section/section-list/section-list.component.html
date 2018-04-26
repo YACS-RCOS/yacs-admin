@@ -17,15 +17,24 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let section of sections">
+  <tr *ngFor="let section of sections" style="display: block">
     <td class="id">{{section.id}}</td>
     <td class="id">{{section.name}}</td>
     <td class="code">{{section.crn}}</td>
     <td>{{ section.instructors.join(', ') }}</td>
-    <td class="code">{{ section.seats-section.seats_taken }}/{{section.seats}}</td>
+    <td class="code">{{section.seats-section.seats_taken}}/{{section.seats}}</td>
     <td class="id" style="text-align: center !important;"><a routerLink="{{section.id}}">Details</a></td>
-    <td class="id" style="text-align: center !important;"><a routerLink="/sections" [queryParams]="{section_id: section.id }">Show Periods</a></td>
-    <td class="id" style="text-align: center !important;"><a class="delete" (click)="deleteSection(section)" >Delete</a></td>
+    <td class="id" style="text-align: center !important;"><a id="showPeriods" (click)="showPeriods(section)">Show Periods</a></td>
+    <td class="id" style="text-align: center !important;"><a class="delete" (click)="deleteSection(section)">Delete</a></td>
+
+    <ng-container *ngIf="section === selectedSection">
+      <table style="margin: 5px;">
+        <b>Periods</b>
+        <td *ngFor="let period of section.periods">
+          Start: {{period.start}}  End: {{period.end}}  Day: {{getDay(period)}}
+        </td>
+      </table>
+    </ng-container>
   </tr>
 
   </tbody>

@@ -9,6 +9,7 @@ import { ActivatedRoute} from '@angular/router';
 import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Section } from '../section';
+import { Period } from '../period';
 import { SectionDetailComponent} from './section-detail.component';
 import { YacsService} from '../../services/yacs.service';
 
@@ -30,7 +31,7 @@ describe('SectionDetailComponent', () => {
     fixture = TestBed.createComponent(SectionDetailComponent);
     component = fixture.componentInstance;
     component.section = new Section(1, 1, '01', 87654, ['Goldschmidt', 'Krishnamoorthy'],
-                                    10, 5, [1, 2, 3], 2);
+                                    10, 5, [1, 2, 3], [new Period(800, 950, 2), new Period(800, 950, 5)], 2);
     spyOn(component, 'getSection');
     fixture.detectChanges();
     fixture.whenStable().then(()=>{
