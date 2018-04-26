@@ -9,7 +9,7 @@ import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {YacsService} from '../../services/yacs.service';
 describe('SectionListComponent', ()=>{
-  
+
 
   describe('no parameters queried', ()=>{
 
@@ -22,7 +22,7 @@ describe('SectionListComponent', ()=>{
         imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
         declarations: [ SectionListComponent ],
         providers: [
-          {provide: YacsService, useClass: FakeYacsService}, 
+          {provide: YacsService, useClass: FakeYacsService},
           {provide: ActivatedRoute, useValue: {'queryParams': Observable.from(mockParams)}}]
       })
       .compileComponents();
@@ -41,7 +41,7 @@ describe('SectionListComponent', ()=>{
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
       });
-       
+
     });
 
 
@@ -88,7 +88,7 @@ describe('SectionListComponent', ()=>{
         imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
         declarations: [ SectionListComponent ],
         providers: [
-          {provide: YacsService, useClass: FakeYacsService}, 
+          {provide: YacsService, useClass: FakeYacsService},
           {provide: ActivatedRoute, useValue: {'queryParams': Observable.from(mockParams)}}]
       })
       .compileComponents();
@@ -107,7 +107,7 @@ describe('SectionListComponent', ()=>{
       fixture.whenStable().then(()=>{
         fixture.detectChanges();
       });
-       
+
     });
 
 
@@ -142,6 +142,23 @@ describe('SectionListComponent', ()=>{
 
     it('should display the table',() => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
+    });
+
+
+    describe('when showPeriods clicked', ()=>{
+      beforeEach(async()=>{
+        let periodsButton=document.getElementById('showPeriods');
+        periodsButton.click();
+      });
+
+      beforeEach(()=>{
+        spyOn(component, 'showPeriods');
+      });
+
+      it('should call showPeriods()', async()=>{
+        tick();
+        expect(component.showPeriods).toHaveBeenCalled();
+      });
     });
 
   });

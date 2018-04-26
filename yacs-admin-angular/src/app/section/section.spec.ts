@@ -2,7 +2,7 @@ import { Section } from './section';
 import { Period } from './period';
 describe('Section', () => {
   const section = new Section(1, 1, '01', 87654, ['Goldschmidt', 'Krishnamoorthy'],
-  10, 5, [1, 2, 3], 2);
+  10, 5, [1, 2, 3], [new Period(800, 950, 2), new Period(800, 950, 5)], 2);
 
   it('has id', () => {
     expect(section.id).toBe(1);
@@ -37,11 +37,11 @@ describe('Section', () => {
     expect(section.conflicts).toEqual([1, 2, 3]);
   });
 
-  // it('has periods', () => {
-  //   const dept1 = new Department(1,'CPYP','Copying and Pasting',1);
-  //   const school = new School(1, 'School of StackOverflow',[dept1]);
-  //   expect(school.departments[0].name).toBe('Copying and Pasting');
-  // });
+  it('has periods', () => {
+    expect(section.periods[0].start).toEqual(800);
+    expect(section.periods[0].end).toEqual(950);
+    expect(section.periods[0].day).toEqual(2);
+  });
 
   it('has num_periods', () => {
     expect(section.num_periods).toBe(2);
