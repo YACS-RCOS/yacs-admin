@@ -23,7 +23,7 @@ describe('AppNavComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display YACS Admin as the page title', () =>{
+  it('should display YACS Admin as the page title', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('#page-title > a').textContent).toContain('YACS Admin');
 

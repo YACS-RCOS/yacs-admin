@@ -1,5 +1,5 @@
 export class Period {
-  //type: string;
+  // type: string;
   start: number;
   end: number;
   day: number;

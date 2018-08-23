@@ -13,28 +13,28 @@ export class SectionDetailComponent implements OnInit {
   @Input () section: Section;
   constructor(private yacsService: YacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
-  getSection(id: number){
+  getSection(id: number) {
     this.yacsService.getSectionByID(id)
-      .subscribe(section=>this.section = section);
+      .subscribe(section => this.section = section);
   }
 
   ngOnInit() {
     let id: number;
-    this.route.params.subscribe(params=>{id=+params['id']});
+    this.route.params.subscribe(params => {id = +params['id']; });
     this.getSection(id);
   }
 
-  saveSection(name){
+  saveSection(name) {
     this.yacsService.updateSection(this.section)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.router.navigate(['/sections']);
       });
   }
 
-  cancel(name){
+  cancel(name) {
     this.goBack();
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

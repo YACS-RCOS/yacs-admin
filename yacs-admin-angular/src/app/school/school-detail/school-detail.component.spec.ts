@@ -17,7 +17,8 @@ describe('SchoolDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ SchoolDetailComponent ],
       providers: [{provide: YacsService, useClass: FakeYacsService}
         , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}]
@@ -25,13 +26,12 @@ describe('SchoolDetailComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SchoolDetailComponent);
+  beforeEach(() => {fixture = TestBed.createComponent(SchoolDetailComponent);
     component = fixture.componentInstance;
-    component.school=new School(1, 'School of Humanities, Arts, and Social Sciences', []);
+    component.school = new School(1, 'School of Humanities, Arts, and Social Sciences', []);
     spyOn(component, 'getSchool');
     fixture.detectChanges();
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
     });
   });
@@ -40,51 +40,51 @@ describe('SchoolDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getSchool', ()=>{
+  it('should call getSchool', () => {
     expect(component.getSchool).toHaveBeenCalled();
   });
 
-  it('should display heading', ()=>{
-    const headingText=document.getElementById('detailHeading').textContent;
-    const headingPattern=component.school.name+' Details';
+  it('should display heading', () => {
+    const headingText = document.getElementById('detailHeading').textContent;
+    const headingPattern = component.school.name + ' Details';
     expect(headingText).toMatch(headingPattern);
   });
 
-  it('should display school name', ()=>{
-    const nameElem=document.getElementById('nameInput');
+  it('should display school name', () => {
+    const nameElem = document.getElementById('nameInput');
 
-    //Note: sometimes this is truncated to 30 characters
-    expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.school.name.substring(0,30));
+    // Note: sometimes this is truncated to 30 characters
+    expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.school.name.substring(0, 30));
   });
 
-  describe('when save button pressed',()=>{
-    beforeEach(async()=>{
-      let saveBtn=document.getElementById('save');
+  describe('when save button pressed', () => {
+    beforeEach(async() => {
+      const saveBtn = document.getElementById('save');
       saveBtn.click();
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       spyOn(component, 'save');
     });
 
-    it('should call save()', async()=>{
+    it('should call save()', async() => {
       tick();
       expect(component.save).toHaveBeenCalled();
     });
 
   });
 
-  describe('when cancel button pressed', ()=>{
-    beforeEach(async()=>{
-      let cancelBtn=document.getElementById('cancel');
+  describe('when cancel button pressed', () => {
+    beforeEach(async() => {
+      const cancelBtn = document.getElementById('cancel');
       cancelBtn.click();
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       spyOn(component, 'cancel');
     });
 
-    it('should call cancel()', async()=>{
+    it('should call cancel()', async() => {
       tick();
       expect(component.cancel).toHaveBeenCalled();
     });

@@ -13,28 +13,28 @@ export class SchoolDetailComponent implements OnInit {
   @Input () school: School;
   constructor(private yacsService: YacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
-  getSchool(id: number){
+  getSchool(id: number) {
     this.yacsService.getSchoolByID(id)
-      .subscribe(school=>this.school = school);
+      .subscribe(school => this.school = school);
   }
 
   ngOnInit() {
     let id: number;
-    this.route.params.subscribe(params=>{id=+params['id']});
+    this.route.params.subscribe(params => {id = +params['id']; });
     this.getSchool(id);
   }
 
-  save(name){
+  save(name) {
     this.yacsService.updateSchool(this.school)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.router.navigate(['/schools']);
       });
   }
 
-  cancel(name){
+  cancel(name) {
     this.goBack();
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

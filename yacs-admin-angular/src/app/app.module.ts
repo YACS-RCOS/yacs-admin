@@ -11,7 +11,7 @@ import { DepartmentDetailComponent } from './department/department-detail/depart
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { SectionListComponent } from './section/section-list/section-list.component';
 import {YacsService} from './services/yacs.service';
-//YACS API uses older http module
+// YACS API uses older http module
 import { HttpInMemoryWebApiModule, HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpModule, XHRBackend } from '@angular/http';
@@ -38,7 +38,7 @@ import { SectionDetailComponent } from './section/section-detail/section-detail.
   ],
   imports: [
     BrowserModule, FormsModule,
-    HttpClientModule,AppRouterModule,
+    HttpClientModule, AppRouterModule,
 
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),   ],
   providers: [

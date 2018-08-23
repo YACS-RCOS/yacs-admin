@@ -18,14 +18,14 @@ export class CourseDetailComponent implements OnInit {
     let id: number;
 
 
-     this.route.params.subscribe(params=>{id=+params['id']});
+     this.route.params.subscribe(params => {id = +params['id']; });
       this.yacsService.getCourseByID(id)
       .subscribe(course => this.course = course);
-    //this.getCourse();
+    // this.getCourse();
     this.getDepts();
   }
 
-  getDepts(){
+  getDepts() {
     this.yacsService.getDepts()
       .subscribe(depts => this.depts = depts);
   }
@@ -35,11 +35,11 @@ export class CourseDetailComponent implements OnInit {
   //     .subscribe(section=>this.section = section);
   // }
 
-  saveCourse(){
+  saveCourse() {
     this.yacsService.updateCourse(this.course)
-      .subscribe(()=> this.goBack());
+      .subscribe(() => this.goBack());
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

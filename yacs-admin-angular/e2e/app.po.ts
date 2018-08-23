@@ -9,7 +9,7 @@ export class AppPage {
     return element(by.css('app-welcome-page h1')).getText();
   }
 
-  getNavbarTitle(){
+  getNavbarTitle() {
     return element(by.css('#page-title a')).getText();
   }
 }

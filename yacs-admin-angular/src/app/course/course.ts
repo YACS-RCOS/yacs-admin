@@ -10,15 +10,15 @@ export class Course {
   number: string;
   department_code: string;
   department_id: number;
-  min_credits:number;
-  max_credits:number;
+  min_credits: number;
+  max_credits: number;
   description: string;
   sections: Section[];
 
   constructor(id, name, num, dep_code, dep_id, min_cred, max_cred, des, sections) {
     this.id = id;
     this.name = name;
-    this.number=num;
+    this.number = num;
     this.department_code = dep_code;
     this.department_id = dep_id;
     this.min_credits = min_cred;

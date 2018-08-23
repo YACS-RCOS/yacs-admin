@@ -23,19 +23,14 @@ describe('yacs-admin-angular App', () => {
 describe('schools page', () => {
   let page: SchoolPage;
 
-  beforeEach(()=>{
-    page=new SchoolPage();
+  beforeEach(() => {
+    page = new SchoolPage();
   });
 
-  it('should display correct headers',()=>{
+  it('should display correct headers', () => {
     page.navigateTo();
-    let headers = page.getHeaderRows();
+    const headers = page.getHeaderRows();
     console.log(headers[0]);
-    for(let header of headers){
-      //console.log(header);
-      
-    }
     expect(1).toEqual(1);
   });
-
-} );
+});

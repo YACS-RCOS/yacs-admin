@@ -8,11 +8,11 @@ export class Department {
   name: string;
   school_id: number;
 
-  constructor(id, code, name, school_id){
-    this.id=id;
-    this.name=name;
-    this.code=code;
-    this.school_id=school_id;
+  constructor (id, code, name, school_id) {
+    this.id = id;
+    this.name = name;
+    this.code = code;
+    this.school_id = school_id;
   }
 
 
