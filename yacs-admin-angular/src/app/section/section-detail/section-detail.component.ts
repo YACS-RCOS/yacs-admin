@@ -13,7 +13,7 @@ export class SectionDetailComponent implements OnInit {
   @Input () section: Section;
   constructor(private yacsService: YacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
-  getSection(id: number){
+  getSection(id: number) {
     this.yacsService.getSectionByID(id)
       .subscribe(section => this.section = section);
   }
@@ -24,17 +24,17 @@ export class SectionDetailComponent implements OnInit {
     this.getSection(id);
   }
 
-  saveSection(name){
+  saveSection(name) {
     this.yacsService.updateSection(this.section)
       .subscribe(() => {
         this.router.navigate(['/sections']);
       });
   }
 
-  cancel(name){
+  cancel(name) {
     this.goBack();
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

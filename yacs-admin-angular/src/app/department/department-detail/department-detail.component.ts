@@ -6,7 +6,7 @@ import {YacsService} from '../../services/yacs.service';
 import {Location} from '@angular/common';
 
 @Component({
-  selector: 'department-detail',
+  selector: 'app-department-detail',
   templateUrl: './department-detail.component.html',
   styleUrls: ['./department-detail.component.css']
 })
@@ -24,12 +24,12 @@ export class DepartmentDetailComponent implements OnInit {
       .subscribe(dept => this.dept = dept);
   }
 
-  saveDept(){
+  saveDept() {
     this.yacsService.updateDepartment(this.dept)
       .subscribe(() => console.log('done'));
   }
 
-  save(code, name, id){
+  save(code, name, id) {
     console.log('saving!');
     this.yacsService.updateDepartment(this.dept)
       .subscribe(() => {
@@ -38,30 +38,29 @@ export class DepartmentDetailComponent implements OnInit {
       });
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 
-  confirmUnsavedChanges(dept){
+  confirmUnsavedChanges(dept) {
 
     let cancelAction = false;
-        if (this.dept.code != dept.code ||
-           this.dept.name != dept.name ||
-           this.dept.school_id != dept.school_id){
+        if (this.dept.code !== dept.code ||
+           this.dept.name !== dept.name ||
+           this.dept.school_id !== dept.school_id) {
           cancelAction = confirm('You have unsaved changes. Are you sure you want to cancel?');
 
-        }
-        else{
+        } else {
           cancelAction = true;
         }
-   if (cancelAction){
+   if (cancelAction) {
       this.location.back();
     }
   }
 
-  cancel(code, name, id){
+  cancel(code, name, id) {
 
-    //Retrieve the current state of the object
+    // Retrieve the current state of the object
     this.yacsService.getDeptByID(this.dept.id)
       .subscribe(dept => {
         this.confirmUnsavedChanges(dept);

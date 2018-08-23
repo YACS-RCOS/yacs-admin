@@ -11,11 +11,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'x-www-form-urlencoded' }), withCredentials: true};
 @Injectable()
-export class YacsProdService implements YacsService{
-  baseUrl= 'https://yacs.cs.rpi.edu/api/v5';
+export class YacsProdService implements YacsService {
+  baseUrl = 'https://yacs.cs.rpi.edu/api/v5';
   constructor(private http: HttpClient) {}
 
-  getSchools(): Observable<School[]>{
+  getSchools(): Observable<School[]> {
     return this.http.get<School[]>(this.baseUrl + '/schools')
     .map(data => {
       console.log(data['schools']);
@@ -23,46 +23,46 @@ export class YacsProdService implements YacsService{
     });
   }
 
-  //Use params in prod implementation
-  getSchoolByName(name: string): Observable<School>{
+  // Use params in prod implementation
+  getSchoolByName(name: string): Observable<School> {
     return this.http.get<School[]>(this.baseUrl + '/schools', {
       params: new HttpParams().set('name', name)
     })
     .map(schools => {
-      //Get only the first result
-      const results = schools['schools'].filter(school => school.name == name);
-      return((results.length == 1) ? results[0] : null);
+      // Get only the first result
+      const results = schools['schools'].filter(school => school.name === name);
+      return((results.length === 1) ? results[0] : null);
     });
   }
 
-  getSchoolByID(id: number): Observable<School>{
+  getSchoolByID(id: number): Observable<School> {
     return this.http.get<School[]>(this.baseUrl + '/schools', {
       params: new HttpParams().set('id', String(id))
     })
     .map(schools => {
-      //Get only the first result
-      const results = schools['schools'].filter(school => school.id == id);
-      return((results.length == 1) ? results[0] : null);
+      // Get only the first result
+      const results = schools['schools'].filter(school => school.id === id);
+      return((results.length === 1) ? results[0] : null);
     });
   }
 
-  updateSchool(school: School): Observable<any>{
-    //TODO: implement admin token
+  updateSchool(school: School): Observable<any> {
+    // TODO: implement admin token
     return this.http.put(this.baseUrl + `/schools/${school.id}`, school, cudOptions).pipe(
-      //TODO: send to an actual logging system instead of console.log
+      // TODO: send to an actual logging system instead of console.log
       tap(_ => console.log(school)),
       catchError(this.handleError<any>('updateSchool'))
     );
   }
 
-  addSchool(school: School): Observable<any>{
+  addSchool(school: School): Observable<any> {
     return this.http.post(this.baseUrl + '/schools', school, cudOptions).pipe(
       tap(_ => console.log(school)),
       catchError(this.handleError<any>('addSchool'))
     );
   }
 
-  deleteSchool(school: School | number): Observable<School>{
+  deleteSchool(school: School | number): Observable<School> {
     const id = typeof school === 'number' ? school : school.id;
     const url = `${this.baseUrl}/schools/${id}`;
     return this.http.delete<School>(url, cudOptions).pipe(
@@ -71,53 +71,53 @@ export class YacsProdService implements YacsService{
     );
   }
 
-  getDepts(): Observable<Department[]>{
+  getDepts(): Observable<Department[]> {
     return this.http.get<Department[]>(this.baseUrl + '/departments')
     .map(data => {
       return data['departments'] as Department[];
     });
   }
 
-  getDeptByID(id: number): Observable<Department>{
+  getDeptByID(id: number): Observable<Department> {
     return this.http.get<Department[]>(this.baseUrl + '/departments', {
       params: new HttpParams().set('id', String(id))
     })
     .map(depts => {
-      const results = depts['departments'].filter(dept => dept.id == id);
-      return((results.length == 1) ? results[0] : null);
+      const results = depts['departments'].filter(dept => dept.id === id);
+      return((results.length === 1) ? results[0] : null);
     });
   }
-   getDeptByCode(code: string): Observable<Department>{
+   getDeptByCode(code: string): Observable<Department> {
     return this.http.get<Department[]>(this.baseUrl + '/departments', {
       params: new HttpParams().set('code', code)
     })
     .map(depts => {
-      const results = depts['departments'].filter(dept => dept.code == code);
-      return((results.length == 1) ? results[0] : null);
+      const results = depts['departments'].filter(dept => dept.code === code);
+      return((results.length === 1) ? results[0] : null);
     });
   }
-  getDeptsBySchoolID(school_id: number): Observable<Department[]>{
+  getDeptsBySchoolID(school_id: number): Observable<Department[]> {
     return this.http.get<Department[]>(this.baseUrl + '/departments', {
       params: new HttpParams().set('school_id', String(school_id))
     })
     .map(data => data['departments'] as Department[]);
   }
 
-  updateDepartment(dept: Department): Observable<any>{
+  updateDepartment(dept: Department): Observable<any> {
     return this.http.put(this.baseUrl + `/departments/${dept.id}`, dept, cudOptions).pipe(
       tap(_ => console.log(dept)),
       catchError(this.handleError<any>('updateDepartment'))
     );
   }
 
-  addDepartment(dept: Department): Observable<any>{
+  addDepartment(dept: Department): Observable<any> {
     return this.http.post(this.baseUrl + '/departments', dept, cudOptions).pipe(
       tap(_ => console.log(dept)),
       catchError(this.handleError<any>('addDepartment'))
     );
   }
 
-  deleteDepartment(dept: Department | number): Observable<Department>{
+  deleteDepartment(dept: Department | number): Observable<Department> {
     const id = typeof dept === 'number' ? dept : dept.id;
     const url = `${this.baseUrl}/departments/${id}`;
     return this.http.delete<Department>(url, cudOptions).pipe(
@@ -126,22 +126,22 @@ export class YacsProdService implements YacsService{
     );
   }
 
-  getCourses(): Observable<Course[]>{
+  getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.baseUrl + '/courses')
     .map(data => data['courses'] as Course[]);
   }
 
-  getCourseByID(id: number): Observable<Course>{
+  getCourseByID(id: number): Observable<Course> {
     return this.http.get<Course[]>(this.baseUrl + '/courses', {
       params: new HttpParams().set('id', String(id))
     })
     .map(courses => {
-      const results = courses['courses'].filter(course => course.id == id);
-      return((results.length == 1) ? results[0] : null);
+      const results = courses['courses'].filter(course => course.id === id);
+      return((results.length === 1) ? results[0] : null);
     });
 
   }
-  addCourse(course: Course): Observable<any>{
+  addCourse(course: Course): Observable<any> {
     return this.http.post(this.baseUrl + '/courses', course, cudOptions).pipe(
       tap(_ => console.log(course)),
       catchError(this.handleError<any>('addCourse'))
@@ -150,7 +150,7 @@ export class YacsProdService implements YacsService{
 
 
 
-  deleteCourse(course: Course | number): Observable<Course>{
+  deleteCourse(course: Course | number): Observable<Course> {
     const id = typeof course === 'number' ? course : course.id;
     const url = `${this.baseUrl}/courses/${id}`;
     return this.http.delete<Course>(url, cudOptions).pipe(
@@ -159,13 +159,13 @@ export class YacsProdService implements YacsService{
     );
   }
 
-  updateCourse(course: Course): Observable<any>{
+  updateCourse(course: Course): Observable<any> {
     return this.http.put(this.baseUrl + `/courses/${course.id}`, course, cudOptions).pipe(
       tap(_ => console.log(course)),
       catchError(this.handleError<any>('updateCourse'))
     );
   }
-  getCoursesByDeptID(dept_id: number): Observable<Course[]>{
+  getCoursesByDeptID(dept_id: number): Observable<Course[]> {
     return this.http.get<Course[]>(this.baseUrl + '/courses', {
       params: new HttpParams().set('department_id', String(dept_id))
     })
@@ -174,22 +174,22 @@ export class YacsProdService implements YacsService{
     });
   }
 
-  getSections(): Observable<Section[]>{
+  getSections(): Observable<Section[]> {
     return this.http.get<Section[]>(this.baseUrl + '/sections')
     .map(data => data['sections'] as Section[]);
   }
 
-  getSectionByID(id: number): Observable<Section>{
+  getSectionByID(id: number): Observable<Section> {
    return this.http.get<Section[]>(this.baseUrl + '/sections', {
       params: new HttpParams().set('id', String(id))
     })
     .map(sections => {
-      const results = sections['sections'].filter(section => section.id == id);
-      return((results.length == 1) ? results[0] : null);
+      const results = sections['sections'].filter(section => section.id === id);
+      return((results.length === 1) ? results[0] : null);
     });
 
   }
-  getSectionsByCourseID(course_id: number): Observable<Section[]>{
+  getSectionsByCourseID(course_id: number): Observable<Section[]> {
    return this.http.get<Section[]>(this.baseUrl + '/sections', {
       params: new HttpParams().set('course_id', String(course_id))
     })
@@ -198,14 +198,14 @@ export class YacsProdService implements YacsService{
     });
   }
 
-  updateSection(section: Section): Observable<any>{
+  updateSection(section: Section): Observable<any> {
     return this.http.put(this.baseUrl + '/sections', section, cudOptions).pipe(
       tap(_ => console.log(section)),
       catchError(this.handleError<any>('updateSection'))
     );
   }
 
-  deleteSection(section: Section | number): Observable<Section>{
+  deleteSection(section: Section | number): Observable<Section> {
     const id = typeof section === 'number' ? section : section.id;
     const url = `${this.baseUrl}/sections/${id}`;
     return this.http.delete<Section>(url, cudOptions).pipe(
@@ -214,10 +214,10 @@ export class YacsProdService implements YacsService{
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T){
+  private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       const errorMessage = `YACS API Error on ${operation} - ${error}`;
-      //TODO: send to remote logging system instead of console
+      // TODO: send to remote logging system instead of console
       console.error(errorMessage);
       return Observable.throw(errorMessage);
     };

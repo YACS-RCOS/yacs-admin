@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'YACS Admin';
   constructor(private router: Router, private titleService: Title) {}
   ngOnInit() {

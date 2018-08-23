@@ -21,16 +21,16 @@ export abstract class YacsService {
   abstract getSchoolByName(name: String): Observable<School>;
   abstract getSchoolByID(id: number): Observable<School>;
 
-  //PUT method for schools
+  // PUT method for schools
   abstract updateSchool(school: School): Observable<any>;
 
-  //POST method for schools
+  // POST method for schools
   abstract addSchool(school: School): Observable<any>;
 
-  //DELETE method for schools
+  // DELETE method for schools
   abstract deleteSchool(school: School | number): Observable<School>;
 
-  //Return all departments
+  // Return all departments
   // GET method
   abstract getDepts(): Observable<Department[]>;
 
@@ -38,17 +38,17 @@ export abstract class YacsService {
    * Return a singular department by ID */
   abstract getDeptByID(id: number): Observable<Department>;
   abstract getDeptByCode(code: string): Observable<Department>;
-  //HTTP GET method
-  //Return all departments in a school
+  // HTTP GET method
+  // Return all departments in a school
   abstract getDeptsBySchoolID(school_id: number): Observable<Department[]>;
 
-  //PUT method for departments
+  // PUT method for departments
   abstract updateDepartment(dept: Department): Observable<any>;
 
-  //POST method for departments
+  // POST method for departments
   abstract addDepartment(dept: Department): Observable<any>;
 
-  //DELETE method for departments
+  // DELETE method for departments
   abstract deleteDepartment(dept: Department | number): Observable<Department>;
 
 
@@ -58,7 +58,7 @@ export abstract class YacsService {
   abstract getCourseByID(id: number): Observable<Course>;
   abstract getCoursesByDeptID(dept_id: number): Observable<Course[]>;
   abstract addCourse(course: Course): Observable<any>;
-//PUT method for courses
+// PUT method for courses
   abstract updateCourse(course: Course): Observable<any>;
 
   abstract deleteCourse(course: Course | number): Observable<Course>;

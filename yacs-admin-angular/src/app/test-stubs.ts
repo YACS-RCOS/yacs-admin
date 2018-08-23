@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { convertToParamMap, ParamMap } from '@angular/router';
 
-//@Injectable()
+// @Injectable()
 export class ActivatedRouteStub {
 
   private subject = new BehaviorSubject(convertToParamMap(this.testParamMap));

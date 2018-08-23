@@ -3,7 +3,7 @@ import { School } from '../school';
 import {YacsService} from '../../services/yacs.service';
 
 @Component({
-  selector: 'school-list',
+  selector: 'app-school-list',
   templateUrl: './school-list.component.html',
   styleUrls: ['./school-list.component.css']
 })
@@ -12,25 +12,25 @@ export class SchoolListComponent implements OnInit {
   creatingSchool: boolean;
   constructor(private yacsService: YacsService) { }
 
-  getSchools(): void{
+  getSchools(): void {
     this.yacsService.getSchools()
       .subscribe(schools => this.schools = schools);
   }
 
-  deleteSchool(school: School): void{
+  deleteSchool(school: School): void {
     this.yacsService.deleteSchool(school)
       .subscribe(() => {this.getSchools(); });
   }
 
-  showSchoolForm(): void{
+  showSchoolForm(): void {
     this.creatingSchool = true;
   }
 
-  cancelNewSchool(): void{
+  cancelNewSchool(): void {
     this.creatingSchool = false;
   }
 
-  createSchool(name): void{
+  createSchool(name): void {
     let newSchool: School;
     newSchool = new School((this.schools.length + 1), name, []);
     this.yacsService.addSchool(newSchool)

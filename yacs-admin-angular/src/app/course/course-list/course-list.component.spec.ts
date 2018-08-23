@@ -300,7 +300,8 @@ describe('no courses in department', () => {
     beforeEach(async() => {
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
+      imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+          InMemoryDataService, {passThruUnknownUrl: true, delay: 100})],
       declarations: [ CourseListComponent ],
       providers: [
         {provide: YacsService, useClass: FakeYacsService},

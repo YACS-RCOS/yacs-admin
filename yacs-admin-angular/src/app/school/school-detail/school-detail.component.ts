@@ -13,7 +13,7 @@ export class SchoolDetailComponent implements OnInit {
   @Input () school: School;
   constructor(private yacsService: YacsService, private route: ActivatedRoute, private router: Router, private location: Location) { }
 
-  getSchool(id: number){
+  getSchool(id: number) {
     this.yacsService.getSchoolByID(id)
       .subscribe(school => this.school = school);
   }
@@ -24,17 +24,17 @@ export class SchoolDetailComponent implements OnInit {
     this.getSchool(id);
   }
 
-  save(name){
+  save(name) {
     this.yacsService.updateSchool(this.school)
       .subscribe(() => {
         this.router.navigate(['/schools']);
       });
   }
 
-  cancel(name){
+  cancel(name) {
     this.goBack();
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

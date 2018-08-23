@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 const cudOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
 @Injectable()
-export class FakeYacsService implements YacsService{
+export class FakeYacsService implements YacsService {
 
   schoolsUrl= `api/schools`;
   deptsUrl= 'api/departments';
@@ -22,76 +22,76 @@ export class FakeYacsService implements YacsService{
   constructor(private http: HttpClient) {
   }
 
-  getSchools(): Observable<School[]>{
+  getSchools(): Observable<School[]> {
     return this.http.get<School[]>(this.schoolsUrl);
   }
 
-  getSchoolByName(name: string): Observable<School>{
+  getSchoolByName(name: string): Observable<School> {
     return this.http.get<School[]>(this.schoolsUrl)
       .map(schools => {
-        const results = schools.filter(school => school.name == name);
-        return((results.length == 1) ? results[0] : null);
+        const results = schools.filter(school => school.name === name);
+        return((results.length === 1) ? results[0] : null);
       });
   }
 
-  getDepts(): Observable<Department[]>{
+  getDepts(): Observable<Department[]> {
     return this.http.get<Department[]>(this.deptsUrl);
   }
 
-  getCourses(): Observable<Course[]>{
+  getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.coursesUrl);
-    //return of(COURSES);
+    // return of(COURSES);
   }
 
-  getSections(): Observable<Section[]>{
+  getSections(): Observable<Section[]> {
     return this.http.get<Section[]>(this.sectionsUrl);
-    //return of(SECTIONS);
+    // return of(SECTIONS);
   }
 
-  getSchoolByID(id: number): Observable<School>{
+  getSchoolByID(id: number): Observable<School> {
     const url = `${this.schoolsUrl}/${id}`;
     return this.http.get<School>(url);
   }
 
-  getSectionsByCourseID(course_id: number): Observable<Section[]>{
+  getSectionsByCourseID(course_id: number): Observable<Section[]> {
     return this.http.get<Section[]>(this.sectionsUrl)
       .map(sections => {
-        const results = sections.filter(section => section.course_id == course_id);
+        const results = sections.filter(section => section.course_id === course_id);
         return results;
       });
   }
 
-  getDeptByID(id: number): Observable<Department>{
+  getDeptByID(id: number): Observable<Department> {
     const url = `${this.deptsUrl}/${id}`;
     return this.http.get<Department>(url);
   }
 
-  getCourseByID(id: number): Observable<Course>{
+  getCourseByID(id: number): Observable<Course> {
     const url = `${this.coursesUrl}/${id}`;
     return this.http.get<Course>(url);
-    //return of(COURSES.filter(course => course.id === id)[0]);
+    // return of(COURSES.filter(course => course.id === id)[0]);
   }
 
-  getSectionByID(id: number): Observable<Section>{
+  getSectionByID(id: number): Observable<Section> {
     const url = `${this.sectionsUrl}/${id}`;
     return this.http.get<Section>(url);
   }
 
-  updateSchool(school: School): Observable<any>{
+  updateSchool(school: School): Observable<any> {
     return this.http.put(this.schoolsUrl, school, cudOptions).pipe(
       tap(_ => console.log(school),
       catchError(this.handleError<any>('updateSchool')))
     );
   }
 
-  addSchool(school: School): Observable<any>{
+  addSchool(school: School): Observable<any> {
     return this.http.post(this.schoolsUrl, school, cudOptions).pipe(
       tap(_ => console.log(school)),
       catchError(this.handleError<any>('addSchool'))
     );
   }
 
-  deleteSchool(school: School | number): Observable<School>{
+  deleteSchool(school: School | number): Observable<School> {
     const id = typeof school === 'number' ? school : school.id;
     const url = `${this.schoolsUrl}/${id}`;
     return this.http.delete<School>(url, cudOptions).pipe(
@@ -99,7 +99,7 @@ export class FakeYacsService implements YacsService{
       catchError(this.handleError<School>('deleteSchool'))
     );
   }
-  deleteCourse(course: Course | number): Observable<Course>{
+  deleteCourse(course: Course | number): Observable<Course> {
     const id = typeof course === 'number' ? course : course.id;
     const url = `${this.coursesUrl}/${id}`;
     return this.http.delete<Course>(url, cudOptions).pipe(
@@ -107,16 +107,16 @@ export class FakeYacsService implements YacsService{
       catchError(this.handleError<Course>('deleteCourse'))
     );
   }
-  getCoursesByDeptID(dept_id: number): Observable<Course[]>{
+  getCoursesByDeptID(dept_id: number): Observable<Course[]> {
     return this.http.get<Course[]>(this.coursesUrl)
       .map(courses => {
-        const results = courses.filter(course => course.department_id == dept_id);
+        const results = courses.filter(course => course.department_id === dept_id);
         return results;
       });
-    //return of(COURSES.filter(course => course.department_id === dept_id));
+    // return of(COURSES.filter(course => course.department_id === dept_id));
   }
 
-  addCourse(course: Course): Observable<any>{
+  addCourse(course: Course): Observable<any> {
     console.log(course);
     return this.http.post(this.coursesUrl, course, cudOptions).pipe(
       tap(_ => console.log(course)),
@@ -124,25 +124,25 @@ export class FakeYacsService implements YacsService{
     );
   }
 
-  updateCourse(course: Course): Observable<any>{
+  updateCourse(course: Course): Observable<any> {
     return this.http.put(this.coursesUrl, course, cudOptions).pipe(
       tap(_ => console.log(course),
       catchError(this.handleError<any>('updateCourse')))
     );
   }
-  getDeptByCode(code: string): Observable<Department>{
+  getDeptByCode(code: string): Observable<Department> {
   return this.http.get<Department[]>(this.deptsUrl)
       .map(depts => {
-        const results = depts.filter(dept => dept.code == code);
+        const results = depts.filter(dept => dept.code === code);
         return results;
       })[0];
   }
 
 
-  getDeptsBySchoolID(school_id: number): Observable<Department[]>{
+  getDeptsBySchoolID(school_id: number): Observable<Department[]> {
   return this.http.get<Department[]>(this.deptsUrl)
       .map(depts => {
-        const results = depts.filter(dept => dept.school_id == school_id);
+        const results = depts.filter(dept => dept.school_id === school_id);
         return results;
       });
   }
@@ -154,14 +154,14 @@ export class FakeYacsService implements YacsService{
     );
   }
 
-  addDepartment(dept: Department): Observable<any>{
+  addDepartment(dept: Department): Observable<any> {
     return this.http.post(this.deptsUrl, dept, cudOptions).pipe(
       tap(_ => console.log(dept)),
       catchError(this.handleError<any>('addDepartment'))
     );
   }
 
-  deleteDepartment(dept: Department | number): Observable<Department>{
+  deleteDepartment(dept: Department | number): Observable<Department> {
     const id = typeof dept === 'number' ? dept : dept.id;
     const url = `${this.deptsUrl}/${id}`;
 
@@ -171,14 +171,14 @@ export class FakeYacsService implements YacsService{
     );
   }
 
-  updateSection(section: Section): Observable<any>{
+  updateSection(section: Section): Observable<any> {
     return this.http.put(this.sectionsUrl, section, cudOptions).pipe(
       tap(_ => console.log(section),
       catchError(this.handleError<any>('updateSchool')))
     );
   }
 
-  deleteSection(section: Section | number): Observable<Section>{
+  deleteSection(section: Section | number): Observable<Section> {
     const id = typeof section === 'number' ? section : section.id;
     const url = `${this.sectionsUrl}/${id}`;
     return this.http.delete<Section>(url, cudOptions).pipe(
@@ -187,12 +187,12 @@ export class FakeYacsService implements YacsService{
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T){
+  private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      //Borrowed error message from yacs-web
+      // Borrowed error message from yacs-web
       const errorMessage = `YACS API Error on ${operation} - ${error}`;
       console.error(errorMessage);
-      //return Observable.throw(errorMessage);
+      // return Observable.throw(errorMessage);
       return of(result as T);
     };
   }

@@ -1,9 +1,9 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import {Observable } from 'rxjs/Observable';
-import{of} from 'rxjs/observable/of';
+import {of} from 'rxjs/observable/of';
 export class InMemoryDataService implements InMemoryDbService {
 
-  createDb(){
+  createDb() {
     const sections = [
       {id: 1, course_id: 1, name: '01', crn: 87654, instructors: ['Goldschmidt', 'Krishnamoorthy'],
       seats: 10, seats_taken: 5, conflicts: [1, 2, 3],
