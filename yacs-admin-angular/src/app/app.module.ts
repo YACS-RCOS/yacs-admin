@@ -38,7 +38,7 @@ import { SectionDetailComponent } from './section/section-detail/section-detail.
   ],
   imports: [
     BrowserModule, FormsModule,
-    HttpClientModule,AppRouterModule,
+    HttpClientModule, AppRouterModule,
 
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),   ],
   providers: [

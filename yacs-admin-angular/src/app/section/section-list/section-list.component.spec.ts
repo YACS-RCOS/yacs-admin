@@ -8,18 +8,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from '../../services/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {YacsService} from '../../services/yacs.service';
-describe('SectionListComponent', ()=>{
+describe('SectionListComponent', () => {
 
 
-  describe('no parameters queried', ()=>{
+  describe('no parameters queried', () => {
 
 
     let component: SectionListComponent;
     let fixture: ComponentFixture<SectionListComponent>;
-    let mockParams = [{}];
+    const mockParams = [{}];
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
+        imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+          InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
         declarations: [ SectionListComponent ],
         providers: [
           {provide: YacsService, useClass: FakeYacsService},
@@ -38,7 +39,7 @@ describe('SectionListComponent', ()=>{
       spyOn(component, 'getCourseSections');
       fixture.detectChanges();
 
-      fixture.whenStable().then(()=>{
+      fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
 
@@ -50,42 +51,43 @@ describe('SectionListComponent', ()=>{
       expect(component).toBeTruthy();
     });
 
-    it('should call getSections',()=>{
+    it('should call getSections', () => {
       expect(component.getSections).toHaveBeenCalled();
     });
 
-    it('should call setCourseId', ()=>{
+    it('should call setCourseId', () => {
       expect(component.setCourseId).toHaveBeenCalled();
     });
 
-    it('should not call getCourseSections', ()=>{
+    it('should not call getCourseSections', () => {
       expect(component.getCourseSections).not.toHaveBeenCalled();
     });
 
-    it('should not call getSelectedCourse', ()=>{
+    it('should not call getSelectedCourse', () => {
       expect(component.getSelectedCourse).not.toHaveBeenCalled();
     });
 
-    it('should display a header called \"All Sections\"', ()=>{
-      var header=document.getElementsByTagName('h2')[0];
+    it('should display a header called \"All Sections\"', () => {
+      const header = document.getElementsByTagName('h2')[0];
       expect(header.textContent).toMatch('All Sections');
     });
 
-    it('should display the table',() => {
+    it('should display the table', () => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
 
   });
 
-    describe('valid course id queried', ()=>{
+    describe('valid course id queried', () => {
 
 
     let component: SectionListComponent;
     let fixture: ComponentFixture<SectionListComponent>;
-    let mockParams = [{'course_id':1}];
+    const mockParams = [{'course_id': 1}];
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(    InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
+        imports: [RouterTestingModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100} )],
         declarations: [ SectionListComponent ],
         providers: [
           {provide: YacsService, useClass: FakeYacsService},
@@ -104,7 +106,7 @@ describe('SectionListComponent', ()=>{
       spyOn(component, 'getCourseSections');
       fixture.detectChanges();
 
-      fixture.whenStable().then(()=>{
+      fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
 
@@ -116,46 +118,46 @@ describe('SectionListComponent', ()=>{
       expect(component).toBeTruthy();
     });
 
-    it('should call getSections',()=>{
+    it('should call getSections', () => {
       expect(component.getSections).toHaveBeenCalled();
     });
 
-    it('should call setCourseId', ()=>{
+    it('should call setCourseId', () => {
       expect(component.setCourseId).toHaveBeenCalled();
     });
 
-    it('should  call getCourseSections', async()=>{
+    it('should  call getCourseSections', async() => {
       tick(100);
       expect(component.getCourseSections).toHaveBeenCalled();
     });
 
-    it('should call getSelectedCourse', async()=>{
+    it('should call getSelectedCourse', async() => {
       tick(100);
       expect(component.getSelectedCourse).toHaveBeenCalled();
     });
 
-    it('should not display a header called \"All Sections\"', async()=>{
+    it('should not display a header called \"All Sections\"', async() => {
       tick();
-      var header=document.getElementsByTagName('h2')[0];
+      const header = document.getElementsByTagName('h2')[0];
       expect(header.textContent).not.toMatch('All Sections');
     });
 
-    it('should display the table',() => {
+    it('should display the table', () => {
       expect(document.getElementsByClassName('table')).toBeTruthy();
     });
 
 
-    describe('when showPeriods clicked', ()=>{
-      beforeEach(async()=>{
-        let periodsButton=document.getElementById('showPeriods');
+    describe('when showPeriods clicked', () => {
+      beforeEach(async() => {
+        const periodsButton = document.getElementById('showPeriods');
         periodsButton.click();
       });
 
-      beforeEach(()=>{
+      beforeEach(() => {
         spyOn(component, 'showPeriods');
       });
 
-      it('should call showPeriods()', async()=>{
+      it('should call showPeriods()', async() => {
         tick();
         expect(component.showPeriods).toHaveBeenCalled();
       });

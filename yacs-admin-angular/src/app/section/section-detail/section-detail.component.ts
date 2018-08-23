@@ -15,18 +15,18 @@ export class SectionDetailComponent implements OnInit {
 
   getSection(id: number){
     this.yacsService.getSectionByID(id)
-      .subscribe(section=>this.section = section);
+      .subscribe(section => this.section = section);
   }
 
   ngOnInit() {
     let id: number;
-    this.route.params.subscribe(params=>{id=+params['id']});
+    this.route.params.subscribe(params => {id = +params['id']; });
     this.getSection(id);
   }
 
   saveSection(name){
     this.yacsService.updateSection(this.section)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.router.navigate(['/sections']);
       });
   }

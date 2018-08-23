@@ -19,12 +19,12 @@ export class CourseListComponent implements OnInit {
   departments: Department[];
   //ActivatedRoute is used to access parameters
   constructor(private route: ActivatedRoute, private yacsService: YacsService) {}
-  
-  /*Modified from yacs-web, "credit(s)" will 
+
+  /*Modified from yacs-web, "credit(s)" will
    * not display because credits is column title*/
   public creditRange(course: Course): string{
-    if(course.min_credits!=course.max_credits){
-      return String(course.min_credits)+'-'+String(course.max_credits);
+    if (course.min_credits != course.max_credits){
+      return String(course.min_credits) + '-' + String(course.max_credits);
     }
     return String(course.min_credits);
   }
@@ -35,34 +35,34 @@ export class CourseListComponent implements OnInit {
 
   selectedCourse: Course;
   onSelect(course: Course): void{
-    this.selectedCourse=course;
+    this.selectedCourse = course;
   }
 
   getAllDepts(): void{
     this.yacsService.getDepts()
-      .subscribe(departments => this.departments = departments, error=>console.log(error));
- 
+      .subscribe(departments => this.departments = departments, error => console.log(error));
+
 
   }
   deleteCourse(course): void{
 
       this.yacsService.deleteCourse(course)
-        .subscribe(()=>{
-        if(this.department_id){
+        .subscribe(() => {
+        if (this.department_id){
         this.getCoursesInDept(this.department_id);
     }
 
     //If null, select all courses
     else{
-      this.getAllCourses();   
-      //console.log(this.courses);
+      this.getAllCourses();
+      // console.log(this.courses);
     }
         });
 
   }
   public getCourseDeptCode(course: Course): string{
-    if(environment.useRealData){
-    let department = this.departments.filter(dept =>dept.id == course.department_id)[0];
+    if (environment.useRealData){
+    const department = this.departments.filter(dept => dept.id == course.department_id)[0];
     return department.code;
     }
     return course.department_code;
@@ -70,8 +70,8 @@ export class CourseListComponent implements OnInit {
   setDeptId(): void{
     this.route.queryParams
       .filter(params => params.dept_id)
-      .subscribe(params =>{
-        this.department_id=Number(params.dept_id);
+      .subscribe(params => {
+        this.department_id = Number(params.dept_id);
       });
   }
 
@@ -84,29 +84,29 @@ export class CourseListComponent implements OnInit {
      this.yacsService.getCoursesByDeptID(department_id)
         .subscribe(courses => this.courses = courses);
       this.yacsService.getDeptByID(department_id)
-        .subscribe(selectedDept => { 
-          
-          if(!selectedDept){
-            this.error=true;
+        .subscribe(selectedDept => {
+
+          if (!selectedDept){
+            this.error = true;
           }
           else{
-            this.error=false;
-            this.selectedDept=selectedDept;
+            this.error = false;
+            this.selectedDept = selectedDept;
           }
-          
-        }, error=>{
-          this.error=true;
-          this.selectedDept=null;
+
+        }, error => {
+          this.error = true;
+          this.selectedDept = null;
         });
 
 
   }
   showCourseForm(): void{
-      this.creatingCourse=true;
+      this.creatingCourse = true;
   }
   cancelNewCourse(): void{
-    if(confirm('Are you sure you want to cancel?')){
-      this.creatingCourse=false;
+    if (confirm('Are you sure you want to cancel?')){
+      this.creatingCourse = false;
     }
   }
   createCourse(code, name, num, min_cred, max_cred, desc): void{
@@ -117,45 +117,45 @@ export class CourseListComponent implements OnInit {
     let dept: Department;
     dept = this.departments.filter(department => department.code == code)[0];
     console.log(dept);
-    let dept_id=dept.id;
-    let dept_code = dept.code;
-    newCourse = new Course((this.courses.length +1), name, num, dept_code, dept_id, min_cred, max_cred, desc, []);
+    const dept_id = dept.id;
+    const dept_code = dept.code;
+    newCourse = new Course((this.courses.length + 1), name, num, dept_code, dept_id, min_cred, max_cred, desc, []);
     this.yacsService.addCourse(newCourse)
-          .subscribe( ()=>{
+          .subscribe( () => {
             //Get departments with new dept
-            if(this.department_id){
+            if (this.department_id){
               this.getCoursesInDept(this.department_id);
             }
             else{
               this.getAllCourses();
             }
-            this.creatingCourse=false;
+            this.creatingCourse = false;
           }
         );
     /*this.yacsService.getDeptByID(String(code))
       .subscribe(dept=>{
         console.log(dept);
-        
-        
+
+
       });*/
-    
-    
+
+
   }
 
   ngOnInit() {
 
-    this.creatingCourse=false;
+    this.creatingCourse = false;
 
     this.getAllDepts();
     //Filter the courses if department id is not null
-    this.setDeptId(); 
-    if(this.department_id){
+    this.setDeptId();
+    if (this.department_id){
         this.getCoursesInDept(this.department_id);
     }
 
     //If null, select all courses
     else{
-      this.getAllCourses();   
+      this.getAllCourses();
       console.log(this.courses);
     }
   }

@@ -16,18 +16,18 @@ describe('SchoolListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SchoolListComponent ],
-      imports: [HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+        InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       providers: [{provide: YacsService, useClass: FakeYacsService}]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SchoolListComponent);
+  beforeEach(() => {fixture = TestBed.createComponent(SchoolListComponent);
     component = fixture.componentInstance;
     spyOn(component, 'getSchools');
     fixture.detectChanges();
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
     });
   });
@@ -36,13 +36,13 @@ describe('SchoolListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call getSchools',()=>{
+  it('should call getSchools', () => {
     expect(component.getSchools).toHaveBeenCalled();
   });
 
   it('renders header', () => {
-    var header = document.getElementsByClassName("table");
-    var ths = header[0].getElementsByTagName("th");
+    const header = document.getElementsByClassName('table');
+    const ths = header[0].getElementsByTagName('th');
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Name');
   });
@@ -50,13 +50,13 @@ describe('SchoolListComponent', () => {
 
 
   it('renders deparment', async() => {
-    var tbody = document.getElementsByTagName("tbody");
-    var rows = tbody[0].getElementsByTagName('tr');
-    //console.log(tbody[0].getElementsByTagName('tr'));
+    const tbody = document.getElementsByTagName('tbody');
+    const rows = tbody[0].getElementsByTagName('tr');
+    // console.log(tbody[0].getElementsByTagName('tr'));
 
-    for (var i = 0; i<component.schools.length; i++){
+    for (let i = 0; i < component.schools.length; i++) {
       // Get table data.
-      var data = rows[i].getElementsByTagName('td');
+      const data = rows[i].getElementsByTagName('td');
 
       // Make sure school properties correspond with rows of the same index.
       expect(component.schools[i].id).toMatch(data[0].innerHTML);
@@ -64,106 +64,103 @@ describe('SchoolListComponent', () => {
     }
   });
 
- 
-  describe('before \'New School\' is pressed', ()=>{
-    it('should not display a form', ()=>{
+  describe('before \'New School\' is pressed', () => {
+    it('should not display a form', () => {
       expect(document.getElementById('newSchool')).toBeNull();
     });
-    
-    it('should display a link to \'New School\'', () =>{
+    it('should display a link to \'New School\'', () => {
       expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
     });
 
   });
-  describe('when \'New School\' is pressed', ()=>{
-    beforeEach(async()=>{
-      let newSchoolBtn=document.getElementById('newSchoolBtn');
+  describe('when \'New School\' is pressed', () => {
+    beforeEach(async() => {
+      const newSchoolBtn = document.getElementById('newSchoolBtn');
       newSchoolBtn.click();
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       spyOn(component, 'showSchoolForm');
     });
 
-    it('should call showSchoolForm()', async()=>{
+    it('should call showSchoolForm()', async() => {
       tick();
       expect(component.showSchoolForm).toHaveBeenCalled();
     });
 
-    it('should show form', async()=>{
+    it('should show form', async() => {
       tick();
       expect(document.getElementById('newSchool')).toBeTruthy();
     });
 
-    describe('when \'Create School\' is pressed', ()=>{
-      beforeEach(async()=>{
-        let createBtn=document.getElementById('createBtn');
+    describe('when \'Create School\' is pressed', () => {
+      beforeEach(async() => {
+        const createBtn = document.getElementById('createBtn');
         createBtn.click();
       });
 
-      beforeEach(()=>{
-        spyOn(component, 'createSchool');
+      beforeEach(() => {
+          spyOn(component, 'createSchool');
       });
 
-      it('should call createSchool', async()=>{
+      it('should call createSchool', async() => {
         tick();
         expect(component.createSchool).toHaveBeenCalled();
       });
 
-      it('should not display a form', async()=>{
+      it('should not display a form', async() => {
         tick();
         expect(document.getElementById('newSchool')).toBeNull();
       });
-    
-      it('should display a link to \'New School\'', async() =>{
+
+      it('should display a link to \'New School\'', async() => {
         tick();
         expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
-      });     
+      });
 
     });
 
-    describe('when \'Cancel\' is pressed', ()=>{
-      beforeEach(async()=>{
-        let cancelBtn = document.getElementById('cancelBtn');
+    describe('when \'Cancel\' is pressed', () => {
+      beforeEach(async() => {
+        const cancelBtn = document.getElementById('cancelBtn');
         cancelBtn.click();
       });
-      beforeEach(()=>{
-        spyOn(component,'cancelNewSchool');
+      beforeEach(() => {
+          spyOn(component, 'cancelNewSchool');
       });
 
-      it('should call cancelNewSchool()', async()=>{
+      it('should call cancelNewSchool()', async() => {
         tick();
         expect(component.cancelNewSchool).toHaveBeenCalled();
       });
-      
-      it('should not display a form', async()=>{
+
+      it('should not display a form', async() => {
         tick();
         expect(document.getElementById('newSchool')).toBeNull();
       });
-    
-      it('should display a link to \'New School\'', async() =>{
+
+      it('should display a link to \'New School\'', async() => {
         tick();
         expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
       });
     });
 
   });
-  
-  describe('when \'Delete\' is pressed', ()=>{
+
+  describe('when \'Delete\' is pressed', () => {
     let schoolToDelete: School;
-    beforeEach(async()=>{
-      schoolToDelete=component.schools[0];
-      let deleteLink=document.getElementsByClassName('delete')[0] as HTMLElement;
+    beforeEach(async() => {
+      schoolToDelete = component.schools[0];
+      const deleteLink = document.getElementsByClassName('delete')[0] as HTMLElement;
       deleteLink.click();
-      //Store school before deleting
-      
+      // Store school before deleting
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       spyOn(component, 'deleteSchool');
     });
 
-    it('should call deleteSchool() with the right school', async()=>{
+    it('should call deleteSchool() with the right school', async() => {
       tick();
       expect(component.deleteSchool).toHaveBeenCalledWith(schoolToDelete);
     });

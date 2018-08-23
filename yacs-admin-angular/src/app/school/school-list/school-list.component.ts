@@ -19,29 +19,29 @@ export class SchoolListComponent implements OnInit {
 
   deleteSchool(school: School): void{
     this.yacsService.deleteSchool(school)
-      .subscribe(()=>{this.getSchools()});
+      .subscribe(() => {this.getSchools(); });
   }
 
   showSchoolForm(): void{
-    this.creatingSchool=true;
+    this.creatingSchool = true;
   }
 
   cancelNewSchool(): void{
-    this.creatingSchool=false;
+    this.creatingSchool = false;
   }
 
   createSchool(name): void{
     let newSchool: School;
-    newSchool=new School((this.schools.length + 1), name, []);
+    newSchool = new School((this.schools.length + 1), name, []);
     this.yacsService.addSchool(newSchool)
-      .subscribe(()=>{
+      .subscribe(() => {
         this.getSchools();
-        this.creatingSchool=false;
+        this.creatingSchool = false;
       });
   }
 
   ngOnInit() {
-    this.creatingSchool=false;
+    this.creatingSchool = false;
     this.getSchools();
   }
 

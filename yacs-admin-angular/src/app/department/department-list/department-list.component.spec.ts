@@ -13,22 +13,22 @@ import {Observable} from 'rxjs/Rx';
 describe('DepartmentListComponent, no params', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
-  let mockParams = [{}];
+  const mockParams = [{}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [{provide: YacsService, useClass: FakeYacsService},
       {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
-        } 
+        }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    
     fixture = TestBed.createComponent(DepartmentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -39,40 +39,40 @@ describe('DepartmentListComponent, no params', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-    it('should display a header titled \'All Departments\'',() => {
-      var header=document.getElementsByTagName('h2')[0];
+    it('should display a header titled \'All Departments\'', () => {
+      const header = document.getElementsByTagName('h2')[0];
       expect(header.textContent).toMatch('All Departments');
     });
   it('renders header', () => {
-    var header = document.getElementsByClassName("table");
-    var ths = header[0].getElementsByTagName("th");
+    const header = document.getElementsByClassName('table');
+    const ths = header[0].getElementsByTagName('th');
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Code');
     expect(ths[2].textContent).toContain('Name');
   });
 
-  it('calls getDepts()', async()=>{
+  it('calls getDepts()', async() => {
     tick();
     expect(component.getDepts).toHaveBeenCalled();
   });
 
   it('renders deparment', async() => {
-    //making sure we can access component departments
-    //console.log(component.departments);
+    // making sure we can access component departments
+    // console.log(component.departments);
 
-    //write the actual tests here
-    var tbody = document.getElementsByTagName("tbody");
-    var rows = tbody[0].getElementsByTagName('tr');
-    //console.log(tbody[0].getElementsByTagName('tr'));
+    // write the actual tests here
+    const tbody = document.getElementsByTagName('tbody');
+    const rows = tbody[0].getElementsByTagName('tr');
+    // console.log(tbody[0].getElementsByTagName('tr'));
 
-    for (var i = 0; i<component.departments.length; i++){
-      //console.log("DEPARTMENT COMPONENT");
-      //console.log(component.departments[i]);
-      //console.log("ROW");
-      //console.log(rows[i]);
+    for (let i = 0; i < component.departments.length; i++) {
+      // console.log("DEPARTMENT COMPONENT");
+      // console.log(component.departments[i]);
+      // console.log("ROW");
+      // console.log(rows[i]);
 
       // Get table data.
-      var data = rows[i].getElementsByTagName('td');
+      const data = rows[i].getElementsByTagName('td');
 
       // Make sure department properties correspond with rows of the same index.
       expect(component.departments[i].id).toMatch(data[0].innerHTML);
@@ -80,7 +80,6 @@ describe('DepartmentListComponent, no params', () => {
       expect(component.departments[i].name).toMatch(data[2].innerHTML);
     }
   });
-  
   describe('before clicking \'New Department\'', () => {
 
 
@@ -88,22 +87,21 @@ describe('DepartmentListComponent, no params', () => {
       expect(document.getElementById('newDept')).toBeNull();
     });
 
-    it('should display \'New Department\'',() => {
+    it('should display \'New Department\'', () => {
       expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
     });
   });
   describe('after clicking \'New Department\'', () => {
-    beforeEach(async()=>{
-      const newDeptBtn=document.getElementById('newDeptBtn');
+    beforeEach(async() => {
+      const newDeptBtn = document.getElementById('newDeptBtn');
       newDeptBtn.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-       
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
@@ -115,14 +113,14 @@ describe('DepartmentListComponent, no params', () => {
       expect(component.creatingDept).toEqual(true);
     });
     it('should render the form', async() => {
-      tick(); 
+      tick();
       expect(document.getElementById('newDept')).toBeTruthy();
-      //expect(component.selectedDept).toEqual(expectedDept);
+      // expect(component.selectedDept).toEqual(expectedDept);
     });
 
     describe('when \'Cancel\' is pressed', () => {
-      beforeEach(async()=>{
-        const cancelBtn=document.getElementById('cancelBtn');
+      beforeEach(async() => {
+        const cancelBtn = document.getElementById('cancelBtn');
         cancelBtn.click();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -130,18 +128,17 @@ describe('DepartmentListComponent, no params', () => {
         });
       });
 
-      beforeEach(()=>{
+      beforeEach(() => {
         spyOn(component, 'cancelNewDept').and.callThrough();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
           fixture.detectChanges();
         });
       });
-    
-        /*This spec is pending until we can replace
+        /* This spec is pending until we can replace
          *  this dialog with a Bootstrap modal.*/
 
-        xit('displays the dialog', async()=>{
+        xit('displays the dialog', async() => {
           tick();
           expect(component.cancelNewDept).toHaveBeenCalled();
         });
@@ -150,45 +147,44 @@ describe('DepartmentListComponent, no params', () => {
 
 
     describe('When \'Create Department\' is pressed', () => {
-      beforeEach(async()=>{
-        const createBtn=document.getElementById('createBtn');
+      beforeEach(async() => {
+        const createBtn = document.getElementById('createBtn');
         createBtn.click();
       });
 
-      beforeEach(()=>{
-        spyOn(component,'createDept');
+      beforeEach(() => {
+        spyOn(component, 'createDept');
       });
 
-      it('should call createDept', async()=>{
+      it('should call createDept', async() => {
         tick();
         expect(component.createDept).toHaveBeenCalled();
       });
     });
 
-  }); 
+  });
 
-   
 });
 
 describe('DepartmentListComponent, valid school id passed', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
-  let mockParams = [{'school_id':3}];
+  const mockParams = [{'school_id': 3}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [{provide: YacsService, useClass: FakeYacsService},
       {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
-        } 
+        }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    
     fixture = TestBed.createComponent(DepartmentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -201,39 +197,39 @@ describe('DepartmentListComponent, valid school id passed', () => {
   });
 
   it('renders header', () => {
-    var header = document.getElementsByClassName("table");
-    var ths = header[0].getElementsByTagName("th");
+    const header = document.getElementsByClassName('table');
+    const ths = header[0].getElementsByTagName('th');
     expect(ths[0].textContent).toContain('ID');
     expect(ths[1].textContent).toContain('Code');
     expect(ths[2].textContent).toContain('Name');
   });
     it('should render header with school name', async() => {
-      var header=document.getElementsByTagName('h2')[0];
-      var pattern = 'Departments in the '+component.selectedSchool.name;
+      const header = document.getElementsByTagName('h2')[0];
+      const pattern = 'Departments in the ' + component.selectedSchool.name;
       expect(header.textContent).toMatch(pattern);
     });
-  it('calls getDepts()', async()=>{
+  it('calls getDepts()', async() => {
     tick();
     expect(component.getDepts).toHaveBeenCalled();
   });
 
   it('renders deparment', async() => {
-    //making sure we can access component departments
-    //console.log(component.departments);
+    // making sure we can access component departments
+    // console.log(component.departments);
 
-    //write the actual tests here
-    var tbody = document.getElementsByTagName("tbody");
-    var rows = tbody[0].getElementsByTagName('tr');
-    //console.log(tbody[0].getElementsByTagName('tr'));
+    // write the actual tests here
+    const tbody = document.getElementsByTagName('tbody');
+    const rows = tbody[0].getElementsByTagName('tr');
+    // console.log(tbody[0].getElementsByTagName('tr'));
 
-    for (var i = 0; i<component.departments.length; i++){
-      //console.log("DEPARTMENT COMPONENT");
-      //console.log(component.departments[i]);
-      //console.log("ROW");
-      //console.log(rows[i]);
+    for (let i = 0; i < component.departments.length; i++) {
+      // console.log("DEPARTMENT COMPONENT");
+      // console.log(component.departments[i]);
+      // console.log("ROW");
+      // console.log(rows[i]);
 
       // Get table data.
-      var data = rows[i].getElementsByTagName('td');
+      const data = rows[i].getElementsByTagName('td');
 
       // Make sure department properties correspond with rows of the same index.
       expect(component.departments[i].id).toMatch(data[0].innerHTML);
@@ -241,7 +237,7 @@ describe('DepartmentListComponent, valid school id passed', () => {
       expect(component.departments[i].name).toMatch(data[2].innerHTML);
     }
   });
-  
+
   describe('before clicking \'New Department\'', () => {
 
 
@@ -249,22 +245,21 @@ describe('DepartmentListComponent, valid school id passed', () => {
       expect(document.getElementById('newDept')).toBeNull();
     });
 
-    it('should display \'New Department\'',() => {
+    it('should display \'New Department\'', () => {
       expect(document.getElementsByClassName('new-object-link')[0]).toBeTruthy();
     });
   });
   describe('after clicking \'New Department\'', () => {
-    beforeEach(async()=>{
-      const newDeptBtn=document.getElementById('newDeptBtn');
+    beforeEach(async() => {
+      const newDeptBtn = document.getElementById('newDeptBtn');
       newDeptBtn.click();
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
-       
     });
 
-    beforeEach(()=>{
+    beforeEach(() => {
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         fixture.detectChanges();
@@ -276,14 +271,14 @@ describe('DepartmentListComponent, valid school id passed', () => {
       expect(component.creatingDept).toEqual(true);
     });
     it('should render the form', async() => {
-      tick(); 
+      tick();
       expect(document.getElementById('newDept')).toBeTruthy();
-      //expect(component.selectedDept).toEqual(expectedDept);
+      // expect(component.selectedDept).toEqual(expectedDept);
     });
 
     describe('when \'Cancel\' is pressed', () => {
-      beforeEach(async()=>{
-        const cancelBtn=document.getElementById('cancelBtn');
+      beforeEach(async() => {
+        const cancelBtn = document.getElementById('cancelBtn');
         cancelBtn.click();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
@@ -291,18 +286,17 @@ describe('DepartmentListComponent, valid school id passed', () => {
         });
       });
 
-      beforeEach(()=>{
+      beforeEach(() => {
         spyOn(component, 'cancelNewDept').and.callThrough();
         fixture.detectChanges();
         fixture.whenStable().then(() => {
           fixture.detectChanges();
         });
       });
-    
-        /*This spec is pending until we can replace
+        /* This spec is pending until we can replace
          *  this dialog with a Bootstrap modal.*/
 
-        xit('displays the dialog', async()=>{
+        xit('displays the dialog', async() => {
           tick();
           expect(component.cancelNewDept).toHaveBeenCalled();
         });
@@ -311,46 +305,45 @@ describe('DepartmentListComponent, valid school id passed', () => {
 
 
     describe('When \'Create Department\' is pressed', () => {
-      beforeEach(async()=>{
-        const createBtn=document.getElementById('createBtn');
+      beforeEach(async() => {
+        const createBtn = document.getElementById('createBtn');
         createBtn.click();
       });
 
-      beforeEach(()=>{
-        spyOn(component,'createDept');
+      beforeEach(() => {
+        spyOn(component, 'createDept');
       });
 
-      it('should call createDept', async()=>{
+      it('should call createDept', async() => {
         tick();
         expect(component.createDept).toHaveBeenCalled();
       });
     });
 
-  }); 
+  });
 
-   
 });
 
 
 describe('DepartmentListComponent, invalid school id passed', () => {
   let component: DepartmentListComponent;
   let fixture: ComponentFixture<DepartmentListComponent>;
-  let mockParams = [{'school_id':42069}];
+  const mockParams = [{'school_id': 42069}];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ DepartmentListComponent, DepartmentDetailComponent ],
       providers: [{provide: YacsService, useClass: FakeYacsService},
       {provide: ActivatedRoute, useValue:
           {'queryParams': Observable.from(mockParams)}
-        } 
+        }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    
     fixture = TestBed.createComponent(DepartmentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -362,15 +355,13 @@ describe('DepartmentListComponent, invalid school id passed', () => {
     expect(component).toBeTruthy();
   });
 
-     it('should set error to true',()=>{
+     it('should set error to true', () => {
       expect(component.error).toBe(true);
     });
 
     it('should display an error message', async() => {
       tick();
-      var errorMessage=document.getElementById('errorMsg');
+      const errorMessage = document.getElementById('errorMsg');
       expect(errorMessage).toBeTruthy();
-    }); 
-
-   
+    });
 });

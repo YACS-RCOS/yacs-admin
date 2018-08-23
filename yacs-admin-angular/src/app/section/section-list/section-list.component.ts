@@ -31,16 +31,16 @@ export class SectionListComponent implements OnInit{
       this.getSections();
     }
     this.test_periods = [
-      {start:800, end:950, day:2},
-      {start:800, end:950, day:5},
+      {start: 800, end: 950, day: 2},
+      {start: 800, end: 950, day: 5},
     ];
   }
 
   setCourseId(): void{
     this.route.queryParams
       .filter(params => params.course_id)
-      .subscribe(params =>{
-        this.course_id=Number(params.course_id);
+      .subscribe(params => {
+        this.course_id = Number(params.course_id);
       });
   }
 
@@ -52,7 +52,7 @@ export class SectionListComponent implements OnInit{
   getCourseSections(course_id: number): void{
     this.yacsService.getSectionsByCourseID(course_id)
       .subscribe(sections => {
-        if(sections){
+        if (sections){
           this.sections = sections;
         }
       });
@@ -61,7 +61,7 @@ export class SectionListComponent implements OnInit{
   getSelectedCourse(course_id: number): void{
     this.yacsService.getCourseByID(course_id)
       .subscribe(course => {
-        if(course){
+        if (course){
           this.selectedCourse = course;
         }
       });
@@ -69,15 +69,15 @@ export class SectionListComponent implements OnInit{
 
   deleteSection(section): void{
       this.yacsService.deleteSection(section)
-        .subscribe(()=>{
-        if(this.course_id){
+        .subscribe(() => {
+        if (this.course_id){
         this.yacsService.getSectionsByCourseID(this.course_id);
     }
 
     //If null, select all courses
     else{
       this.getSections();
-      //console.log(this.courses);
+      // console.log(this.courses);
     }
         });
 
@@ -89,7 +89,7 @@ export class SectionListComponent implements OnInit{
   }
 
 
-  public getDay(period: Period) : string {
+  public getDay(period: Period): string {
     return SHORT_DAYS[period.day];
   }
 
@@ -101,9 +101,9 @@ export class SectionListComponent implements OnInit{
    * etc
    * This should possibly be a service.
    */
-  private timeToString(time: number) : string {
+  private timeToString(time: number): string {
     let hour = Math.floor(time / 100);
-    let minute = Math.floor(time % 100);
+    const minute = Math.floor(time % 100);
 
     let ampm = 'a';
     if (hour >= 12) {
@@ -121,7 +121,7 @@ export class SectionListComponent implements OnInit{
     return hour + minuteShow + ampm;
   }
 
-  public getHours(period: Period) : string {
+  public getHours(period: Period): string {
     return this.timeToString(period.start) + '-' + this.timeToString(period.end);
   }
 }

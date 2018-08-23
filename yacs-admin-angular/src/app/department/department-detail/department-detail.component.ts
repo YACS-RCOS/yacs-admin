@@ -19,23 +19,23 @@ export class DepartmentDetailComponent implements OnInit {
     let id: number;
     this.yacsService.getSchools()
       .subscribe(schools => this.schools = schools);
-    this.route.params.subscribe(params=>{id=+params['id']});
+    this.route.params.subscribe(params => {id = +params['id']; });
     this.yacsService.getDeptByID(id)
       .subscribe(dept => this.dept = dept);
   }
-  
+
   saveDept(){
     this.yacsService.updateDepartment(this.dept)
-      .subscribe(()=> console.log('done'));
+      .subscribe(() => console.log('done'));
   }
 
   save(code, name, id){
     console.log('saving!');
     this.yacsService.updateDepartment(this.dept)
-      .subscribe(()=>{
+      .subscribe(() => {
         console.log('done');
         this.router.navigate(['/departments']);
-      }); 
+      });
   }
 
   goBack(){
@@ -45,32 +45,32 @@ export class DepartmentDetailComponent implements OnInit {
   confirmUnsavedChanges(dept){
 
     let cancelAction = false;
-        if(this.dept.code != dept.code || 
+        if (this.dept.code != dept.code ||
            this.dept.name != dept.name ||
            this.dept.school_id != dept.school_id){
           cancelAction = confirm('You have unsaved changes. Are you sure you want to cancel?');
-          
+
         }
         else{
-          cancelAction=true;
+          cancelAction = true;
         }
-   if(cancelAction){
+   if (cancelAction){
       this.location.back();
-    } 
+    }
   }
 
-  cancel(code,name,id){
-    
+  cancel(code, name, id){
+
     //Retrieve the current state of the object
     this.yacsService.getDeptByID(this.dept.id)
       .subscribe(dept => {
-        this.confirmUnsavedChanges(dept); 
-        
-        
+        this.confirmUnsavedChanges(dept);
+
+
       });
     console.log(this.dept);
     console.log(this.dept.code);
     console.log(code);
-    
+
   }
 }

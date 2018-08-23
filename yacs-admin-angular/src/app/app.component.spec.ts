@@ -34,7 +34,7 @@ describe('AppComponent', () => {
         SectionDetailComponent,
       ],
       imports: [
-        FormsModule, HttpClientModule,AppRouterModule,
+        FormsModule, HttpClientModule, AppRouterModule,
         HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false, passThruUnknownUrl: true, delay: 100}),
       ],
       providers: [

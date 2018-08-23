@@ -18,7 +18,8 @@ describe('CourseDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
+      imports: [FormsModule, HttpClientModule, HttpClientInMemoryWebApiModule.forRoot(
+InMemoryDataService, {passThruUnknownUrl: true}), RouterTestingModule],
       declarations: [ CourseDetailComponent ],
       providers: [{provide: YacsService, useClass: FakeYacsService}
       , {provide: ActivatedRoute, useValue: {params: Observable.of({id: 1})}}
@@ -27,11 +28,10 @@ describe('CourseDetailComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CourseDetailComponent);
+  beforeEach(() => {fixture = TestBed.createComponent(CourseDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then(() => {
       fixture.detectChanges();
     });
   });
@@ -40,79 +40,78 @@ describe('CourseDetailComponent', () => {
     });
 
 
-  describe('when course passed', ()=>{
-    beforeEach(()=>{
-      component.course=new Course(1, 'Introduction to Googling', '1010', 'CPYP', 1, 4, 4, 'An introduction to using Google to help debug code', []);
+  describe('when course passed', () => {
+    beforeEach(() => {  component.course = new Course(1, 'Introduction to Googling', '1010', 'CPYP', 1, 4, 4, 'An introduction to using Google to help debug code', []);
       console.log(component.course);
       fixture.detectChanges();
-      fixture.whenStable().then(()=>{
+      fixture.whenStable().then(() => {
         fixture.detectChanges();
       });
 
     });
 
-    
+
     it('should display heading', () => {
-      const headingText=document.getElementById('detailHeading').textContent;
-      const headingPattern=component.course.department_code+' '+component.course.number+': '+component.course.name+' Details';
+      const headingText = document.getElementById('detailHeading').textContent;
+      const headingPattern = component.course.department_code + ' ' + component.course.number + ': ' + component.course.name + ' Details';
       expect(headingText).toMatch(headingPattern);
     });
 
-    it('should render course name', () =>{
-      const nameElem=document.getElementById('nameInput');
-      expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.course.name.substr(0,30));
+    it('should render course name', () => {
+      const nameElem = document.getElementById('nameInput');
+      expect(nameElem.getAttribute('ng-reflect-model')).toMatch(component.course.name.substr(0, 30));
     });
-    it('should render course number', () =>{
-      const numElem=document.getElementById('numInput');
+    it('should render course number', () => {
+      const numElem = document.getElementById('numInput');
       expect(numElem.getAttribute('ng-reflect-model')).toMatch(component.course.number);
     });
-    it('should render department dropdown', ()=> {
+    it('should render department dropdown', () => {
       const dropdown = document.getElementById('depts-dropdown');
       expect(dropdown).toBeTruthy();
     });
-    it('should render min credits', () =>{
-      const minCredElem=document.getElementById('minCredInput');
+    it('should render min credits', () => {
+      const minCredElem = document.getElementById('minCredInput');
       expect(minCredElem.getAttribute('ng-reflect-model')).toMatch(String(component.course.min_credits));
     });
-    it('should render max credits', () =>{
-      const maxCredElem=document.getElementById('maxCredInput');
+    it('should render max credits', () => {
+      const maxCredElem = document.getElementById('maxCredInput');
       expect(maxCredElem.getAttribute('ng-reflect-model')).toMatch(String(component.course.max_credits));
     });
 
-    it('should render course description', () =>{
-      const descElem=document.getElementById('descInput');
-      //The attribute returns the first 30 characters, so be sure to reflect that
+    it('should render course description', () => {
+      const descElem = document.getElementById('descInput');
+      // The attribute returns the first 30 characters, so be sure to reflect that
       expect(descElem.getAttribute('ng-reflect-model')).toMatch(component.course.description.substr(0, 30));
     });
-    
-    describe('when save button pressed', ()=>{
-      beforeEach(async()=>{
-        let saveBtn=document.getElementById('save');
+
+    describe('when save button pressed', () => {
+      beforeEach(async() => {
+        const saveBtn = document.getElementById('save');
         saveBtn.click();
         spyOn(component, 'saveCourse');
       });
 
-      it('should call saveCourse()', async()=>{
-        fixture.whenStable().then(()=>{
-          expect(component.saveCourse).toHaveBeenCalled();``
+      it('should call saveCourse()', async() => {
+        fixture.whenStable().then(() => {
+          expect(component.saveCourse).toHaveBeenCalled(); ``;
         });
       });
 
     });
 
 
-describe('when cancel button pressed', ()=>{
-      beforeEach(async()=>{
-        let cancelBtn=document.getElementById('cancel');
+describe('when cancel button pressed', () => {
+      beforeEach(async() => {
+        const cancelBtn = document.getElementById('cancel');
         cancelBtn.click();
       });
 
-      beforeEach(async()=>{
+      beforeEach(async() => {
         spyOn(component, 'goBack');
       });
 
-      it('should call goBack()', async()=>{
-        fixture.whenStable().then(()=>{
+      it('should call goBack()', async() => {
+        fixture.whenStable().then(() => {
         expect(component.goBack).toHaveBeenCalled();
         });
       });
@@ -120,5 +119,5 @@ describe('when cancel button pressed', ()=>{
     });
 
   });
-  
+
 });
