@@ -60,7 +60,7 @@
   <div class="col-xs-6">
   <h2 *ngIf="!selectedDept">All Courses</h2>
   <h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2></div>
-<div class="col-xs-6 new-object-link" ><h3><a (click) = "showCourseForm()"id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
+<div class="col-xs-6 new-object-link" ><h3><a href="#" onclick="return false;" (click) = "showCourseForm()"id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
 <table class="table" *ngIf ="courses">
   <thead>
     <tr>
