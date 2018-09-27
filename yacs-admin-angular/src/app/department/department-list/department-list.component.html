@@ -56,7 +56,7 @@
       <td>{{dept.name}}</td>
       <td class="code" style="text-align: center !important;"><a routerLink="{{dept.id}}">Details</a></td>
       <td class="code"  style="text-align: center !important;"><a routerLink="/courses" [queryParams]="{dept_id: dept.id }">Show Courses</a></td>
-      <td class="code"  style="text-align: center !important;"><a class="delete" (click)="deleteDept(dept)">Delete</a></td>
+      <td class="code"  style="text-align: center !important;"><a href="#" onclick="return false;" class="delete" (click)="deleteDept(dept)">Delete</a></td>
     </tr>
 
   </tbody>

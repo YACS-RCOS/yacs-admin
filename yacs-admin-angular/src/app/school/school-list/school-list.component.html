@@ -34,7 +34,7 @@
       <td>{{school.name}}</td> 
       <td class="code"><a routerLink={{school.id}}>Details</a></td> 
       <td class="code"><a routerLink="/departments" [queryParams]="{school_id: school.id }">Show Depts.</a></td>
-      <td class="code"><a class="delete" (click)="deleteSchool(school)">Delete</a></td>
+      <td class="code"><a href="#" onclick="return false;" class="delete" (click)="deleteSchool(school)">Delete</a></td>
     </tr>
 
   </tbody>

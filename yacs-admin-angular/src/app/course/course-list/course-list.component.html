@@ -88,7 +88,7 @@
       <td class="id">{{creditRange(course)}}</td>
       <td class="id" style="text-align: center !important;"><a routerLink="{{course.id}}">Details</a></td>
       <td class="id"  style="text-align: center !important;"><a routerLink="/sections" [queryParams]="{course_id: course.id }">Show Sections</a></td>
-      <td class="id"  style="text-align: center !important;"><a class="delete" (click)="deleteCourse(course)" >Delete</a></td>
+      <td class="id"  style="text-align: center !important;"><a href="#" onclick="return false;" class="delete" (click)="deleteCourse(course)" >Delete</a></td>
     </tr>
 
   </tbody>
