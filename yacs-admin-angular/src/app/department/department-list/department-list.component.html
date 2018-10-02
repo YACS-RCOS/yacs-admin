@@ -28,7 +28,7 @@
 
 <div class="row" *ngIf="!error">
   <div class="col-xs-6"><h2 *ngIf = "!selectedSchool">All Departments</h2><h2 *ngIf="selectedSchool">Departments in the {{selectedSchool.name}}</h2></div>
-  <div class="col-xs-6 new-object-link"><h3><a *ngIf="!creatingDept" (click)="showDeptForm()" id="newDeptBtn"> <i class="fa fa-plus" aria-hidden="true"></i>  New Department</a></h3></div>
+  <div class="col-xs-6 new-object-link"><h3><a href="#" onclick="return false;" *ngIf="!creatingDept" (click)="showDeptForm()" id="newDeptBtn"> <i class="fa fa-plus" aria-hidden="true"></i>  New Department</a></h3></div>
 </div>
 <!--<department-detail [dept]="selectedDept"></department-detail>
 
@@ -56,7 +56,7 @@
       <td>{{dept.name}}</td>
       <td class="code" style="text-align: center !important;"><a routerLink="{{dept.id}}">Details</a></td>
       <td class="code"  style="text-align: center !important;"><a routerLink="/courses" [queryParams]="{dept_id: dept.id }">Show Courses</a></td>
-      <td class="code"  style="text-align: center !important;"><a class="delete" (click)="deleteDept(dept)">Delete</a></td>
+      <td class="code"  style="text-align: center !important;"><a href="#" onclick="return false;" class="delete" (click)="deleteDept(dept)">Delete</a></td>
     </tr>
 
   </tbody>

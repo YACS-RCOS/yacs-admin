@@ -60,7 +60,7 @@
   <div class="col-xs-6">
   <h2 *ngIf="!selectedDept">All Courses</h2>
   <h2 *ngIf="selectedDept">Courses in the {{selectedDept.name}} Department</h2></div>
-<div class="col-xs-6 new-object-link" ><h3><a (click) = "showCourseForm()"id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
+<div class="col-xs-6 new-object-link" ><h3><a href="#" onclick="return false;" (click) = "showCourseForm()"id="newCourseBtn"><i class="fa fa-plus" aria-hidden="true"></i> New Course</a></h3></div></div>
 <table class="table" *ngIf ="courses">
   <thead>
     <tr>
@@ -88,7 +88,7 @@
       <td class="id">{{creditRange(course)}}</td>
       <td class="id" style="text-align: center !important;"><a routerLink="{{course.id}}">Details</a></td>
       <td class="id"  style="text-align: center !important;"><a routerLink="/sections" [queryParams]="{course_id: course.id }">Show Sections</a></td>
-      <td class="id"  style="text-align: center !important;"><a class="delete" (click)="deleteCourse(course)" >Delete</a></td>
+      <td class="id"  style="text-align: center !important;"><a href="#" onclick="return false;" class="delete" (click)="deleteCourse(course)" >Delete</a></td>
     </tr>
 
   </tbody>
