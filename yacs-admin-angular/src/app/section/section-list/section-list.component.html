@@ -24,7 +24,7 @@
     <td>{{ section.instructors.join(', ') }}</td>
     <td class="code">{{section.seats-section.seats_taken}}/{{section.seats}}</td>
     <td class="id" style="text-align: center !important;"><a routerLink="{{section.id}}">Details</a></td>
-    <td class="id" style="text-align: center !important;"><a id="showPeriods" (click)="showPeriods(section)">Show Periods</a></td>
+    <td class="id" style="text-align: center !important;"><a id="showPeriods:{{section.id}}}" href="#" onclick="return false;" (click)="showPeriods(section)">Show Periods</a></td>
     <td class="id" style="text-align: center !important;"><a class="delete" (click)="deleteSection(section)">Delete</a></td>
 
     <ng-container *ngIf="section === selectedSection">
