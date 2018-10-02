@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="col-xs-6"><h2>All Schools</h2></div>
-  <div class="col-xs-6 new-object-link" *ngIf="!creatingSchool"><h3><a (click)="showSchoolForm()" id="newSchoolBtn"><i class="fa fa-plus" aria-hidden="true"></i> New School</a></h3></div>
+  <div class="col-xs-6 new-object-link" *ngIf="!creatingSchool"><h3><a href="#" onclick="return false;" (click)="showSchoolForm()" id="newSchoolBtn"><i class="fa fa-plus" aria-hidden="true"></i> New School</a></h3></div>
 </div>
 
 <table class="table">
@@ -34,7 +34,7 @@
       <td>{{school.name}}</td> 
       <td class="code"><a routerLink={{school.id}}>Details</a></td> 
       <td class="code"><a routerLink="/departments" [queryParams]="{school_id: school.id }">Show Depts.</a></td>
-      <td class="code"><a class="delete" (click)="deleteSchool(school)">Delete</a></td>
+      <td class="code"><a href="#" onclick="return false;" class="delete" (click)="deleteSchool(school)">Delete</a></td>
     </tr>
 
   </tbody>
