@@ -13,7 +13,7 @@
   </div>
 
   <div id="schoolField" class="form-group form-inline">
-    <label>School: </label>
+    <label for="schools-dropdown"> School: </label>
     <select class="form-control" id="schools-dropdown" name="dept.school_id" [(ngModel)]="dept.school_id" #newId >
       <option *ngFor="let school of schools" [ngValue]="school.id">{{school.name}}</option>
     </select>
