@@ -4,7 +4,7 @@
   </h2>
   <div class="form-row justify-content-start">
     <div id="deptField" class="form-group form-inline ">
-      <label>Department: </label>
+      <label for="depts-dropdown"> Department: </label>
       <select class="form-control" id="depts-dropdown" name="course.department_code" [(ngModel)]="course.department_code" #newCode>
         <option *ngFor="let dept of depts" [ngValue]="dept.code">{{dept.code}}</option>
       </select>
